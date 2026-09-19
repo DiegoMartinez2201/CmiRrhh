@@ -1,0 +1,94 @@
+@page
+@model CmiRrhh.Web.Pages.Asistencias.CorreccionModel
+@{
+    ViewData["Title"] = "Corrección de salida";
+}
+
+<h1 class="h3 mb-3">Corrección de hora de salida</h1>
+<div class="alert alert-warning">
+    Esta pantalla corrige la hora de salida de una asistencia ya registrada. No permite registrar una asistencia nueva.
+</div>
+<p class="text-muted">Solo actualiza <code>Hor_Sal</code> y <code>Flag_Sal</code> de una fila existente de <code>Asistencia</code>.</p>
+
+@if (!string.IsNullOrWhiteSpace(Model.MensajeOk))
+{
+    <div class="alert alert-success">@Model.MensajeOk</div>
+}
+
+<form method="get" class="row g-3 align-items-end mb-4">
+    <div class="col-md-3">
+        <label asp-for="IdEmpleado" class="form-label"></label>
+        <input asp-for="IdEmpleado" class="form-control" min="1" />
+        <span asp-validation-for="IdEmpleado" class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <label asp-for="Fecha" class="form-label"></label>
+        <input asp-for="Fecha" class="form-control" />
+        <span asp-validation-for="Fecha" class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+</form>
+
+@if (Model.BusquedaEjecutada)
+{
+    @if (Model.Actual is null)
+    {
+        <div class="alert alert-info">
+            No existe una asistencia registrada para este empleado en esta fecha; no se puede corregir la salida.
+        </div>
+    }
+    else
+    {
+        <div class="card mb-4">
+            <div class="card-header">Estado actual</div>
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-3">Fecha</dt>
+                    <dd class="col-sm-9">@Model.Actual.Fecha.ToString("dd/MM/yyyy")</dd>
+                    <dt class="col-sm-3">Id empleado</dt>
+                    <dd class="col-sm-9">@Model.Actual.IdEmpleado</dd>
+                    <dt class="col-sm-3">Hora entrada</dt>
+                    <dd class="col-sm-9">@(Model.Actual.HorEnt?.Trim() ?? "—")</dd>
+                    <dt class="col-sm-3">Hora salida</dt>
+                    <dd class="col-sm-9">@(Model.Actual.HorSal?.Trim() ?? "—")</dd>
+                    <dt class="col-sm-3">Almuerzo salida</dt>
+                    <dd class="col-sm-9">@(Model.Actual.AlmSal?.Trim() ?? "—")</dd>
+                    <dt class="col-sm-3">Almuerzo entrada</dt>
+                    <dd class="col-sm-9">@(Model.Actual.AlmEnt?.Trim() ?? "—")</dd>
+                    <dt class="col-sm-3">Flag entrada</dt>
+                    <dd class="col-sm-9">@(Model.Actual.FlagEnt is null ? "—" : Model.Actual.FlagEnt.Value ? "Sí" : "No")</dd>
+                    <dt class="col-sm-3">Flag salida</dt>
+                    <dd class="col-sm-9">@(Model.Actual.FlagSal is null ? "—" : Model.Actual.FlagSal.Value ? "Sí" : "No")</dd>
+                    <dt class="col-sm-3">Estado</dt>
+                    <dd class="col-sm-9">@(Model.Actual.Estado is null ? "—" : Model.Actual.Estado.Value ? "Sí" : "No")</dd>
+                    <dt class="col-sm-3">Id horario</dt>
+                    <dd class="col-sm-9">@(Model.Actual.IdHorario?.ToString() ?? "—")</dd>
+                    <dt class="col-sm-3">Usuario</dt>
+                    <dd class="col-sm-9">@(Model.Actual.Usuario ?? "—")</dd>
+                    <dt class="col-sm-3">PC</dt>
+                    <dd class="col-sm-9">@(Model.Actual.Pc ?? "—")</dd>
+                </dl>
+            </div>
+        </div>
+
+        <form method="post" class="row g-3 align-items-end">
+            <input type="hidden" name="IdEmpleado" value="@Model.IdEmpleado" />
+            <input type="hidden" name="Fecha" value="@Model.Fecha?.ToString("yyyy-MM-dd")" />
+            <div class="col-md-3">
+                <label asp-for="HoraSalida" class="form-label"></label>
+                <input asp-for="HoraSalida" class="form-control" placeholder="HH:mm:ss" />
+                <span asp-validation-for="HoraSalida" class="text-danger"></span>
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success">Guardar corrección</button>
+            </div>
+        </form>
+    }
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

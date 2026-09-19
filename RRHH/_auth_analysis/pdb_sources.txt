@@ -1,0 +1,578 @@
+﻿==== D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\Seguridad.pdb ====
+D:\EVV\SwGrll\Encripta_Datos\EncriptaDoor\Seguridad\My Project\Application.Designer.vb
+d:\evv\swgrll\encripta_datos\encriptadoor\seguridad\my project\application.designer.vb
+D:\EVV\SwGrll\Encripta_Datos\EncriptaDoor\Seguridad\My Project\AssemblyInfo.vb
+d:\evv\swgrll\encripta_datos\encriptadoor\seguridad\my project\assemblyinfo.vb
+D:\EVV\SwGrll\Encripta_Datos\EncriptaDoor\Seguridad\My Project\Resources.Designer.vb
+d:\evv\swgrll\encripta_datos\encriptadoor\seguridad\my project\resources.designer.vb
+D:\EVV\SwGrll\Encripta_Datos\EncriptaDoor\Seguridad\My Project\Settings.Designer.vb
+d:\evv\swgrll\encripta_datos\encriptadoor\seguridad\my project\settings.designer.vb
+D:\EVV\SwGrll\Encripta_Datos\EncriptaDoor\Seguridad\Seguridad.vb
+d:\evv\swgrll\encripta_datos\encriptadoor\seguridad\seguridad.vb
+==== D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\GRLL.pdb ====
+D:\EVV\Sw\GRLL.Common.DAL\Clases\ClsExcel.vb
+d:\evv\sw\grll.common.dal\clases\clsexcel.vb
+D:\EVV\Sw\GRLL.Common.DAL\Clases\ClsFunciones.vb
+d:\evv\sw\grll.common.dal\clases\clsfunciones.vb
+D:\EVV\Sw\GRLL.Common.DAL\Clases\ClsIList.vb
+d:\evv\sw\grll.common.dal\clases\clsilist.vb
+D:\EVV\Sw\GRLL.Common.DAL\Clases\clsLogin.vb
+d:\evv\sw\grll.common.dal\clases\clslogin.vb
+D:\EVV\Sw\GRLL.Common.DAL\Clases\ClsNroLetras.vb
+d:\evv\sw\grll.common.dal\clases\clsnroletras.vb
+D:\EVV\Sw\GRLL.Common.DAL\Clases\ClsTipoDatos.vb
+d:\evv\sw\grll.common.dal\clases\clstipodatos.vb
+D:\EVV\Sw\GRLL.Common.DAL\Clases\clsVariables.vb
+d:\evv\sw\grll.common.dal\clases\clsvariables.vb
+D:\EVV\Sw\GRLL.Common.DAL\ClsTablas\ClsTUbigeo.vb
+d:\evv\sw\grll.common.dal\clstablas\clstubigeo.vb
+D:\EVV\Sw\GRLL.Common.DAL\Conexion\clsConexion.vb
+d:\evv\sw\grll.common.dal\conexion\clsconexion.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucButton.vb
+d:\evv\sw\grll.common.dal\controles\ucbutton.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucCboAnio.vb
+d:\evv\sw\grll.common.dal\controles\uccboanio.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucCboMes.vb
+d:\evv\sw\grll.common.dal\controles\uccbomes.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucComboBox.vb
+d:\evv\sw\grll.common.dal\controles\uccombobox.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucDataGridView.vb
+d:\evv\sw\grll.common.dal\controles\ucdatagridview.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucDateTime.vb
+d:\evv\sw\grll.common.dal\controles\ucdatetime.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucLabel.vb
+d:\evv\sw\grll.common.dal\controles\uclabel.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucLabelTrans.vb
+d:\evv\sw\grll.common.dal\controles\uclabeltrans.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucListData.vb
+d:\evv\sw\grll.common.dal\controles\uclistdata.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucPanel.vb
+d:\evv\sw\grll.common.dal\controles\ucpanel.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucTextBox.vb
+d:\evv\sw\grll.common.dal\controles\uctextbox.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucToolStripMaestro.vb
+d:\evv\sw\grll.common.dal\controles\uctoolstripmaestro.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucTVWVista.vb
+d:\evv\sw\grll.common.dal\controles\uctvwvista.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\SettingLogin.vb
+d:\evv\sw\grll.common.dal\forms\settinglogin.vb
+D:\EVV\Sw\GRLL.Common.DAL\Mappers\ClasesMappers.vb
+d:\evv\sw\grll.common.dal\mappers\clasesmappers.vb
+D:\EVV\Sw\GRLL.Common.DAL\Mappers\GenericMapper.vb
+d:\evv\sw\grll.common.dal\mappers\genericmapper.vb
+D:\EVV\Sw\GRLL.Common.DAL\Modulos\ModFunciones.vb
+d:\evv\sw\grll.common.dal\modulos\modfunciones.vb
+D:\EVV\Sw\GRLL.Common.DAL\My Project\Application.Designer.vb
+d:\evv\sw\grll.common.dal\my project\application.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\My Project\AssemblyInfo.vb
+d:\evv\sw\grll.common.dal\my project\assemblyinfo.vb
+D:\EVV\Sw\GRLL.Common.DAL\My Project\Resources.Designer.vb
+d:\evv\sw\grll.common.dal\my project\resources.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\My Project\Settings.Designer.vb
+d:\evv\sw\grll.common.dal\my project\settings.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Remoting\Remoting.vb
+d:\evv\sw\grll.common.dal\remoting\remoting.vb
+D:\EVV\Sw\GRLL.Common.DAL\Conexion\ucLogin.Designer.vb
+d:\evv\sw\grll.common.dal\conexion\uclogin.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Conexion\ucLogin.vb
+d:\evv\sw\grll.common.dal\conexion\uclogin.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucBuscaClienteProveedor.Designer.vb
+d:\evv\sw\grll.common.dal\controles\ucbuscaclienteproveedor.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucBuscaClienteProveedor.vb
+d:\evv\sw\grll.common.dal\controles\ucbuscaclienteproveedor.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucBuscaDato.designer.vb
+d:\evv\sw\grll.common.dal\controles\ucbuscadato.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucBuscaDato.vb
+d:\evv\sw\grll.common.dal\controles\ucbuscadato.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucFechas.Designer.vb
+d:\evv\sw\grll.common.dal\controles\ucfechas.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucFechas.vb
+d:\evv\sw\grll.common.dal\controles\ucfechas.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucFill.vb
+d:\evv\sw\grll.common.dal\controles\ucfill.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucFill.Designer.vb
+d:\evv\sw\grll.common.dal\controles\ucfill.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucFindFile.designer.vb
+d:\evv\sw\grll.common.dal\controles\ucfindfile.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucFindFile.vb
+d:\evv\sw\grll.common.dal\controles\ucfindfile.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucFoto.vb
+d:\evv\sw\grll.common.dal\controles\ucfoto.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucFoto.designer.vb
+d:\evv\sw\grll.common.dal\controles\ucfoto.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucMyBottom.Designer.vb
+d:\evv\sw\grll.common.dal\controles\ucmybottom.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucMyBottom.vb
+d:\evv\sw\grll.common.dal\controles\ucmybottom.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucNavButton.vb
+d:\evv\sw\grll.common.dal\controles\ucnavbutton.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucNavButton.Designer.vb
+d:\evv\sw\grll.common.dal\controles\ucnavbutton.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucText.vb
+d:\evv\sw\grll.common.dal\controles\uctext.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucText.Designer.vb
+d:\evv\sw\grll.common.dal\controles\uctext.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucTextCombo.Designer.vb
+d:\evv\sw\grll.common.dal\controles\uctextcombo.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucTextCombo.vb
+d:\evv\sw\grll.common.dal\controles\uctextcombo.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucTView1T.vb
+d:\evv\sw\grll.common.dal\controles\uctview1t.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucTView1T.Designer.vb
+d:\evv\sw\grll.common.dal\controles\uctview1t.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucTViewNT.vb
+d:\evv\sw\grll.common.dal\controles\uctviewnt.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucTViewNT.Designer.vb
+d:\evv\sw\grll.common.dal\controles\uctviewnt.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucTViewV1T.vb
+d:\evv\sw\grll.common.dal\controles\uctviewv1t.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucTViewV1T.Designer.vb
+d:\evv\sw\grll.common.dal\controles\uctviewv1t.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucTViewVNT.vb
+d:\evv\sw\grll.common.dal\controles\uctviewvnt.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucTViewVNT.Designer.vb
+d:\evv\sw\grll.common.dal\controles\uctviewvnt.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucUbigeoCmb.vb
+d:\evv\sw\grll.common.dal\controles\ucubigeocmb.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucUbigeoCmb.Designer.vb
+d:\evv\sw\grll.common.dal\controles\ucubigeocmb.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucUbigeoCombito.vb
+d:\evv\sw\grll.common.dal\controles\ucubigeocombito.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucUbigeoCombito.Designer.vb
+d:\evv\sw\grll.common.dal\controles\ucubigeocombito.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucUbigeoLinq.vb
+d:\evv\sw\grll.common.dal\controles\ucubigeolinq.vb
+D:\EVV\Sw\GRLL.Common.DAL\Controles\ucUbigeoLinq.Designer.vb
+d:\evv\sw\grll.common.dal\controles\ucubigeolinq.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\dcGRLL.designer.vb
+d:\evv\sw\grll.common.dal\dcgrll.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\dcGRLL.vb
+d:\evv\sw\grll.common.dal\dcgrll.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\fLogin.vb
+d:\evv\sw\grll.common.dal\forms\flogin.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\fLogin.Designer.vb
+d:\evv\sw\grll.common.dal\forms\flogin.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\frmBase.Designer.vb
+d:\evv\sw\grll.common.dal\forms\frmbase.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\frmBase.vb
+d:\evv\sw\grll.common.dal\forms\frmbase.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\frmBase1.Designer.vb
+d:\evv\sw\grll.common.dal\forms\frmbase1.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\frmBase1.vb
+d:\evv\sw\grll.common.dal\forms\frmbase1.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\frmBaseImg.Designer.vb
+d:\evv\sw\grll.common.dal\forms\frmbaseimg.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\frmBaseImg.vb
+d:\evv\sw\grll.common.dal\forms\frmbaseimg.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\frmBaseMant.Designer.vb
+d:\evv\sw\grll.common.dal\forms\frmbasemant.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\frmBaseMant.vb
+d:\evv\sw\grll.common.dal\forms\frmbasemant.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\FrmConsulta.designer.vb
+d:\evv\sw\grll.common.dal\forms\frmconsulta.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\FrmConsulta.vb
+d:\evv\sw\grll.common.dal\forms\frmconsulta.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\FrmMaestro.designer.vb
+d:\evv\sw\grll.common.dal\forms\frmmaestro.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\FrmMaestro.vb
+d:\evv\sw\grll.common.dal\forms\frmmaestro.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\frmMantBaseFTS.Designer.vb
+d:\evv\sw\grll.common.dal\forms\frmmantbasefts.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\frmMantBaseFTS.vb
+d:\evv\sw\grll.common.dal\forms\frmmantbasefts.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\frmMantBaseFTSb.Designer.vb
+d:\evv\sw\grll.common.dal\forms\frmmantbaseftsb.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\frmMantBaseFTSb.vb
+d:\evv\sw\grll.common.dal\forms\frmmantbaseftsb.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\frmPrueba.Designer.vb
+d:\evv\sw\grll.common.dal\forms\frmprueba.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\frmPrueba.vb
+d:\evv\sw\grll.common.dal\forms\frmprueba.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\LoginForm.Designer.vb
+d:\evv\sw\grll.common.dal\forms\loginform.designer.vb
+D:\EVV\Sw\GRLL.Common.DAL\Forms\LoginForm.vb
+d:\evv\sw\grll.common.dal\forms\loginform.vb
+==== D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\RecursosHumanos.pdb ====
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\DataSet_Porcentaje.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\dataset_porcentaje.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Modulos\Module1.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\modulos\module1.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Modulos\RRHH.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\modulos\rrhh.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\My Project\AssemblyInfo.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\my project\assemblyinfo.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\My Project\Resources.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\my project\resources.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\My Project\Settings.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\my project\settings.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmAsignarHorario.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmasignarhorario.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmAsignarHorario.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmasignarhorario.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmAsignarHorario_Lector.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmasignarhorario_lector.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmAsignarHorario_Lector.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmasignarhorario_lector.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmAsistenciaManual.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmasistenciamanual.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmAsistenciaManual.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmasistenciamanual.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmConsultaAsistDiaria.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmconsultaasistdiaria.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmConsultaAsistDiaria.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmconsultaasistdiaria.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmConsultaAsistencias.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmconsultaasistencias.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmConsultaAsistencias.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmconsultaasistencias.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmConsultaFaltas.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmconsultafaltas.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmConsultaFaltas.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmconsultafaltas.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmConsultaHorarioEsp.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmconsultahorarioesp.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmConsultaHorarioEsp.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmconsultahorarioesp.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmConsultaPermisos.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmconsultapermisos.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmConsultaPermisos.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmconsultapermisos.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmFeriado.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmferiado.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmFeriado.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmferiado.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmHorarioEsp.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmhorarioesp.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmHorarioEsp.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmhorarioesp.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmHorarios.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmhorarios.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmHorarios.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmhorarios.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmHorasTrabajadas.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmhorastrabajadas.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmHorasTrabajadas.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmhorastrabajadas.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmImportarAsistencia.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmimportarasistencia.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmImportarAsistencia.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmimportarasistencia.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmImportarAsistenciaBio.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmimportarasistenciabio.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmImportarAsistenciaBio.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmimportarasistenciabio.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmImportarAsistenciaCONSEJO.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmimportarasistenciaconsejo.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmImportarAsistenciaCONSEJO.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmimportarasistenciaconsejo.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmImportarAsistenciaFueraSEDE.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmimportarasistenciafuerasede.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmImportarAsistenciaFueraSEDE.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmimportarasistenciafuerasede.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmImportarAsistenciaPROIND.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmimportarasistenciaproind.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmImportarAsistenciaPROIND.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmimportarasistenciaproind.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmLocalAsignado.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmlocalasignado.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmLocalAsignado.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmlocalasignado.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmMantHorarios.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmmanthorarios.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmMantHorarios.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmmanthorarios.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmMantMotivo.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmmantmotivo.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmMantMotivo.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmmantmotivo.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmMantTipoPerm.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmmanttipoperm.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmMantTipoPerm.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmmanttipoperm.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmMarcacionesAutorizadas.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmmarcacionesautorizadas.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmMarcacionesAutorizadas.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmmarcacionesautorizadas.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmMotivoPermiso.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmmotivopermiso.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmMotivoPermiso.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmmotivopermiso.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmPermiso.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmpermiso.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmPermiso.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmpermiso.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmRelacionSalidaAutorizada.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmrelacionsalidaautorizada.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmRelacionSalidaAutorizada.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmrelacionsalidaautorizada.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmRepAsistenciaDia.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmrepasistenciadia.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmRepAsistenciaDia.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmrepasistenciadia.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmRepFaltas.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmrepfaltas.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmRepFaltas.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmrepfaltas.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmReporteEstadistico.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmreporteestadistico.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmReporteEstadistico.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmreporteestadistico.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmRepPermisoDispl.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmreppermisodispl.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmRepPermisoDispl.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmreppermisodispl.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmRepPermisos.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmreppermisos.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmRepPermisos.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmreppermisos.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmSalida.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmsalida.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmSalida.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmsalida.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmSobreTiempo.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmsobretiempo.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\FrmSobreTiempo.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\frmsobretiempo.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\XtraReportFaltas.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\xtrareportfaltas.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\XtraReportFaltas.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\xtrareportfaltas.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\XtraReportFaltas_Area.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\xtrareportfaltas_area.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\XtraReportFaltas_Area.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\xtrareportfaltas_area.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\XtraRepPermiso.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\xtrareppermiso.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Asistencias\XtraRepPermiso.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\asistencias\xtrareppermiso.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\BienestarSocial\FrmBuscarDerechohabiente.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\bienestarsocial\frmbuscarderechohabiente.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\BienestarSocial\FrmBuscarDerechohabiente.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\bienestarsocial\frmbuscarderechohabiente.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\BienestarSocial\FrmRegistroAsegurado.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\bienestarsocial\frmregistroasegurado.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\BienestarSocial\FrmRegistroAsegurado.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\bienestarsocial\frmregistroasegurado.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\DataSet1.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\dataset1.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\DataSet1.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\dataset1.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\AcercaDe.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\acercade.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\AcercaDe.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\acercade.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmBuscarPersona.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmbuscarpersona.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmBuscarPersona.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmbuscarpersona.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmCapacitaciones.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmcapacitaciones.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmCapacitaciones.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmcapacitaciones.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmDisciplina.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmdisciplina.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmDisciplina.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmdisciplina.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmDocumentos.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmdocumentos.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmDocumentos.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmdocumentos.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmEstudiosRealizados.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmestudiosrealizados.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmEstudiosRealizados.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmestudiosrealizados.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmExpLaboral.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmexplaboral.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmExpLaboral.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmexplaboral.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmFamiliar.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmfamiliar.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmFamiliar.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmfamiliar.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmFichaSocial.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmfichasocial.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmFichaSocial.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmfichasocial.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmListaArchivos.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmlistaarchivos.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmListaArchivos.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmlistaarchivos.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmListaOrganica.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmlistaorganica.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmListaOrganica.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmlistaorganica.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmLogin.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmlogin.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmLogin.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmlogin.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantCargos.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmantcargos.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantCargos.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmantcargos.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantDocFile.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmantdocfile.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantDocFile.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmantdocfile.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantEmpleado_Basico.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmantempleado_basico.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantEmpleado_Basico.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmantempleado_basico.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantEstCivil.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmantestcivil.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantEstCivil.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmantestcivil.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantGrupoSanguineo.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmantgruposanguineo.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantGrupoSanguineo.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmantgruposanguineo.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantNacionalidades.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmantnacionalidades.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantNacionalidades.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmantnacionalidades.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantRegimen.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmantregimen.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantRegimen.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmantregimen.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantTipoDocIdent.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmanttipodocident.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantTipoDocIdent.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmanttipodocident.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantTipoEstudio.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmanttipoestudio.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantTipoEstudio.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmanttipoestudio.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantTipoInst.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmanttipoinst.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantTipoInst.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmanttipoinst.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantTipoTrab.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmanttipotrab.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmMantTipoTrab.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmmanttipotrab.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmNuevaFicha.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmnuevaficha.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmNuevaFicha.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmnuevaficha.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmPeriodoLaboral.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmperiodolaboral.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmPeriodoLaboral.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmperiodolaboral.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReport_Cargos.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreport_cargos.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReport_Cargos.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreport_cargos.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReport_Emple_Ofic.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreport_emple_ofic.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReport_Emple_Ofic.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreport_emple_ofic.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReport_Empleado_Ingre.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreport_empleado_ingre.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReport_Empleado_Ingre.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreport_empleado_ingre.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReport_Selc_Oficina.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreport_selc_oficina.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReport_Selc_Oficina.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreport_selc_oficina.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReport_Selec_Fechas.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreport_selec_fechas.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReport_Selec_Fechas.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreport_selec_fechas.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReport_Selec_Pliego.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreport_selec_pliego.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReport_Selec_Pliego.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreport_selec_pliego.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReport_SelecMes.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreport_selecmes.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReport_SelecMes.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreport_selecmes.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReportCuadro.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreportcuadro.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReportCuadro.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreportcuadro.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReportCumple.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreportcumple.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReportCumple.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreportcumple.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReporteProfesion.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreporteprofesion.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReporteProfesion.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreporteprofesion.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReportFicha.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreportficha.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmReportFicha.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmreportficha.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmResoluciones.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmresoluciones.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmResoluciones.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmresoluciones.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmRotaciones.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmrotaciones.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmRotaciones.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmrotaciones.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmSuspenderAsistencia.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmsuspenderasistencia.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmSuspenderAsistencia.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmsuspenderasistencia.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmTitulos.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmtitulos.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\FrmTitulos.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\frmtitulos.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\MainMDI.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\mainmdi.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Escalafon\MainMDI.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\escalafon\mainmdi.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\My Project\Application.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\my project\application.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Reportes\Rep_CuadroPersonal.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\reportes\rep_cuadropersonal.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Reportes\Rep_CuadroPersonal.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\reportes\rep_cuadropersonal.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Reportes\Rep_Profesion.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\reportes\rep_profesion.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Reportes\Rep_Profesion.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\reportes\rep_profesion.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Reportes\Report_Cargos.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\reportes\report_cargos.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Reportes\Report_Cargos.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\reportes\report_cargos.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Reportes\Report_Cumple.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\reportes\report_cumple.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Reportes\Report_Cumple.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\reportes\report_cumple.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Reportes\Report_Emple_Ingreso.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\reportes\report_emple_ingreso.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Reportes\Report_Emple_Ingreso.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\reportes\report_emple_ingreso.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Reportes\Report_Ficha_Escalaf.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\reportes\report_ficha_escalaf.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Reportes\Report_Ficha_Escalaf.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\reportes\report_ficha_escalaf.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Reportes\Report_FichaSocial_L.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\reportes\report_fichasocial_l.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Reportes\Report_FichaSocial_L.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\reportes\report_fichasocial_l.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Reportes\Report_Oficinas.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\reportes\report_oficinas.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Reportes\Report_Oficinas.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\reportes\report_oficinas.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Reportes\Report_Porcentaje.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\reportes\report_porcentaje.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\RecursosHumanos\Reportes\Report_Porcentaje.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\recursoshumanos\reportes\report_porcentaje.vb
+==== D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\ClassRRHH.pdb ====
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\ClassRRHH\AsistenciaAccess.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\classrrhh\asistenciaaccess.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\ClassRRHH\FamiliaresClass.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\classrrhh\familiaresclass.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\ClassRRHH\FichaSocialClass.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\classrrhh\fichasocialclass.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\ClassRRHH\My Project\Application.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\classrrhh\my project\application.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\ClassRRHH\My Project\AssemblyInfo.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\classrrhh\my project\assemblyinfo.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\ClassRRHH\My Project\Resources.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\classrrhh\my project\resources.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\ClassRRHH\My Project\Settings.Designer.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\classrrhh\my project\settings.designer.vb
+E:\EVV\Proyectos GRLL\SwGrll_evv\RecursosHumanos\ClassRRHH\RRHHClass.vb
+e:\evv\proyectos grll\swgrll_evv\recursoshumanos\classrrhh\rrhhclass.vb

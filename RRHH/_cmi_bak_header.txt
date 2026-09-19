@@ -1,0 +1,17 @@
+﻿=== RESTORE HEADERONLY ===
+BackupName|BackupDescription|BackupType|ExpirationDate|Compressed|Position|DeviceType|UserName|ServerName|DatabaseName|DatabaseVersion|DatabaseCreationDate|BackupSize|FirstLSN|LastLSN|CheckpointLSN|DatabaseBackupLSN|BackupStartDate|BackupFinishDate|SortOrder|CodePage|UnicodeLocaleId|UnicodeComparisonStyle|CompatibilityLevel|SoftwareVendorId|SoftwareVersionMajor|SoftwareVersionMinor|SoftwareVersionBuild|MachineName|Flags|BindingID|RecoveryForkID|Collation|FamilyGUID|HasBulkLoggedData|IsSnapshot|IsReadOnly|IsSingleUser|HasBackupChecksums|IsDamaged|BeginsLogChain|HasIncompleteMetaData|IsForceOffline|IsCopyOnly|FirstRecoveryForkID|ForkPointLSN|RecoveryModel|DifferentialBaseLSN|DifferentialBaseGUID|BackupTypeDescription|BackupSetGUID|CompressedBackupSize|Containment|KeyAlgorithm|EncryptorThumbprint|EncryptorType|LastValidRestoreTime|TimeZone|CompressionAlgorithm
+----------|-----------------|----------|--------------|----------|--------|----------|--------|----------|------------|---------------|--------------------|----------|--------|-------|-------------|-----------------|---------------|----------------|---------|--------|---------------|----------------------|------------------|----------------|--------------------|--------------------|--------------------|-----------|-----|---------|--------------|---------|----------|-----------------|----------|----------|------------|------------------|---------|--------------|---------------------|--------------|----------|-------------------|------------|-------------|-------------------|--------------------|---------------------|-------------|--------------------|-----------|------------|-------------------|-------------|--------------------|--------|--------------------
+CMI-Completa Base de datos Copia de seguridad|NULL|1|NULL|0|1|2|sa|DESKTOP-5LRTKBI|CMI|957|2026-03-13 20:12:41.000|199371776|58211000001955200001|58211000001957600001|58211000001955200001|58164000000025600001|2026-03-29 20:51:45.000|2026-03-29 20:51:45.000|0|0|3082|196609|100|4608|16|0|1000|DESKTOP-5LRTKBI|512|67748598-3A56-4FD4-A6BE-FF2DEEEBCBB8|FE2A16CD-7E91-43BE-83FA-4682655C2C50|Modern_Spanish_CI_AS|89CAA27F-3D4A-4907-8623-AFF1B26BAC2F|0|0|0|0|0|0|0|0|0|0|FE2A16CD-7E91-43BE-83FA-4682655C2C50|NULL|FULL|NULL|NULL|Database|8F81F8E3-BB99-4EE1-937D-D8EAE99BB519|199371776|0|NULL|NULL|NULL|NULL|-80|NULL
+
+(1 rows affected)
+
+=== RESTORE FILELISTONLY ===
+LogicalName|PhysicalName|Type|FileGroupName|Size|MaxSize|FileId|CreateLSN|DropLSN|UniqueId|ReadOnlyLSN|ReadWriteLSN|BackupSizeInBytes|SourceBlockSize|FileGroupId|LogGroupGUID|DifferentialBaseLSN|DifferentialBaseGUID|IsReadOnly|IsPresent|TDEThumbprint|SnapshotUrl
+-----------|------------|----|-------------|----|-------|------|---------|-------|--------|-----------|------------|-----------------|---------------|-----------|------------|-------------------|--------------------|----------|---------|-------------|-----------
+CMI_Data|D:\UPN\CMI.MDF|D|PRIMARY|583598080|35184372080640|1|0|0|00000000-0000-0000-0000-000000000000|0|0|197787648|4096|1|NULL|58164000000025600001|2EFA3730-D683-42CF-9809-02AC84991B69|0|1|NULL|NULL
+CMI_Log|D:\UPN\CMI_1.LDF|L|NULL|204079104|35184372080640|2|0|0|00000000-0000-0000-0000-000000000000|0|0|0|4096|0|NULL|0|00000000-0000-0000-0000-000000000000|0|1|NULL|NULL
+
+(2 rows affected)
+
+=== RESTORE VERIFYONLY ===
+The backup set on file 1 is valid.

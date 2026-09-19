@@ -1,0 +1,58 @@
+﻿
+
+FullName : D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\ClassRRHH.dll
+Length   : 55808
+
+FullName : D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\ClsCtrls.dll
+Length   : 58880
+
+FullName : D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\GRLL.dll
+Length   : 2269184
+
+FullName : D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\RecursosHumanos.exe
+Length   : 2839040
+
+FullName : D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\RecursosHumanos.exe.config
+Length   : 3687
+
+FullName : D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\Seguridad.dll
+Length   : 16384
+
+FullName : D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\Reportes\ClassRRHH.dll
+Length   : 55808
+
+FullName : D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\Reportes\ClsCtrls.dll
+Length   : 58880
+
+FullName : D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\Reportes\GRLL.dll
+Length   : 2269184
+
+FullName : D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\Reportes\RecursosHumanos.exe
+Length   : 2840064
+
+FullName : D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\Reportes\RecursosHumanos.exe.config
+Length   : 3650
+
+FullName : D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\Reportes\Seguridad.dll
+Length   : 16384
+
+FullName : D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\temp\ClassRRHH.dll
+Length   : 65024
+
+FullName : D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\temp\ClsCtrls.dll
+Length   : 58880
+
+FullName : D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\temp\GRLL.dll
+Length   : 2269184
+
+FullName : D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\temp\RecursosHumanos.exe
+Length   : 2792448
+
+FullName : D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\temp\RecursosHumanos.exe.config
+Length   : 3650
+
+FullName : D:\UPN\CICLO 10\Evo conf software\RRHH\RRHH\temp\Seguridad.dll
+Length   : 16384
+
+
+

@@ -1,0 +1,5 @@
+TableName|CheckName|definition|is_disabled
+---------|---------|----------|-----------
+info|cnt
+----|---
+ALL_CHECKS_ON_TARGETS|0

@@ -1,0 +1,5 @@
+﻿SqlConnection
+clsConexion
+set_ConnectionString
+l̀E嬀Provider=Microsoft.Jet.OLEDB.4.0;Data Source=圀\Marcacion.mdb;Jet OLEDB:Database Password=̀;崀SELECT pers_cod from empleado where pers_dni='́'ᄁpers_cod
+Insert into Permiso (idEmpleado, NPermiso, FechaInicio, FechaFin, dia,Retorno,Lugar) VALUES (܀ , ऀ , 'ँ' , 㬁;Jet OLEDB:Database Password=

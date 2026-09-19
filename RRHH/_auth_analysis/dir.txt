@@ -1,0 +1,22 @@
+﻿
+Name                            Length
+----                            ------
+dir.txt                              0
+file_list.csv                    31299
+ilspy_install.txt                  155
+key_binaries.txt                  1763
+listing_preview.txt              11981
+pdb_sources.txt                  49366
+RecursosHumanos.exe.config        3687
+root_binaries.txt                 5794
+status.txt                          11
+status2.txt                         30
+status4.txt                         22
+strings_GRLL.txt                  5259
+strings_GRLL.txt.meta               72
+strings_Seguridad.txt                0
+strings_Seguridad.txt.meta          75
+temp_binaries.txt                 3714
+temp_RecursosHumanos.exe.config   3650
+
+

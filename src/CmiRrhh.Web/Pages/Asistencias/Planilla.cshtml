@@ -1,0 +1,80 @@
+@page
+@model CmiRrhh.Web.Pages.Asistencias.PlanillaModel
+@{
+    ViewData["Title"] = "Planilla de asistencias";
+}
+
+<h1 class="h3 mb-3">Planilla de asistencias</h1>
+<p class="text-muted">PIVOT diario por empleado. Máximo 15 días. Los locales se combinan en una lista validada (no se envía texto libre al SP).</p>
+
+<form method="get" class="row g-3 align-items-end mb-4">
+    <div class="col-md-3">
+        <label asp-for="FechaInicio" class="form-label"></label>
+        <input asp-for="FechaInicio" class="form-control" />
+        <span asp-validation-for="FechaInicio" class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <label asp-for="FechaFin" class="form-label"></label>
+        <input asp-for="FechaFin" class="form-control" />
+        <span asp-validation-for="FechaFin" class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <label asp-for="IdTipoTrabajador" class="form-label"></label>
+        <select asp-for="IdTipoTrabajador" asp-items="Model.TiposTrabajador" class="form-select">
+            <option value="">Seleccione…</option>
+        </select>
+        <span asp-validation-for="IdTipoTrabajador" class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <label asp-for="IdLocales" class="form-label"></label>
+        <select asp-for="IdLocales" asp-items="Model.Locales" class="form-select" multiple size="8"></select>
+        <span class="form-text">Ctrl+clic para varios. Vacío = default del SP (0).</span>
+    </div>
+    <div class="col-md-3">
+        <button type="submit" class="btn btn-primary">Consultar</button>
+    </div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+</form>
+
+@if (Model.ConsultaEjecutada)
+{
+    <p class="small text-muted mb-2">@Model.Resultados.Count empleado(s). MinTardeT / DiasTardeT / DiasAsistidos son literales 0 del SP.</p>
+    @if (Model.Resultados.Count == 0)
+    {
+        <div class="alert alert-info">No hay filas de planilla para los filtros indicados.</div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-sm table-striped table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Id</th>
+                        <th>Empleado</th>
+                        @foreach (var fecha in Model.FechasColumnas)
+                        {
+                            <th>@fecha</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var fila in Model.Resultados)
+                    {
+                        <tr>
+                            <td>@fila.IdEmpleado</td>
+                            <td>@fila.NombresC</td>
+                            @foreach (var fecha in Model.FechasColumnas)
+                            {
+                                <td>@(fila.EstadosPorFecha.TryGetValue(fecha, out var estado) ? (estado?.Trim() ?? "—") : "—")</td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

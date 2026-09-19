@@ -1,0 +1,110 @@
+@page
+@model CmiRrhh.Web.Pages.Asistencias.ImportarBiometricoModel
+@{
+    ViewData["Title"] = "Importar marcaciones biométricas";
+}
+
+<h1 class="h3 mb-3">Importar marcaciones biométricas</h1>
+
+<div class="alert alert-warning">
+    <p class="mb-2">Este proceso puede tardar varios minutos. La página puede no responder mientras corre; esto es esperado (Razor Pages no muestra progreso en tiempo real).</p>
+    <p class="mb-2">Ejecutar esta importación más de una vez para el mismo rango puede detenerse por un conflicto de datos (clave duplicada en <code>Marcacion</code>), no es una operación idempotente.</p>
+    <p class="mb-0">Este proceso depende de un servidor externo (biométrico, <code>10.10.51.119</code>); si la página no responde por varios minutos, puede indicar un problema de conexión con ese servidor, no un error de la aplicación.</p>
+</div>
+
+<form method="get" class="row g-3 align-items-end mb-4">
+    <div class="col-md-3">
+        <label asp-for="FechaInicio" class="form-label"></label>
+        <input asp-for="FechaInicio" class="form-control" />
+        <span asp-validation-for="FechaInicio" class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <label asp-for="FechaFin" class="form-label"></label>
+        <input asp-for="FechaFin" class="form-control" />
+        <span asp-validation-for="FechaFin" class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <button type="submit" class="btn btn-primary">Consultar rango</button>
+    </div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <p class="small text-muted mb-0">Máximo @CmiRrhh.Application.Services.AsistenciaImportacionService.MaxDiasRango días.</p>
+</form>
+
+@if (Model.Resultado is not null)
+{
+    @if (Model.Resultado.Exitoso)
+    {
+        <div class="alert alert-success">
+            Importación completada para @Model.Resultado.FechaInicio.ToString("dd/MM/yyyy")
+            – @Model.Resultado.FechaFin.ToString("dd/MM/yyyy").
+            Duración: @($"{(int)Model.Resultado.Duracion.TotalMinutes} min {Model.Resultado.Duracion.Seconds} s").
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger">
+            <p class="mb-1">La importación no fue exitosa.</p>
+            <p class="mb-1">Rango: @Model.Resultado.FechaInicio.ToString("dd/MM/yyyy") – @Model.Resultado.FechaFin.ToString("dd/MM/yyyy").</p>
+            <p class="mb-1">Duración: @($"{(int)Model.Resultado.Duracion.TotalMinutes} min {Model.Resultado.Duracion.Seconds} s").</p>
+            <p class="mb-0">@Model.Resultado.Error</p>
+        </div>
+    }
+}
+
+@if (Model.RangoConsultado)
+{
+    <div class="alert alert-info">
+        Este rango ya tiene <strong>@Model.MarcacionesExistentes</strong> marcaciones registradas.
+    </div>
+
+    <form method="post" id="formImportar" class="border rounded p-3">
+        <input type="hidden" name="FechaInicio" value="@Model.FechaInicio?.ToString("yyyy-MM-dd")" />
+        <input type="hidden" name="FechaFin" value="@Model.FechaFin?.ToString("yyyy-MM-dd")" />
+        <input type="hidden" id="marcacionesExistentes" value="@Model.MarcacionesExistentes" />
+
+        <div class="form-check mb-3">
+            <input asp-for="ConfirmoDuracion" class="form-check-input" />
+            <label asp-for="ConfirmoDuracion" class="form-check-label"></label>
+            <span asp-validation-for="ConfirmoDuracion" class="text-danger d-block"></span>
+        </div>
+
+        @if (Model.MarcacionesExistentes > 0)
+        {
+            <div class="form-check mb-3">
+                <input asp-for="ConfirmoReimportacion" class="form-check-input" />
+                <label asp-for="ConfirmoReimportacion" class="form-check-label"></label>
+            </div>
+        }
+
+        <button type="submit" id="btnEjecutar" class="btn btn-danger" disabled>
+            Ejecutar importación
+        </button>
+    </form>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        (function () {
+            const existentes = parseInt(document.getElementById('marcacionesExistentes')?.value ?? '0', 10);
+            const duracion = document.getElementById('ConfirmoDuracion');
+            const reimportar = document.getElementById('ConfirmoReimportacion');
+            const boton = document.getElementById('btnEjecutar');
+            if (!duracion || !boton) {
+                return;
+            }
+
+            function actualizar() {
+                const okDuracion = duracion.checked;
+                const okReimportar = existentes === 0 || (reimportar && reimportar.checked);
+                boton.disabled = !(okDuracion && okReimportar);
+            }
+
+            duracion.addEventListener('change', actualizar);
+            if (reimportar) {
+                reimportar.addEventListener('change', actualizar);
+            }
+            actualizar();
+        })();
+    </script>
+}

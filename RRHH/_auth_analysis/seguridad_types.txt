@@ -1,0 +1,27 @@
+﻿Specify --help for a list of available options and commands.
+ilspycmd.exe : Unhandled exception. McMaster.Extensions.CommandLineUtils.CommandParsingException: Missing value for 
+option 'l'
+En C:\Users\Martinez\AppData\Local\Temp\ps-script-0cc92a33-77bc-4b59-b153-d2950a1da643.ps1: 145 Carácter: 1
++ & $ilspy "$root\Seguridad.dll" -l 2>&1 | Out-File "$out\seguridad_typ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Unhandled excep... for option 'l':String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+   at McMaster.Extensions.CommandLineUtils.CommandLineProcessor.ProcessOption(OptionArgument arg)
+   at McMaster.Extensions.CommandLineUtils.CommandLineProcessor.ProcessNext()
+   at McMaster.Extensions.CommandLineUtils.CommandLineProcessor.Process()
+   at McMaster.Extensions.CommandLineUtils.CommandLineApplication.Parse(String[] args)
+   at McMaster.Extensions.CommandLineUtils.CommandLineApplication.ExecuteAsync(String[] args, CancellationToken 
+cancellationToken)
+   at McMaster.Extensions.Hosting.CommandLine.Internal.CommandLineService`1.RunAsync(CancellationToken 
+cancellationToken)
+   at McMaster.Extensions.Hosting.CommandLine.Internal.CommandLineLifetime.<>c__DisplayClass10_0.<<WaitForStartAsync>b_
+_0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.Extensions.Hosting.HostExtensions.RunCommandLineApplicationAsync(IHost host, CancellationToken 
+cancellationToken)
+   at Microsoft.Extensions.Hosting.HostBuilderExtensions.RunCommandLineApplicationAsync[TApp](IHostBuilder 
+hostBuilder, String[] args, Action`1 configure, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostBuilderExtensions.RunCommandLineApplicationAsync[TApp](IHostBuilder 
+hostBuilder, String[] args, CancellationToken cancellationToken)
+   at ICSharpCode.ILSpyCmd.ILSpyCmdProgram.<Main>(String[] args)

@@ -1,0 +1,17 @@
+ 
+-
+=== OBJECT META ===
+name|type|type_desc|IsEncrypted|sch
+----|----|---------|-----------|---
+GRLL_Usuario_Acceso|P |SQL_STORED_PROCEDURE|1|dbo
+spSEG_CrearUserSql|P |SQL_STORED_PROCEDURE|1|dbo
+spSEG_VerfUsuario|P |SQL_STORED_PROCEDURE|1|dbo
+ 
+-
+=== PARAMETERS ===
+ProcName|parameter_id|ParamName|DataType|max_length|precision|scale|is_output|has_default_value
+--------|------------|---------|--------|----------|---------|-----|---------|-----------------
+GRLL_Usuario_Acceso|1|@IdSistema|char|7|0|0|0|0
+GRLL_Usuario_Acceso|2|@login|char|20|0|0|0|0
+spSEG_CrearUserSql|1|@usuario|char|20|0|0|0|0
+spSEG_VerfUsuario|1|@login|varchar|200|0|0|0|0

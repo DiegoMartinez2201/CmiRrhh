@@ -1,0 +1,259 @@
+﻿=== TOP-LEVEL ===
+PathExists=True
+TopLevelCount=1
+NAME=CMI_Backup_QA.bak|TYPE=File|SIZE=199401472|MODIFIED=03/29/2026 20:51:45
+
+=== DEPTH-1 SUBFOLDERS ===
+(no subfolders)
+
+=== EXTENSION SEARCH ===
+*.bak : count_capped=1
+  D:\UPN\CICLO 10\Evo conf software\CMI_Backup_QA\CMI_Backup_QA.bak (199401472 bytes)
+*.sql : count_capped=0
+*.mdf : count_capped=0
+*.ldf : count_capped=0
+*.bacpac : count_capped=0
+*.dacpac : count_capped=0
+*.zip : count_capped=0
+*.7z : count_capped=0
+*.rar : count_capped=0
+
+=== SQL SERVER LOCAL ===
+sqlcmd=C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\SQLCMD.EXE
+SERVICE=MSSQL$SQLEXPRESS|Status=Running|Display=SQL Server (SQLEXPRESS)
+SERVICE=MSSQLFDLauncher$SQLEXPRESS|Status=Running|Display=SQL Full-text Filter Daemon Launcher (SQLEXPRESS)
+SERVICE=MSSQLLaunchpad$SQLEXPRESS|Status=Running|Display=SQL Server Launchpad (SQLEXPRESS)
+SERVICE=mysql|Status=Running|Display=mysql
+SERVICE=MySQL80|Status=Stopped|Display=MySQL80
+SERVICE=postgresql-x64-17|Status=Running|Display=postgresql-x64-17 - PostgreSQL Server 17
+SERVICE=SQLAgent$SQLEXPRESS|Status=Stopped|Display=SQL Server Agent (SQLEXPRESS)
+SERVICE=SQLBrowser|Status=Stopped|Display=SQL Server Browser
+SERVICE=SQLTELEMETRY$SQLEXPRESS|Status=Running|Display=SQL Server CEIP service (SQLEXPRESS)
+SERVICE=SQLWriter|Status=Running|Display=SQL Server VSS Writer
+SERVICE=wampmysqld64|Status=Stopped|Display=wampmysqld64
+
+=== BAK MAGIC ===
+First16Hex=54-41-50-45-00-00-03-00-8C-00-0E-01-00-00-00-00
+
+=== RESTORE CHECKS ===
+BackupName|BackupDescription|BackupType|ExpirationDate|Compressed|Position|DeviceType|UserName|ServerName|DatabaseName|DatabaseVersion|DatabaseCreationDate|BackupSize|FirstLSN|LastLSN|CheckpointLSN|DatabaseBackupLSN|BackupStartDate|BackupFinishDate|SortOrder|CodePage|UnicodeLocaleId|UnicodeComparisonStyle|CompatibilityLevel|SoftwareVendorId|SoftwareVersionMajor|SoftwareVersionMinor|SoftwareVersionBuild|MachineName|Flags|BindingID|RecoveryForkID|Collation|FamilyGUID|HasBulkLoggedData|IsSnapshot|IsReadOnly|IsSingleUser|HasBackupChecksums|IsDamaged|BeginsLogChain|HasIncompleteMetaData|IsForceOffline|IsCopyOnly|FirstRecoveryForkID|ForkPointLSN|RecoveryModel|DifferentialBaseLSN|DifferentialBaseGUID|BackupTypeDescription|BackupSetGUID|CompressedBackupSize|Containment|KeyAlgorithm|EncryptorThumbprint|EncryptorType|LastValidRestoreTime|TimeZone|CompressionAlgorithm
+----------|-----------------|----------|--------------|----------|--------|----------|--------|----------|------------|---------------|--------------------|----------|--------|-------|-------------|-----------------|---------------|----------------|---------|--------|---------------|----------------------|------------------|----------------|--------------------|--------------------|--------------------|-----------|-----|---------|--------------|---------|----------|-----------------|----------|----------|------------|------------------|---------|--------------|---------------------|--------------|----------|-------------------|------------|-------------|-------------------|--------------------|---------------------|-------------|--------------------|-----------|------------|-------------------|-------------|--------------------|--------|--------------------
+CMI-Completa Base de datos Copia de seguridad|NULL|1|NULL|0|1|2|sa|DESKTOP-5LRTKBI|CMI|957|2026-03-13 20:12:41.000|199371776|58211000001955200001|58211000001957600001|58211000001955200001|58164000000025600001|2026-03-29 20:51:45.000|2026-03-29 20:51:45.000|0|0|3082|196609|100|4608|16|0|1000|DESKTOP-5LRTKBI|512|67748598-3A56-4FD4-A6BE-FF2DEEEBCBB8|FE2A16CD-7E91-43BE-83FA-4682655C2C50|Modern_Spanish_CI_AS|89CAA27F-3D4A-4907-8623-AFF1B26BAC2F|0|0|0|0|0|0|0|0|0|0|FE2A16CD-7E91-43BE-83FA-4682655C2C50|NULL|FULL|NULL|NULL|Database|8F81F8E3-BB99-4EE1-937D-D8EAE99BB519|199371776|0|NULL|NULL|NULL|NULL|-80|NULL
+
+(1 rows affected)
+LogicalName|PhysicalName|Type|FileGroupName|Size|MaxSize|FileId|CreateLSN|DropLSN|UniqueId|ReadOnlyLSN|ReadWriteLSN|BackupSizeInBytes|SourceBlockSize|FileGroupId|LogGroupGUID|DifferentialBaseLSN|DifferentialBaseGUID|IsReadOnly|IsPresent|TDEThumbprint|SnapshotUrl
+-----------|------------|----|-------------|----|-------|------|---------|-------|--------|-----------|------------|-----------------|---------------|-----------|------------|-------------------|--------------------|----------|---------|-------------|-----------
+CMI_Data|D:\UPN\CMI.MDF|D|PRIMARY|583598080|35184372080640|1|0|0|00000000-0000-0000-0000-000000000000|0|0|197787648|4096|1|NULL|58164000000025600001|2EFA3730-D683-42CF-9809-02AC84991B69|0|1|NULL|NULL
+CMI_Log|D:\UPN\CMI_1.LDF|L|NULL|204079104|35184372080640|2|0|0|00000000-0000-0000-0000-000000000000|0|0|0|4096|0|NULL|0|00000000-0000-0000-0000-000000000000|0|1|NULL|NULL
+
+(2 rows affected)
+The backup set on file 1 is valid.
+
+
+=== DB PRESENCE / RRHH PROBE ===
+name|state_desc
+----|----------
+CMI|ONLINE
+type_desc|schema_name|name
+---------|-----------|----
+DEFAULT_CONSTRAINT|dbo|DF__aspnet_Ro__RoleI__7539FB4F
+FOREIGN_KEY_CONSTRAINT|dbo|FK__aspnet_Us__RoleI__790A8C33
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Empleado___IdEmp__5087998D
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Empleado__5A460DF1
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Empleado__IdAFP__5769A146
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Empleado__IdCarg__52A4EC29
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Empleado__IdDisc__51B0C7F0
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Empleado__IdEsta__56757D0D
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Empleado__idHora__4DE0370C
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Empleado__IdNaci__4FC87F7E
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Empleado__IdPers__585DC57F
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Empleado__IdRegi__4ED45B45
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Empleado__IdTipo__53991062
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Empleado__IdTipo__548D349B
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Empleado__IdVive__50BCA3B7
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Empleado_Area__517BBDC6
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Permiso__IdEmple__5A9B13AC
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Permiso__idMotiv__59A6EF73
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Rol_Acces__IdRol__766D4B53
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Rol_Acces__IdSis__7579271A
+FOREIGN_KEY_CONSTRAINT|dbo|FK__RRHH_AspS__IdEmp__61E72FB9
+FOREIGN_KEY_CONSTRAINT|dbo|FK__RRHH_AspS__idPre__73B0DA39
+FOREIGN_KEY_CONSTRAINT|dbo|FK__RRHH_AspS__idPre__74A4FE72
+FOREIGN_KEY_CONSTRAINT|dbo|FK__RRHH_AspS__idPre__759922AB
+FOREIGN_KEY_CONSTRAINT|dbo|FK__RRHH_Dina__IdEmp__60F30B80
+FOREIGN_KEY_CONSTRAINT|dbo|FK__RRHH_Dina__idRel__77816B1D
+FOREIGN_KEY_CONSTRAINT|dbo|FK__RRHH_Dina__idRel__78758F56
+FOREIGN_KEY_CONSTRAINT|dbo|FK__RRHH_Dina__idRel__7969B38F
+FOREIGN_KEY_CONSTRAINT|dbo|FK__RRHH_Dina__idTip__7A5DD7C8
+FOREIGN_KEY_CONSTRAINT|dbo|FK__RRHH_Func__IdEmp__5FFEE747
+FOREIGN_KEY_CONSTRAINT|dbo|FK__RRHH_Salu__idAcu__7D3A4473
+FOREIGN_KEY_CONSTRAINT|dbo|FK__RRHH_Salu__IdEmp__5F0AC30E
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Usuario__IdEmple__5C2E5663
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Usuario_R__IdRol__6B65ACFB
+FOREIGN_KEY_CONSTRAINT|dbo|FK__Usuario_R__IdUsu__6C59D134
+FOREIGN_KEY_CONSTRAINT|dbo|FK_Empleado_aspnet_Users
+FOREIGN_KEY_CONSTRAINT|dbo|FK_Empleado_Local
+FOREIGN_KEY_CONSTRAINT|dbo|FK_EstudiosRealizado_Empleado
+FOREIGN_KEY_CONSTRAINT|dbo|FK_HorarioTemporal_Empleado
+FOREIGN_KEY_CONSTRAINT|dbo|FK_Resolucion_Empleado
+FOREIGN_KEY_CONSTRAINT|dbo|FK_Rotacion_Empleado
+FOREIGN_KEY_CONSTRAINT|dbo|FK_RRHH_Asegurados_Empleado
+FOREIGN_KEY_CONSTRAINT|dbo|FK_RRHH_Asegurados_EstadoCivil
+FOREIGN_KEY_CONSTRAINT|dbo|FK_RRHH_Asegurados_MotivoBaja
+FOREIGN_KEY_CONSTRAINT|dbo|FK_RRHH_Asegurados_Persona
+PRIMARY_KEY_CONSTRAINT|dbo|PK__Asistencia__417A6027
+PRIMARY_KEY_CONSTRAINT|dbo|PK__aspnet_Roles__7351B2DD
+PRIMARY_KEY_CONSTRAINT|dbo|PK__Empleado__4B03CA61
+PRIMARY_KEY_CONSTRAINT|dbo|PK__Empleado_Area__4F937554
+PRIMARY_KEY_CONSTRAINT|dbo|PK__Permiso__58B2CB3A
+PRIMARY_KEY_CONSTRAINT|dbo|PK__Rol__61DC42C1
+PRIMARY_KEY_CONSTRAINT|dbo|PK__Rol_Acceso__7390DEA8
+PRIMARY_KEY_CONSTRAINT|dbo|PK__RRHH_AcudeEnferm__59F10836
+PRIMARY_KEY_CONSTRAINT|dbo|PK__RRHH_AspSocio__619229FE
+PRIMARY_KEY_CONSTRAINT|dbo|PK__RRHH_DinamicaFam__6B1B9438
+PRIMARY_KEY_CONSTRAINT|dbo|PK__RRHH_Feriado__4F296100
+PRIMARY_KEY_CONSTRAINT|dbo|PK__RRHH_FuncFam__6D03DCAA
+PRIMARY_KEY_CONSTRAINT|dbo|PK__RRHH_Preg1__5FA9E18C
+PRIMARY_KEY_CONSTRAINT|dbo|PK__RRHH_Preg2__5DC1991A
+PRIMARY_KEY_CONSTRAINT|dbo|PK__RRHH_Preg3__5BD950A8
+PRIMARY_KEY_CONSTRAINT|dbo|PK__RRHH_RelacHerman__637A7270
+PRIMARY_KEY_CONSTRAINT|dbo|PK__RRHH_RelacPareja__674B0354
+PRIMARY_KEY_CONSTRAINT|dbo|PK__RRHH_RelacPH__6562BAE2
+PRIMARY_KEY_CONSTRAINT|dbo|PK__RRHH_Salud__6EEC251C
+PRIMARY_KEY_CONSTRAINT|dbo|PK__RRHH_TipoFamilia__69334BC6
+PRIMARY_KEY_CONSTRAINT|dbo|PK__TipoPermiso__3608AD7B
+PRIMARY_KEY_CONSTRAINT|dbo|PK__TitulosEmpleado__277A9702
+PRIMARY_KEY_CONSTRAINT|dbo|PK__Usuario__65ACD3A5
+PRIMARY_KEY_CONSTRAINT|dbo|PK__Usuario_Rol__67951C17
+PRIMARY_KEY_CONSTRAINT|dbo|PK_Asistencia_Aud
+PRIMARY_KEY_CONSTRAINT|dbo|PK_AuxRRHH_ReporteAsistencia
+PRIMARY_KEY_CONSTRAINT|dbo|PK_Permiso_Aud
+PRIMARY_KEY_CONSTRAINT|dbo|PK_Reporte_Asistencias
+PRIMARY_KEY_CONSTRAINT|dbo|PK_RRHH_Asegurados
+PRIMARY_KEY_CONSTRAINT|dbo|PK_RRHH_TempFecha
+SQL_STORED_PROCEDURE|dbo|aspnet_Roles_CreateRole
+SQL_STORED_PROCEDURE|dbo|aspnet_Roles_DeleteRole
+SQL_STORED_PROCEDURE|dbo|aspnet_Roles_GetAllRoles
+SQL_STORED_PROCEDURE|dbo|aspnet_Roles_RoleExists
+SQL_STORED_PROCEDURE|dbo|aspnet_Setup_RemoveAllRoleMembers
+SQL_STORED_PROCEDURE|dbo|aspnet_UsersInRoles_AddUsersToRoles
+SQL_STORED_PROCEDURE|dbo|aspnet_UsersInRoles_FindUsersInRole
+SQL_STORED_PROCEDURE|dbo|aspnet_UsersInRoles_GetRolesForUser
+SQL_STORED_PROCEDURE|dbo|aspnet_UsersInRoles_GetUsersInRoles
+SQL_STORED_PROCEDURE|dbo|aspnet_UsersInRoles_IsUserInRole
+SQL_STORED_PROCEDURE|dbo|aspnet_UsersInRoles_RemoveUsersFromRoles
+SQL_STORED_PROCEDURE|dbo|GRLL_Usuario_Acceso
+SQL_STORED_PROCEDURE|dbo|PROC_LIST_MARCACIONES_X_USUARIO
+SQL_STORED_PROCEDURE|dbo|PTI_SP_UpDate_Empleado_Area
+SQL_STORED_PROCEDURE|dbo|sp_aba_usuario_areaO
+SQL_STORED_PROCEDURE|dbo|sp_Act_Areas_Empleado
+SQL_STORED_PROCEDURE|dbo|sp_Actualiza_Asistencia
+SQL_STORED_PROCEDURE|dbo|sp_Actualiza_Empleado_Area
+SQL_STORED_PROCEDURE|dbo|sp_busca_empleado
+SQL_STORED_PROCEDURE|dbo|sp_consutarUsuario
+SQL_STORED_PROCEDURE|dbo|sp_Elimnar_Permiso
+SQL_STORED_PROCEDURE|dbo|sp_ExistePermiso_Permiso
+SQL_STORED_PROCEDURE|dbo|sp_Get_Empleado
+SQL_STORED_PROCEDURE|dbo|sp_Get_Empleado_Area_By_idEmpleado
+SQL_STORED_PROCEDURE|dbo|sp_GetAll_EmpleadoArea_by_idEmpleado
+SQL_STORED_PROCEDURE|dbo|sp_Import_Permiso
+SQL_STORED_PROCEDURE|dbo|sp_ImportarAsistenciadeExcel
+SQL_STORED_PROCEDURE|dbo|sp_Insert_Empleado_Area
+SQL_STORED_PROCEDURE|dbo|sp_Listar_Empleado_Horario
+SQL_STORED_PROCEDURE|dbo|sp_Listar_Empleado_Local
+SQL_STORED_PROCEDURE|dbo|sp_ObterIdArea_Empleado_Area
+SQL_STORED_PROCEDURE|dbo|sp_RRHH_Busca_Empleado_tree
+SQL_STORED_PROCEDURE|dbo|sp_RRHH_ListarProfesiones
+SQL_STORED_PROCEDURE|dbo|SP_Seguridad_DatosUsuario_By_UserId
+SQL_STORED_PROCEDURE|dbo|sp_SgtID_Permiso
+SQL_STORED_PROCEDURE|dbo|sp_snp_empleado_id
+SQL_STORED_PROCEDURE|dbo|sp_Tra_Usuario_AreaCargo
+SQL_STORED_PROCEDURE|dbo|sp_Update_Empleado_idHorario_By_idEmpleado
+SQL_STORED_PROCEDURE|dbo|sp_Update_Empleado_idLocal_By_idEmpleado
+SQL_STORED_PROCEDURE|dbo|sp_Verficar_Existe_Asistencia
+SQL_STORED_PROCEDURE|dbo|spCJR_llenarEmpleados
+SQL_STORED_PROCEDURE|dbo|spEmpleado
+SQL_STORED_PROCEDURE|dbo|spEmpleado_Exp
+SQL_STORED_PROCEDURE|dbo|spEmpleado_NotIn_All_Solo_Pla
+SQL_STORED_PROCEDURE|dbo|spEmpleado_Select
+SQL_STORED_PROCEDURE|dbo|spEmpleado_Select_NotIn
+SQL_STORED_PROCEDURE|dbo|spEmpleado_Select_Solo_Pla
+SQL_STORED_PROCEDURE|dbo|spEmpleado_SNP_Select_NotIn
+SQL_STORED_PROCEDURE|dbo|spEmpleado_SNP_Select_NotIn_All
+SQL_STORED_PROCEDURE|dbo|spGetAsistenciasDetalle
+SQL_STORED_PROCEDURE|dbo|spRRHH_ActualizaEmpleado
+SQL_STORED_PROCEDURE|dbo|spRRHH_AgregarReporte
+SQL_STORED_PROCEDURE|dbo|SpRRHH_Asistencia_Import
+SQL_STORED_PROCEDURE|dbo|SpRRHH_Asistencia_Import_Personal1
+SQL_STORED_PROCEDURE|dbo|spRRHH_busca_Disciplina
+SQL_STORED_PROCEDURE|dbo|spRRHH_busca_empleado
+SQL_STORED_PROCEDURE|dbo|spRRHH_BuscarEmpleado_Codigo
+SQL_STORED_PROCEDURE|dbo|spRRHH_buscarEstudios
+SQL_STORED_PROCEDURE|dbo|spRRHH_BuscarExpLab
+SQL_STORED_PROCEDURE|dbo|spRRHH_BuscarFamiliares
+SQL_STORED_PROCEDURE|dbo|spRRHH_EliminarEmpleado
+SQL_STORED_PROCEDURE|dbo|spRRHH_EstadisticaPermiso
+SQL_STORED_PROCEDURE|dbo|spRRHH_Faltas
+SQL_STORED_PROCEDURE|dbo|spRRHH_Ficha_DatosPersonales
+SQL_STORED_PROCEDURE|dbo|spRRHH_Ficha_Det_Familiar
+SQL_STORED_PROCEDURE|dbo|spRRHH_Ficha_Det_Familiar_Salud
+SQL_STORED_PROCEDURE|dbo|spRRHH_Ficha_Estudio_Capacitacion
+SQL_STORED_PROCEDURE|dbo|spRRHH_Ficha_Estudio_Realizado
+SQL_STORED_PROCEDURE|dbo|spRRHH_Ficha_Estudio_Titulo
+SQL_STORED_PROCEDURE|dbo|spRRHH_Ficha_ExpLab
+SQL_STORED_PROCEDURE|dbo|spRRHH_Ficha_ExpLab_Datos
+SQL_STORED_PROCEDURE|dbo|spRRHH_Ficha_Vivienda
+SQL_STORED_PROCEDURE|dbo|spRRHH_GetAsistenciaDia
+SQL_STORED_PROCEDURE|dbo|spRRHH_GetAsistencias
+SQL_STORED_PROCEDURE|dbo|spRRHH_GetDiasAsistidos
+SQL_STORED_PROCEDURE|dbo|spRRHH_GetMinTarde
+SQL_STORED_PROCEDURE|dbo|spRRHH_getMotivo_perm
+SQL_STORED_PROCEDURE|dbo|spRRHH_GetPeriodoLaboralByEmpleado
+SQL_STORED_PROCEDURE|dbo|spRRHH_GetRecordAsistenciasSemanales
+SQL_STORED_PROCEDURE|dbo|spRRHH_GetReporteAsistencia
+SQL_STORED_PROCEDURE|dbo|spRRHH_GrabarEmpleado
+SQL_STORED_PROCEDURE|dbo|spRRHH_ImportarAsistenciaBio
+SQL_STORED_PROCEDURE|dbo|spRRHH_ImportarAsistenciaBioFacial
+SQL_STORED_PROCEDURE|dbo|spRRHH_ListarMotivos_byTipo
+SQL_STORED_PROCEDURE|dbo|spRRHH_ListarResolucion
+SQL_STORED_PROCEDURE|dbo|spRRHH_ListarRotaciones
+SQL_STORED_PROCEDURE|dbo|spRRHH_ListarTrabajadores
+SQL_STORED_PROCEDURE|dbo|spRRHH_ListarTrabajadoresRep
+SQL_STORED_PROCEDURE|dbo|spRRHH_llenarHorarioTemporal
+SQL_STORED_PROCEDURE|dbo|spRRHH_llenarPermiso
+SQL_STORED_PROCEDURE|dbo|SpRRHH_Marcacion_Import
+SQL_STORED_PROCEDURE|dbo|spRRHH_mig_ActEmple
+SQL_STORED_PROCEDURE|dbo|spRRHH_mig_Cargos
+SQL_STORED_PROCEDURE|dbo|spRRHH_mig_Cargos_Emple
+SQL_STORED_PROCEDURE|dbo|spRRHH_mig_Emp_10
+SQL_STORED_PROCEDURE|dbo|spRRHH_mig_Insertar_dem
+SQL_STORED_PROCEDURE|dbo|spRRHH_mig_Insertar_Mer
+SQL_STORED_PROCEDURE|dbo|spRRHH_mig_persona_10
+SQL_STORED_PROCEDURE|dbo|spRRHH_mig_REgPen
+SQL_STORED_PROCEDURE|dbo|spRRHH_ObtenerHorasExtras
+SQL_STORED_PROCEDURE|dbo|spRRHH_Rep_cargos
+SQL_STORED_PROCEDURE|dbo|spRRHH_Rep_profesion
+SQL_STORED_PROCEDURE|dbo|spRRHH_RepAsisdiaria_byIdEmpleado
+SQL_STORED_PROCEDURE|dbo|spRRHH_RepAsisdiarria
+SQL_STORED_PROCEDURE|dbo|spRRHH_Report_CuadroPer
+SQL_STORED_PROCEDURE|dbo|spRRHH_Report_Cumple
+SQL_STORED_PROCEDURE|dbo|spRRHH_Report_FechaIngreEstado
+SQL_STORED_PROCEDURE|dbo|spRRHH_Report_FechaIngreso
+SQL_STORED_PROCEDURE|dbo|spRRHH_Report_Oficina
+SQL_STORED_PROCEDURE|dbo|spRRHH_Report_Oficina_Unico
+SQL_STORED_PROCEDURE|dbo|spRRHH_RepPermisos
+SQL_STORED_PROCEDURE|dbo|spRRHH_RepPlanillaAsistencias
+SQL_STORED_PROCEDURE|dbo|spRRHH_ResumenEstadisticaPermiso
+SQL_STORED_PROCEDURE|dbo|spRRHH_TempFecha_Insert
+SQL_STORED_PROCEDURE|dbo|spSEG_CrearUserSql
+SQL_STORED_PROCEDURE|dbo|spSEG_listarUserRol
+SQL_STORED_PROCEDURE|dbo|spSEG_ListarUsuarios
+SQL_STORED_PROCEDURE|dbo|spSEG_llenarUsuarios
+SQL_STORED_PROCEDURE|dbo|spSEG_VerfUsuario
+SQL_TRIGGER|dbo|tr_aud_permiso
+SQL_TRIGGER|dbo|tr_aud_permiso_Insert
+USER_TABLE|dbo|Asistencia
+USER_TABLE|dbo|Asistencia_Aud
+USER_TABLE|dbo|aspnet_Roles
+USER_TABLE|dbo|aspnet_UsersInRoles
+

@@ -1,0 +1,7 @@
+﻿SQLCMD.EXE : Sqlcmd: The -W and the -y/-Y options are mutually exclusive.
+En C:\Users\Martinez\AppData\Local\Temp\ps-script-eded162c-e23f-4dfa-a01b-7293633f75e7.ps1: 130 Carácter: 1
++ & sqlcmd -S '.\SQLEXPRESS' -E -i $tmp -W -s '|' -y 0 -Y 80 2>&1 | Out ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Sqlcmd: The -W ...ally exclusive.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

@@ -1,0 +1,12 @@
+﻿Class <Module>
+Class Seguridad.My.MyApplication
+Class Seguridad.My.MyComputer
+Class Seguridad.My.MyProject
+Class Seguridad.My.MyProject+MyWebServices
+Class Seguridad.My.MyProject+ThreadSafeObjectProvider`1
+Class Seguridad.My.InternalXmlHelper
+Class Seguridad.My.InternalXmlHelper+RemoveNamespaceAttributesClosure
+Class Seguridad.My.Resources.Resources
+Class Seguridad.My.MySettings
+Class Seguridad.My.MySettingsProperty
+Class Seguridad.Seguridad

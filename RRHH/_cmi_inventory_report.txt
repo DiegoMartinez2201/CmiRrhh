@@ -1,0 +1,36 @@
+﻿=== FILE EXTENSION SEARCH (non-recursive sufficient; folder is flat) ===
+*.bak: 1
+  - D:\UPN\CICLO 10\Evo conf software\CMI_Backup_QA\CMI_Backup_QA.bak (199401472 bytes)
+*.sql: 0
+*.mdf: 0
+*.ldf: 0
+*.bacpac: 0
+*.dacpac: 0
+*.zip: 0
+*.7z: 0
+*.rar: 0
+=== BAK DETAILS ===
+Name=CMI_Backup_QA.bak; SizeBytes=199401472; SizeMB=190,16; Created=05/09/2026 15:18:31; Modified=29/03/2026 20:51:45
+First16BytesHex=54-41-50-45-00-00-03-00-8C-00-0E-01-00-00-00-00
+=== sqlcmd ===
+sqlcmd found: C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\SQLCMD.EXE
+Microsoft (R) SQL Server Command Line Tool | Version 16.0.1000.6 NT | Copyright (C) 2022 Microsoft Corporation. All rights reserved.
+=== SQL Services ===
+MSSQL$SQLEXPRESS	Running	SQL Server (SQLEXPRESS)
+MSSQLFDLauncher$SQLEXPRESS	Running	SQL Full-text Filter Daemon Launcher (SQLEXPRESS)
+MSSQLLaunchpad$SQLEXPRESS	Running	SQL Server Launchpad (SQLEXPRESS)
+mysql	Running	mysql
+MySQL80	Stopped	MySQL80
+postgresql-x64-17	Running	postgresql-x64-17 - PostgreSQL Server 17
+SQLAgent$SQLEXPRESS	Stopped	SQL Server Agent (SQLEXPRESS)
+SQLBrowser	Stopped	SQL Server Browser
+SQLTELEMETRY$SQLEXPRESS	Running	SQL Server CEIP service (SQLEXPRESS)
+SQLWriter	Running	SQL Server VSS Writer
+wampmysqld64	Stopped	wampmysqld64
+=== sqlpackage ===
+sqlpackage NOT found
+=== MSSQL install dirs ===
+C:\Program Files\Microsoft SQL Server: exists=True
+C:\Program Files (x86)\Microsoft SQL Server: exists=True
+C:\Program Files\Microsoft SQL Server Management Studio 20: exists=False
+C:\Program Files\Microsoft SQL Server Management Studio 19: exists=False

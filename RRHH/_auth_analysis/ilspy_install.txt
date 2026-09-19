@@ -1,0 +1,2 @@
+﻿Puede invocar la herramienta con el comando siguiente: ilspycmd
+La herramienta "ilspycmd" (versi├│n '11.0.0.9375') se instal├│ correctamente.

@@ -1,0 +1,6 @@
+T|C
+-|-
+Usuario|95
+Empleado|3335
+Asistencia|155684
+Permiso|26120

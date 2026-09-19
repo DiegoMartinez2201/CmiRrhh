@@ -1,0 +1,95 @@
+﻿=== Local databases on SQLEXPRESS ===
+name|state_desc|recovery_model_desc|compatibility_level
+----|----------|-------------------|-------------------
+bd_caso_empleados|ONLINE|SIMPLE|160
+bd_northwind|ONLINE|SIMPLE|160
+BD_TunesaExpres|ONLINE|SIMPLE|160
+BD_Tunessa|ONLINE|SIMPLE|160
+bd_upn_academico|ONLINE|FULL|150
+CMI|ONLINE|FULL|100
+DB_DikranisCaps|ONLINE|SIMPLE|160
+DB_DikranisFerreteria|ONLINE|SIMPLE|160
+DB_ETL_Northwind|ONLINE|SIMPLE|160
+DB_FERREPRUEBA1|ONLINE|SIMPLE|160
+DB_Ferreteria|ONLINE|SIMPLE|160
+DB_FerreteriaDikranis|ONLINE|SIMPLE|160
+DB_Polleria|ONLINE|SIMPLE|160
+DB_PolleriaAdv|ONLINE|SIMPLE|160
+DB_Prueba1FerreteFinal|ONLINE|SIMPLE|160
+DBVentas9059|ONLINE|SIMPLE|160
+DMVentas|ONLINE|SIMPLE|160
+FilaB_MartinezSiccheTransportePP|ONLINE|SIMPLE|160
+HELADOS|ONLINE|SIMPLE|160
+JoyeriaDetallesEcommerceDB|ONLINE|SIMPLE|160
+master|ONLINE|SIMPLE|160
+model|ONLINE|SIMPLE|160
+msdb|ONLINE|SIMPLE|160
+Northwind|ONLINE|SIMPLE|160
+PROYECTO_DIARS|ONLINE|SIMPLE|150
+prueba|ONLINE|SIMPLE|160
+prueba_Pollos|ONLINE|SIMPLE|160
+tempdb|ONLINE|SIMPLE|160
+
+(28 rows affected)
+
+=== Does CMI exist? ===
+CMI present: YES
+
+(1 rows affected)
+
+=== String scan inside .bak for RRHH names (may include false positives) ===
+ScannedBytes=199401472
+Usuario: hits~=11476
+  sample: ASCII: ?5..........@.. .?.8.....create proc spwUsuario_Contar.
+  sample: ASCII: relativo), Correo, upper(Nombres) from wUsuarios.
+  sample: ASCII: ........ .?.8.....CREATE proc [dbo].[spwUsuario_Contar].
+  sample: UTF16: p.*empleado0.鰁뗏Ā.....p. rol0.鰁뗏Ā.....p.(usuario0.鰁뗏Ā.....p.0usuario_rol<.㴁뿱Ā.....p."Bie
+  sample: UTF16: mpleado0.ꨁ뭪Ą.....p.(persona0.ꨁ뭪Ą.....p.(usuario0.㌁Ą.....p."bien0.㌁Ą.....p.8deta_movim
+Empleado: hits~=3584
+  sample: ASCII:  dbo.EstructOrganiz.idAreaOrganiz = dbo.Empleado.idAreaOrganiz AND dbo.EstructOrganiz.Ye
+  sample: ASCII: ar = dbo.Empleado.Year.
+  sample: ASCII: ..EstructOrganiz.idAreaOrganiz=Empleado.idAreaOrganiz and dbo.EstructOrganiz.ye
+  sample: UTF16: .`.BHaspnet_UsersInRolesdbo0.鰁뗏Ā..Ā..p.*empleado0.鰁뗏Ā.....p. rol0.鰁뗏Ā.....p.(usuario0.鰁뗏
+  sample: UTF16: 헋Ā.....p.<vs_CJr_Iniciativa0.━Ā.....p.*Empleado0.━Ā.....p.,Marcacion0.━Ā.....p.(Őerso
+Asistencia: hits~=856
+  sample: ASCII: create PROCEDURE [dbo].[sp_ImportarAsistenciadeExcel].
+  sample: ASCII: insert AuxRRHH_ReporteAsistencia values (@idEmpleado).
+  sample: ASCII: delete from AuxRRHH_ReporteAsistencia where idempleado=@idEmpleado<....?.?h..
+  sample: UTF16: ividadĶㅫ絅ā.؀..,2Almacen_BiendboĶ㤗ⱊā.؀Ȁ.&AsistenciaĶꬤ汯ā.؀Ȁ.$ActividadĶ恁焴ā.؀Ȁ.$ActividadĶ蠪ᐓā
+  sample: UTF16: ؀Ȁ.$ActividadĶᤎ៤ā.؀Ȁ.$ActividadĶ⌸᠙ā.؀Ȁ.&AsistenciaĶ၂ā.؀Ȁ.$ActividadĶ䖪ā.؀Ȁ.FACTOADMINISTR
+Permiso: hits~=1036
+  sample: ASCII: @idTipoPermiso int.
+  sample: ASCII: m.idTipoPermiso,.
+  sample: ASCII: DescripTipoPermiso.
+  sample: UTF16: Pedido0.簁⻗ď.....p.*Empleado0.簁⻗ď.....p.(Permiso0.簁⻗ď.....p.(Persona<.企挖ď.....p.0consoli
+  sample: UTF16: <.度茒Ŕ.....p.6TipoTrabajador<.度茒Ŕ.....p.(Permiso<.度茒Ŕ.....p..Asistenciaļ.度茒Ŕ.....p.(Pers
+Rol: hits~=4532
+  sample: ASCII: ....create proc dbo.dt_isundersourcecontrol.
+  sample: ASCII: select @VSSGUID = 'SQLVersionControl.VCS_SQL'.
+  sample: ASCII:         RAISERROR(%Not Under Source Control',16,-1).
+  sample: UTF16: aspnet_Applications0.ﬁꮭĀ.....`.4:aspnet_Rolesdbo0.ﬁꮭĀ.....`.4:aspnet_Usersdbo0.ﬁꮭĀ.
+  sample: UTF16: ....`.BHaspnet_UsersInRolesdbo0.鰁뗏Ā..Ā..p.*empleado0.鰁뗏Ā.....p. r
+spRRHH_: hits~=359
+  sample: ASCII: ............. .?.8.....create procedure spRRHH_Report_Oficina.
+  sample: ASCII: ............. .$.8.....CREATE procedure spRRHH_Report_Oficina.
+  sample: ASCII: .Q??5..........@.. .%.8.....create proc spRRHH_getMotivo_perm.
+  sample: UTF16: ....DSeguro00력à...ఀ倀 .Ā..堥¢鴮.吜ĥ鷭.....fSpRRHH_Marcacion_Import00ÿ...਀唀 .Ā..빬Û髈.�ï魃...
+  sample: UTF16: NSubGeneriţa00뷠ĵ...ఀ倀 .Ā..婝ª鼹.뱀±鼹......fspRRHH_ListarRotaciones<0ĢŊ....倀嗜Ā..䲂Þ骛.幼ŧ됌...
+spSEG_: hits~=33
+  sample: ASCII: ........... ...8.....CREATE proc [dbo].[spSEG_llenarInterfaz].
+  sample: ASCII: ........... ...8.....CREATE proc [dbo].[spSEG_listarUserRol].
+  sample: UTF16: ...FHorario00ﴳ䰌...ഀ倀 .Ā..¼髹.农Ü魄.....ZspSEG_VerfUsuario<0휣䰢...ఀ倀 .Ā..냜Ćꂵ.啇Ś됌...... m
+  sample: UTF16: 刀刀䠀䠀开刀攀瀀漀爀琀开䘀攀挀栀愀䤀渀最爀攀䔀猀琀愀搀漀　က.耀?　A耀п..GspSEG_llenarInterfaz_Rol0..㾀.䄰.㾀.Ā䌀猀瀀眀䴀䐀唀开䐀攀氀攀
+  sample: UTF16: ldoInsertĦ..洛縎.0tgActualizarSaldoĦ..酔缂.6spSEG_llenarUsuariosĦ..鯱燽.<spRRHH_busca_Discip
+RRHH: hits~=1142
+  sample: ASCII: ........... .?.8.....create procedure spRRHH_Report_Oficina.
+  sample: ASCII: ........... .$.8.....CREATE procedure spRRHH_Report_Oficina.
+  sample: ASCII: ??5..........@.. .%.8.....create proc spRRHH_getMotivo_perm.
+  sample: UTF16: 　　　䌀开㜀㠀㐀䈀㜀㈀㈀㐀　✀崀㾖Ź.⬀..........ڪ.Ā..QPK_RRHH_ŔempFecha0'陝礿.. ............଀.Ǹ愀开圀䄀开匀礀猀
+  sample: UTF16: ...Ā.......଀Ѐヸ✀଀.Ċ.⬀.....ā....ۿ.Ā..SPK_RRHH_Asegurados0'ซ਀.. ............଀.Ā愀开圀䄀开匀礀
+SEG_: hits~=43
+  sample: ASCII: ......... ...8.....CREATE proc [dbo].[spSEG_llenarInterfaz].
+  sample: ASCII: end....... ./.8.....create view vs_SEG_usuario.
+  sample: ASCII: ......... ...8.....CREATE proc [dbo].[spSEG_listarUserRol].
+  sample: UTF16: .@Fvs_RRHH_buscarEmpleadodboĶ熗嗋́.؀Ȁ..vs_SEG_usuarioĶ菺➅ȁ.؀..TZvs_tra_listar_movimient
+  sample: UTF16: 0.霁쭱ŕ.....p.0Usuario_Rol0.霁쭱ŕ.....p.6vs_SEG_usuario0.㖅Ŗ.....p.4estadoestudio0.㖅Ŗ..

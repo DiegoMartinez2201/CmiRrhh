@@ -1,0 +1,40 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="mt-3">
+    <h1 class="h3">Bienvenido, @Model.DisplayName</h1>
+    <p class="text-muted mb-1">IdEmpleado: @(Model.IdEmpleado?.ToString() ?? "—")</p>
+    <p class="mb-2">Roles RRHH en esta sesión:</p>
+    @if (Model.Roles.Count == 0)
+    {
+        <p class="text-warning">No tiene roles del sistema RRHH (0500000) asignados.</p>
+    }
+    else
+    {
+        <ul class="list-group col-md-6">
+            @foreach (var role in Model.Roles)
+            {
+                <li class="list-group-item">@role</li>
+            }
+        </ul>
+    }
+
+    <p class="mt-4">
+        @if (User.IsInRole(AuthConstants.RolAsistencias)
+             || User.IsInRole(AuthConstants.RolAsistenciasCas)
+             || User.IsInRole(AuthConstants.RolReportesAsistencias))
+        {
+            <a class="btn btn-outline-primary me-2" asp-page="/Asistencias/Consulta">Consulta de asistencias</a>
+            <a class="btn btn-outline-primary me-2" asp-page="/Asistencias/Planilla">Planilla de asistencias</a>
+        }
+        @if (User.IsInRole(AuthConstants.RolAsistencias)
+             || User.IsInRole(AuthConstants.RolAsistenciasCas))
+        {
+            <a class="btn btn-outline-success me-2" asp-page="/Asistencias/Correccion">Corrección de salida</a>
+            <a class="btn btn-outline-danger" asp-page="/Asistencias/ImportarBiometrico">Importar biométrico</a>
+        }
+    </p>
+</div>

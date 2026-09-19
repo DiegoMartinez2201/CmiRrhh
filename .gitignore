@@ -1,0 +1,63 @@
+## Visual Studio / VS Code
+.vs/
+.vscode/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.sln.docstates
+
+## Build outputs
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+publish/
+*.publishproj
+PublishScripts/
+
+## NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Binaries (restore via NuGet; do not commit loose assemblies)
+*.dll
+*.exe
+*.pdb
+*.cache
+
+## ASP.NET Core local secrets / machine-specific settings
+appsettings.Development.json
+!appsettings.Development.json.example
+**/appsettings.*.local.json
+secrets.json
+*.secrets.json
+credenciales-temporales*.csv
+usuarios-migrados*.csv
+
+## Database files
+*.mdf
+*.ldf
+*.ndf
+*.bak
+
+## Test / coverage
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.coverage
+*.coveragexml
+coverage*.json
+TestResult.xml
+
+## OS / tooling
+Thumbs.db
+Desktop.ini
+*.tmp
+*.swp
+*~
+.DS_Store
+node_modules/

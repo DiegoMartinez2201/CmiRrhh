@@ -1,0 +1,23 @@
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE TRIGGER trg_update_HorarioTemporal
+   ON [dbo].[HorarioTemporal]
+   AFTER UPDATE
+AS 
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for trigger here
+	UPDATE [dbo].[HorarioTemporal]
+	SET [FechaRegistro] = GETDATE()
+	 WHERE EXISTS
+  (SELECT '' FROM inserted
+  WHERE [dbo].[HorarioTemporal].idEmpleado = inserted.idEmpleado
+    AND [dbo].[HorarioTemporal].N = inserted.N)
+END
+

@@ -1,0 +1,15 @@
+﻿Class <Module>
+Class ClassRRHH.My.MyApplication
+Class ClassRRHH.My.MyComputer
+Class ClassRRHH.My.MyProject
+Class ClassRRHH.My.MyProject+MyWebServices
+Class ClassRRHH.My.MyProject+ThreadSafeObjectProvider`1
+Class ClassRRHH.My.InternalXmlHelper
+Class ClassRRHH.My.InternalXmlHelper+RemoveNamespaceAttributesClosure
+Class ClassRRHH.AsistenciaAccess
+Class ClassRRHH.FamiliaresClass
+Class ClassRRHH.FichaSocialClass
+Class ClassRRHH.My.Resources.Resources
+Class ClassRRHH.My.MySettings
+Class ClassRRHH.My.MySettingsProperty
+Class ClassRRHH.RRHHClass
