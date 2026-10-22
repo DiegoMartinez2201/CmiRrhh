@@ -1,0 +1,166 @@
+@page
+@using CmiRrhh.Domain.Models
+@model CmiRrhh.Web.Pages.Reportes.IndexModel
+@{
+    ViewData["Title"] = "Reportes";
+    var actual = Model.Actual;
+}
+
+<div class="page-header no-print">
+    <h1>Reportes de personal</h1>
+    <p class="page-subtitle">Elija un reporte, indique sus parámetros y genere la lista. Puede imprimirla o descargarla en CSV (Excel).</p>
+</div>
+
+<div class="card mb-4 no-print">
+    <div class="card-body d-flex flex-wrap gap-2">
+        @foreach (var r in Model.Reportes)
+        {
+            <a asp-page="/Reportes/Index" asp-route-clave="@r.Clave"
+               class="btn btn-sm @(actual?.Clave == r.Clave ? "btn-primary" : "btn-outline-primary")">@r.Titulo</a>
+        }
+    </div>
+</div>
+
+@if (actual is null)
+{
+    <div class="alert alert-info no-print">Seleccione un reporte para comenzar.</div>
+}
+else
+{
+    <div class="card mb-4 no-print">
+        <div class="card-header">@actual.Titulo</div>
+        <div class="card-body">
+            <p class="text-muted">@actual.Descripcion</p>
+            <form method="get" class="row g-3 align-items-end">
+                <input type="hidden" name="Clave" value="@actual.Clave" />
+                <input type="hidden" name="Ejecutar" value="true" />
+                @foreach (var p in actual.Parametros)
+                {
+                    Model.P.TryGetValue(p.Clave, out var valor);
+                    <div class="col-md-3">
+                        <label class="form-label">@p.Etiqueta</label>
+                        @switch (p.Tipo)
+                        {
+                            case TipoParametroReporte.Mes:
+                                var mesActual = string.IsNullOrEmpty(valor) ? DateTime.Today.Month.ToString() : valor;
+                                <select name="P[@p.Clave]" class="form-select">
+                                    @for (var m = 1; m <= 12; m++)
+                                    {
+                                        <option value="@m" selected="@(mesActual == m.ToString())">@CmiRrhh.Web.Pages.Reportes.IndexModel.Meses[m - 1]</option>
+                                    }
+                                </select>
+                                break;
+                            case TipoParametroReporte.Fecha:
+                                <input type="date" name="P[@p.Clave]" value="@valor" class="form-control" />
+                                break;
+                            case TipoParametroReporte.Cargo:
+                                <select name="P[@p.Clave]" class="form-select">
+                                    <option value="">-- Seleccione --</option>
+                                    @foreach (var c in Model.Cargos)
+                                    {
+                                        <option value="@c.Id" selected="@(valor == c.Id.ToString())">@c.Nombre</option>
+                                    }
+                                </select>
+                                break;
+                            case TipoParametroReporte.TipoTrabajador:
+                                <select name="P[@p.Clave]" class="form-select">
+                                    <option value="0" selected="@(string.IsNullOrEmpty(valor) || valor == "0")">-- Todos --</option>
+                                    @foreach (var t in Model.TiposTrabajador)
+                                    {
+                                        <option value="@t.Id" selected="@(valor == t.Id.ToString())">@t.Nombre</option>
+                                    }
+                                </select>
+                                break;
+                            case TipoParametroReporte.TipoTrabajadorObligatorio:
+                                <select name="P[@p.Clave]" class="form-select">
+                                    <option value="">-- Seleccione --</option>
+                                    @foreach (var t in Model.TiposTrabajador)
+                                    {
+                                        <option value="@t.Id" selected="@(valor == t.Id.ToString())">@t.Nombre</option>
+                                    }
+                                </select>
+                                break;
+                            case TipoParametroReporte.TipoPermiso:
+                                <select name="P[@p.Clave]" class="form-select">
+                                    <option value="0" selected="@(string.IsNullOrEmpty(valor) || valor == "0")">-- Todos --</option>
+                                    @foreach (var t in Model.TiposPermiso)
+                                    {
+                                        <option value="@t.Id" selected="@(valor == t.Id.ToString())">@t.Nombre</option>
+                                    }
+                                </select>
+                                break;
+                        }
+                    </div>
+                }
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-primary">Generar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.Error))
+    {
+        <div class="alert alert-danger no-print" role="alert">@Model.Error</div>
+    }
+
+    @if (Model.Tabla is not null)
+    {
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span>@actual.Titulo — @Model.Tabla.Filas.Count registro(s) · @DateTime.Today.ToString("dd/MM/yyyy")</span>
+                <span class="no-print">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.print()">Imprimir</button>
+                    <a class="btn btn-sm btn-outline-success"
+                       href="@Url.Page("/Reportes/Index", "Csv", BuildCsvRoute())">Descargar CSV</a>
+                </span>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-sm table-striped align-middle mb-0">
+                    <thead>
+                        <tr>
+                            @foreach (var col in Model.Tabla.Columnas)
+                            {
+                                <th>@col</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var fila in Model.Tabla.Filas)
+                        {
+                            <tr>
+                                @foreach (var celda in fila)
+                                {
+                                    <td>@celda</td>
+                                }
+                            </tr>
+                        }
+                        @if (Model.Tabla.Filas.Count == 0)
+                        {
+                            <tr><td colspan="@Model.Tabla.Columnas.Count" class="text-center text-muted py-3">Sin resultados para los parámetros indicados.</td></tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+}
+
+@functions {
+    private object BuildCsvRoute()
+    {
+        var route = new Dictionary<string, string?> { ["clave"] = Model.Actual!.Clave };
+        foreach (var kv in Model.P)
+        {
+            route[$"P[{kv.Key}]"] = kv.Value;
+        }
+
+        return route;
+    }
+}
+
+<style>
+    @@media print {
+        .no-print, .sidebar, .topbar { display: none !important; }
+    }
+</style>

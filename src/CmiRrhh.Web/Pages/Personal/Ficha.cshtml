@@ -1,0 +1,221 @@
+@page "{id:int?}"
+@model CmiRrhh.Web.Pages.Personal.FichaModel
+@{
+    ViewData["Title"] = Model.EsEdicion ? "Editar personal" : "Nuevo personal";
+    var c = Model.Catalogos;
+}
+
+<div class="page-header">
+    <h1>@(Model.EsEdicion ? $"Editar personal (código {Model.Id})" : "Nuevo personal")</h1>
+    <p class="page-subtitle">Datos básicos, datos complementarios y domicilio. La ficha social y escalafonaria se incorpora en las siguientes entregas.</p>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.MensajeExito))
+{
+    <div class="alert alert-success" role="alert">@Model.MensajeExito</div>
+}
+
+@if (Model.Errores.Count > 0)
+{
+    <div class="alert alert-danger" role="alert">
+        <strong>Revise los datos:</strong>
+        <ul class="mb-0">
+            @foreach (var error in Model.Errores)
+            {
+                <li>@error</li>
+            }
+        </ul>
+    </div>
+}
+
+<form method="post" novalidate>
+    <input type="hidden" asp-for="Input.Year" />
+
+    <div class="card mb-4">
+        <div class="card-header">1. Datos básicos</div>
+        <div class="card-body row g-3">
+            <div class="col-md-3">
+                <label asp-for="Input.TipoDocIdent" class="form-label">Tipo de documento</label>
+                <select asp-for="Input.TipoDocIdent" class="form-select">
+                    <option value="0">-- Seleccione --</option>
+                    @foreach (var o in c.TiposDocumento)
+                    {
+                        <option value="@o.Id" selected="@(Model.Input.TipoDocIdent == o.Id)">@o.Nombre</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Input.NumDoc" class="form-label">N° de documento</label>
+                <input asp-for="Input.NumDoc" class="form-control" maxlength="12" />
+            </div>
+            <div class="col-md-2">
+                <label asp-for="Input.Sexo" class="form-label">Sexo</label>
+                <select asp-for="Input.Sexo" class="form-select">
+                    <option value="M" selected="@(Model.Input.Sexo == "M")">Masculino</option>
+                    <option value="F" selected="@(Model.Input.Sexo == "F")">Femenino</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Input.FechaNacimiento" class="form-label">Fecha de nacimiento</label>
+                <input asp-for="Input.FechaNacimiento" type="date" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Input.ApellidoPaterno" class="form-label">Apellido paterno</label>
+                <input asp-for="Input.ApellidoPaterno" class="form-control" maxlength="30" />
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Input.ApellidoMaterno" class="form-label">Apellido materno</label>
+                <input asp-for="Input.ApellidoMaterno" class="form-control" maxlength="30" />
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Input.Nombres" class="form-label">Nombres</label>
+                <input asp-for="Input.Nombres" class="form-control" maxlength="100" />
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Input.UbigeoNac" class="form-label">Lugar de nacimiento</label>
+                <select asp-for="Input.UbigeoNac" class="form-select">
+                    <option value="">-- Seleccione --</option>
+                    @foreach (var o in c.Ubigeos)
+                    {
+                        <option value="@o.Codigo" selected="@(Model.Input.UbigeoNac == o.Codigo)">@o.Nombre</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label asp-for="Input.IdNacionalidad" class="form-label">Nacionalidad</label>
+                <select asp-for="Input.IdNacionalidad" class="form-select">
+                    <option value="0">-- Seleccione --</option>
+                    @foreach (var o in c.Nacionalidades)
+                    {
+                        <option value="@o.Id" selected="@(Model.Input.IdNacionalidad == o.Id)">@o.Nombre</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label asp-for="Input.IdEstadoCivil" class="form-label">Estado civil</label>
+                <select asp-for="Input.IdEstadoCivil" class="form-select">
+                    <option value="0">-- Seleccione --</option>
+                    @foreach (var o in c.EstadosCiviles)
+                    {
+                        <option value="@o.Id" selected="@(Model.Input.IdEstadoCivil == o.Id)">@o.Nombre</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label asp-for="Input.IdTipoSangre" class="form-label">Grupo sanguíneo</label>
+                <select asp-for="Input.IdTipoSangre" class="form-select">
+                    <option value="0">-- Seleccione --</option>
+                    @foreach (var o in c.TiposSangre)
+                    {
+                        <option value="@o.Id" selected="@(Model.Input.IdTipoSangre == o.Id)">@o.Nombre</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Input.IdDiscapacidad" class="form-label">Discapacidad</label>
+                <select asp-for="Input.IdDiscapacidad" class="form-select">
+                    <option value="0">-- Ninguna --</option>
+                    @foreach (var o in c.Discapacidades)
+                    {
+                        <option value="@o.Id" selected="@(Model.Input.IdDiscapacidad == o.Id)">@o.Nombre</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">2. Datos laborales y complementarios</div>
+        <div class="card-body row g-3">
+            <div class="col-md-5">
+                <label asp-for="Input.IdAreaOrganiz" class="form-label">Área organizacional (estructura @c.Anio)</label>
+                <select asp-for="Input.IdAreaOrganiz" class="form-select">
+                    <option value="0">-- Seleccione --</option>
+                    @foreach (var o in c.Areas)
+                    {
+                        <option value="@o.Id" selected="@(Model.Input.IdAreaOrganiz == o.Id)">@o.Nombre</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Input.IdTipoTrabajador" class="form-label">Tipo de trabajador</label>
+                <select asp-for="Input.IdTipoTrabajador" class="form-select">
+                    <option value="0">-- Seleccione --</option>
+                    @foreach (var o in c.TiposTrabajador)
+                    {
+                        <option value="@o.Id" selected="@(Model.Input.IdTipoTrabajador == o.Id)">@o.Nombre</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Input.FechaIngreso" class="form-label">Fecha de ingreso</label>
+                <input asp-for="Input.FechaIngreso" type="date" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Input.NumRuc" class="form-label">RUC</label>
+                <input asp-for="Input.NumRuc" class="form-control" maxlength="12" />
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Input.Brevete" class="form-label">Brevete</label>
+                <input asp-for="Input.Brevete" class="form-control" maxlength="12" />
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Input.LibretaMilitar" class="form-label">Libreta militar</label>
+                <input asp-for="Input.LibretaMilitar" class="form-control" maxlength="10" />
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Input.ExpSocial" class="form-label">Experiencia social</label>
+                <input asp-for="Input.ExpSocial" class="form-control" maxlength="20" />
+            </div>
+            <div class="col-md-12">
+                <label asp-for="Input.GradoInstruccion" class="form-label">Grado de instrucción</label>
+                <input asp-for="Input.GradoInstruccion" class="form-control" maxlength="80" />
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">3. Domicilio y contacto</div>
+        <div class="card-body row g-3">
+            <div class="col-md-6">
+                <label asp-for="Input.Direccion" class="form-label">Dirección</label>
+                <input asp-for="Input.Direccion" class="form-control" maxlength="100" />
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Input.UbigeoDireccion" class="form-label">Distrito del domicilio</label>
+                <select asp-for="Input.UbigeoDireccion" class="form-select">
+                    <option value="">-- Seleccione --</option>
+                    @foreach (var o in c.Ubigeos)
+                    {
+                        <option value="@o.Codigo" selected="@(Model.Input.UbigeoDireccion == o.Codigo)">@o.Nombre</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Input.Telefono" class="form-label">Teléfono</label>
+                <input asp-for="Input.Telefono" class="form-control" maxlength="15" />
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Input.FonoCel" class="form-label">Celular</label>
+                <input asp-for="Input.FonoCel" class="form-control" maxlength="15" />
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Input.FonoLab" class="form-label">Teléfono laboral</label>
+                <input asp-for="Input.FonoLab" class="form-control" maxlength="15" />
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Input.FonoOtro" class="form-label">Otro teléfono</label>
+                <input asp-for="Input.FonoOtro" class="form-control" maxlength="15" />
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Input.Email" class="form-label">Correo electrónico</label>
+                <input asp-for="Input.Email" class="form-control" maxlength="50" />
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex gap-2 mb-4">
+        <button type="submit" class="btn btn-primary">@(Model.EsEdicion ? "Actualizar" : "Registrar")</button>
+        <a asp-page="/Personal/Index" class="btn btn-outline-secondary">Volver a la relación</a>
+    </div>
+</form>

@@ -1,0 +1,105 @@
+@page
+@model CmiRrhh.Web.Pages.Mantenimientos.IndexModel
+@{
+    ViewData["Title"] = "Mantenimientos";
+    var actual = Model.Actual;
+}
+
+<div class="page-header">
+    <h1>Mantenimientos</h1>
+    <p class="page-subtitle">Catálogos del sistema. Elija uno para listar, agregar, editar o eliminar registros.</p>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.MensajeAhora))
+{
+    <div class="alert alert-danger" role="alert">@Model.MensajeAhora</div>
+}
+
+@if (!string.IsNullOrEmpty(Model.Mensaje))
+{
+    <div class="alert @(Model.MensajeOk ? "alert-success" : "alert-danger")" role="alert">@Model.Mensaje</div>
+}
+
+<div class="card mb-4">
+    <div class="card-body d-flex flex-wrap gap-2">
+        @foreach (var c in Model.Catalogos)
+        {
+            <a asp-page="/Mantenimientos/Index" asp-route-clave="@c.Clave"
+               class="btn btn-sm @(actual?.Clave == c.Clave ? "btn-primary" : "btn-outline-primary")">@c.Titulo</a>
+        }
+    </div>
+</div>
+
+@if (actual is null)
+{
+    <div class="alert alert-info">Seleccione un catálogo para comenzar.</div>
+}
+else
+{
+    <div class="card mb-4">
+        <div class="card-header">@(Model.EditarId is null ? "Nuevo registro" : $"Editando el registro {Model.EditarId}") — @actual.Titulo</div>
+        <div class="card-body">
+            <form method="post" asp-page-handler="Guardar" class="row g-3 align-items-end">
+                <input type="hidden" name="Clave" value="@actual.Clave" />
+                <input type="hidden" name="EditarId" value="@Model.EditarId" />
+                @foreach (var campo in actual.Campos)
+                {
+                    Model.Valores.TryGetValue(campo.Clave, out var valorActual);
+                    <div class="col-md-4">
+                        <label class="form-label">@campo.Etiqueta@(campo.Requerido ? " *" : "")</label>
+                        <input name="Valores[@campo.Clave]" value="@valorActual" maxlength="@campo.MaxLongitud" class="form-control" />
+                    </div>
+                }
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary">@(Model.EditarId is null ? "Agregar" : "Actualizar")</button>
+                    @if (Model.EditarId is not null)
+                    {
+                        <a asp-page="/Mantenimientos/Index" asp-route-clave="@actual.Clave" class="btn btn-outline-secondary">Cancelar</a>
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">@actual.Titulo (@Model.Filas.Count)</div>
+        <div class="table-responsive">
+            <table class="table table-sm table-striped table-hover align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        @foreach (var campo in actual.Campos)
+                        {
+                            <th>@campo.Etiqueta</th>
+                        }
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var fila in Model.Filas)
+                    {
+                        <tr>
+                            <td>@fila.Id</td>
+                            @foreach (var campo in actual.Campos)
+                            {
+                                <td>@fila.Valores[campo.Clave]</td>
+                            }
+                            <td class="text-end">
+                                <a asp-page="/Mantenimientos/Index" asp-route-clave="@actual.Clave" asp-route-editarId="@fila.Id" class="btn btn-sm btn-outline-primary">Editar</a>
+                                <form method="post" asp-page-handler="Eliminar" asp-route-id="@fila.Id" class="d-inline"
+                                      onsubmit="return confirm('¿Eliminar este registro?');">
+                                    <input type="hidden" name="Clave" value="@actual.Clave" />
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Filas.Count == 0)
+                    {
+                        <tr><td colspan="@(actual.Campos.Count + 2)" class="text-center text-muted py-3">Sin registros.</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

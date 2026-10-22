@@ -18,6 +18,10 @@ builder.Services.AddScoped<IStoredProcedureExecutor, EfStoredProcedureExecutor>(
 builder.Services.AddScoped<IEmpleadoRepository, EmpleadoRepository>();
 builder.Services.AddScoped<IHorarioRepository, HorarioRepository>();
 builder.Services.AddScoped<IFeriadoRepository, FeriadoRepository>();
+builder.Services.AddScoped<IPersonalRepository, PersonalRepository>();
+builder.Services.AddScoped<IFichaPersonalRepository, FichaPersonalRepository>();
+builder.Services.AddScoped<IAsignacionPersonalRepository, AsignacionPersonalRepository>();
+builder.Services.AddMantenimientosCatalogo();
 builder.Services.AddScoped<IReporteRepository, ReporteRepository>();
 
 builder.Services.AddScoped<PermisoRepository>();
@@ -59,6 +63,19 @@ builder.Services.AddRazorPages(options =>
     // Asistencia): escriben directo sobre Asistencia, igual que Corrección e Importar bio.
     options.Conventions.AuthorizePage("/Asistencias/MarcacionesAutorizadas", AuthConstants.AsistenciasEscrituraPolicy);
     options.Conventions.AuthorizePage("/Asistencias/SuspenderAsistencia", AuthConstants.AsistenciasEscrituraPolicy);
+    // Personal (sección 4.4): Relación/Búsqueda son de solo lectura. El legado (sección 4.3) deja
+    // a los perfiles de Asistencias (roles 10 y 14) conservar estas consultas aunque no puedan
+    // abrir fichas ni dar altas; por eso se reutiliza AsistenciasPolicy. Las pantallas de
+    // escritura (alta/edición/ficha) tendrán una política propia cuando se construyan.
+    options.Conventions.AuthorizeFolder("/Personal", AuthConstants.AsistenciasPolicy);
+    // Alta y edición de personal: decisión del equipo de reutilizar la política de escritura de
+    // Asistencias (ASISTENCIAS y ASISTENCIAS - CAS) hasta definir un rol propio de Personal.
+    options.Conventions.AuthorizePage("/Personal/Ficha", AuthConstants.AsistenciasEscrituraPolicy);
+    options.Conventions.AuthorizePage("/Personal/Asignar", AuthConstants.AsistenciasEscrituraPolicy);
+    // Mantenimientos (catálogos): escriben datos maestros, por eso exigen la política de escritura.
+    options.Conventions.AuthorizeFolder("/Mantenimientos", AuthConstants.AsistenciasEscrituraPolicy);
+    // Reportes de personal: solo lectura, por eso los ven también los perfiles REPORTES ASISTENCIAS.
+    options.Conventions.AuthorizeFolder("/Reportes", AuthConstants.AsistenciasPolicy);
     options.Conventions.AllowAnonymousToPage("/Account/Login");
     options.Conventions.AllowAnonymousToPage("/Error");
 });

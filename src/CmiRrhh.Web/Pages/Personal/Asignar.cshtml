@@ -1,0 +1,117 @@
+@page
+@model CmiRrhh.Web.Pages.Personal.AsignarModel
+@{
+    ViewData["Title"] = "Asignar horarios y local";
+}
+
+<div class="page-header">
+    <h1>Asignar horarios y local</h1>
+    <p class="page-subtitle">Filtre al personal activo, marque a quienes corresponda y asigne un horario y/o un local de una sola vez.</p>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.Mensaje))
+{
+    <div class="alert @(Model.MensajeOk ? "alert-success" : "alert-danger")" role="alert">@Model.Mensaje</div>
+}
+
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="get" class="row g-3 align-items-end">
+            <div class="col-md-4">
+                <label asp-for="IdTipoTrabajador" class="form-label">Tipo de trabajador</label>
+                <select asp-for="IdTipoTrabajador" class="form-select">
+                    <option value="">-- Todos --</option>
+                    @foreach (var t in Model.TiposTrabajador)
+                    {
+                        <option value="@t.Id" selected="@(Model.IdTipoTrabajador == t.Id)">@t.Nombre</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Apellido" class="form-label">Apellido paterno (contiene)</label>
+                <input asp-for="Apellido" class="form-control" maxlength="30" />
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+                <a asp-page="/Personal/Asignar" class="btn btn-outline-secondary">Limpiar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<form method="post">
+    <input type="hidden" name="IdTipoTrabajador" value="@Model.IdTipoTrabajador" />
+    <input type="hidden" name="Apellido" value="@Model.Apellido" />
+
+    <div class="card mb-4">
+        <div class="card-header">Asignación para los empleados marcados</div>
+        <div class="card-body row g-3 align-items-end">
+            <div class="col-md-5">
+                <label asp-for="IdHorarioNuevo" class="form-label">Horario</label>
+                <select asp-for="IdHorarioNuevo" class="form-select">
+                    <option value="">-- No cambiar --</option>
+                    @foreach (var h in Model.Horarios)
+                    {
+                        <option value="@h.IdHorario">@h.DescripHorario</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="IdLocalNuevo" class="form-label">Local</label>
+                <select asp-for="IdLocalNuevo" class="form-select">
+                    <option value="">-- No cambiar --</option>
+                    @foreach (var l in Model.Locales)
+                    {
+                        <option value="@l.Id">@l.Nombre</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success">Asignar a los marcados</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">Personal activo (@Model.Filas.Count)</div>
+        <div class="table-responsive">
+            <table class="table table-sm table-striped table-hover align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th style="width:2.5rem"><input type="checkbox" id="marcarTodos" aria-label="Marcar todos" /></th>
+                        <th>Código</th>
+                        <th>DNI</th>
+                        <th>Nombres completos</th>
+                        <th>Horario actual</th>
+                        <th>Local actual</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var f in Model.Filas)
+                    {
+                        <tr>
+                            <td><input type="checkbox" class="marca" name="Seleccionados" value="@f.IdEmpleado" /></td>
+                            <td>@f.IdEmpleado</td>
+                            <td>@f.Dni</td>
+                            <td>@f.NombresCompletos</td>
+                            <td>@Model.HorarioTexto(f.IdHorario)</td>
+                            <td>@Model.LocalTexto(f.IdLocal)</td>
+                        </tr>
+                    }
+                    @if (Model.Filas.Count == 0)
+                    {
+                        <tr><td colspan="6" class="text-center text-muted py-3">Sin personal para los filtros indicados.</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+        document.getElementById('marcarTodos')?.addEventListener('change', function () {
+            document.querySelectorAll('.marca').forEach(function (c) { c.checked = this.checked; }, this);
+        });
+    </script>
+}

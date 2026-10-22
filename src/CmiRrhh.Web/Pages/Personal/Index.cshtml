@@ -1,0 +1,113 @@
+@page
+@model CmiRrhh.Web.Pages.Personal.IndexModel
+@{
+    ViewData["Title"] = "Personal";
+    var puedeEditar = User.IsInRole(CmiRrhh.Domain.Auth.AuthConstants.RolAsistencias)
+                      || User.IsInRole(CmiRrhh.Domain.Auth.AuthConstants.RolAsistenciasCas);
+}
+
+<div class="page-header">
+    <h1>Relación y búsqueda de personal</h1>
+    <p class="page-subtitle">Equivalente a "Relación Personal" y "Búsqueda Personal": sin filtros lista el personal activo; con filtros, restringe el resultado.</p>
+</div>
+
+@if (Model.MensajeError is not null)
+{
+    <div class="alert alert-danger" role="alert">@Model.MensajeError</div>
+}
+
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="get" class="row g-3 align-items-end">
+            <div class="col-md-2">
+                <label asp-for="Codigo" class="form-label">Código</label>
+                <input asp-for="Codigo" class="form-control" />
+            </div>
+            <div class="col-md-2">
+                <label asp-for="NumDoc" class="form-label">N° documento</label>
+                <input asp-for="NumDoc" class="form-control" maxlength="12" />
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Apellido" class="form-label">Apellido (inicia con)</label>
+                <input asp-for="Apellido" class="form-control" maxlength="30" />
+            </div>
+            <div class="col-md-3">
+                <label asp-for="IdTipoTrabajador" class="form-label">Tipo de trabajador</label>
+                <select asp-for="IdTipoTrabajador" class="form-select">
+                    <option value="">-- Todos --</option>
+                    @foreach (var tipo in Model.TiposTrabajador)
+                    {
+                        <option value="@tipo.Id" selected="@(Model.IdTipoTrabajador == tipo.Id)">@tipo.Nombre</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label asp-for="Estado" class="form-label">Estado</label>
+                <select asp-for="Estado" class="form-select">
+                    <option value="1">Activos</option>
+                    <option value="0">Inactivos</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label asp-for="Anio" class="form-label">Año (estructura)</label>
+                <input asp-for="Anio" class="form-control" placeholder="Todos" />
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+                <a asp-page="/Personal/Index" class="btn btn-outline-secondary">Limpiar</a>
+            </div>
+            @if (puedeEditar)
+            {
+                <div class="col-md-2 ms-auto text-end">
+                    <a asp-page="/Personal/Ficha" class="btn btn-success">Nuevo personal</a>
+                </div>
+            }
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        Personal encontrado (@Model.TotalEncontrados)
+        @if (Model.TotalEncontrados > Model.Resultados.Count)
+        {
+            <span class="text-muted small">— mostrando los primeros @Model.Resultados.Count; afine los filtros para ver el resto.</span>
+        }
+    </div>
+    <div class="table-responsive">
+        <table class="table table-sm table-striped table-hover align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>DNI</th>
+                    <th>Nombres completos</th>
+                    <th>Área organizacional</th>
+                    <th>Cargo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var fila in Model.Resultados)
+                {
+                    <tr>
+                        <td>@fila.Codigo</td>
+                        <td>@fila.Dni</td>
+                        <td>@fila.NombresCompletos</td>
+                        <td>@fila.AreaOrganizacional</td>
+                        <td>@fila.Cargo</td>
+                        <td class="text-end">
+                            @if (puedeEditar)
+                            {
+                                <a asp-page="/Personal/Ficha" asp-route-id="@fila.Codigo" class="btn btn-sm btn-outline-primary">Editar</a>
+                            }
+                        </td>
+                    </tr>
+                }
+                @if (Model.Resultados.Count == 0)
+                {
+                    <tr><td colspan="6"class="text-center text-muted py-3">Sin resultados para los filtros indicados.</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
