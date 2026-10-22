@@ -10,9 +10,9 @@ namespace CmiRrhh.Infrastructure.Persistence.Repositories;
 /// <summary>Campo de un catálogo ligado a una propiedad de su entidad.</summary>
 public sealed class CampoEf<T>
 {
-    public CampoEf(string clave, string etiqueta, int maxLongitud, Func<T, string?> leer, Action<T, string?> escribir, bool requerido = true)
+    public CampoEf(string clave, string etiqueta, int maxLongitud, Func<T, string?> leer, Action<T, string?> escribir, bool requerido = true, bool esOpcion = false)
     {
-        Campo = new CampoCatalogo(clave, etiqueta, maxLongitud, requerido);
+        Campo = new CampoCatalogo(clave, etiqueta, maxLongitud, requerido, esOpcion);
         Leer = leer;
         Escribir = escribir;
     }
@@ -35,6 +35,7 @@ public sealed class MantenimientoCatalogoEf<T> : IMantenimientoCatalogo where T 
     private readonly Func<T, int> _leerId;
     private readonly Action<T, int> _escribirId;
     private readonly IReadOnlyList<CampoEf<T>> _campos;
+    private readonly Func<CmiDbContext, CancellationToken, Task<IReadOnlyDictionary<string, IReadOnlyList<OpcionCatalogo>>>>? _opciones;
 
     public MantenimientoCatalogoEf(
         CmiDbContext context,
@@ -42,8 +43,10 @@ public sealed class MantenimientoCatalogoEf<T> : IMantenimientoCatalogo where T 
         string titulo,
         Expression<Func<T, int>> id,
         Action<T, int> escribirId,
-        IReadOnlyList<CampoEf<T>> campos)
+        IReadOnlyList<CampoEf<T>> campos,
+        Func<CmiDbContext, CancellationToken, Task<IReadOnlyDictionary<string, IReadOnlyList<OpcionCatalogo>>>>? opciones = null)
     {
+        _opciones = opciones;
         _context = context;
         _id = id;
         _leerId = id.Compile();
@@ -53,6 +56,12 @@ public sealed class MantenimientoCatalogoEf<T> : IMantenimientoCatalogo where T 
     }
 
     public DefinicionCatalogo Definicion { get; }
+
+    public Task<IReadOnlyDictionary<string, IReadOnlyList<OpcionCatalogo>>> OpcionesAsync(CancellationToken cancellationToken = default)
+        => _opciones is null
+            ? Task.FromResult<IReadOnlyDictionary<string, IReadOnlyList<OpcionCatalogo>>>(
+                new Dictionary<string, IReadOnlyList<OpcionCatalogo>>())
+            : _opciones(_context, cancellationToken);
 
     public async Task<IReadOnlyList<FilaCatalogo>> ListarAsync(CancellationToken cancellationToken = default)
     {
@@ -186,6 +195,33 @@ public static class MantenimientosCatalogoRegistro
         Registrar(services, ctx => new MantenimientoCatalogoEf<TipoPermiso>(
             ctx, "tipo-permiso", "Tipo de permiso", e => e.IdTipoPermiso, (e, id) => e.IdTipoPermiso = id,
             new[] { new CampoEf<TipoPermiso>("descripcion", "Descripción", 50, e => e.DescripTipoPermiso, (e, v) => e.DescripTipoPermiso = v) }));
+
+        Registrar(services, ctx => new MantenimientoCatalogoEf<MotivoPerm>(
+            ctx, "motivo-permiso", "Motivo de permiso", e => e.IdMotivo, (e, id) => e.IdMotivo = id,
+            new[]
+            {
+                new CampoEf<MotivoPerm>("descripcion", "Descripción", 50, e => e.DescripMotivo,
+                    // El sistema legado guarda siempre el motivo como activo; no es un dato que se elija.
+                    (e, v) => { e.DescripMotivo = v; e.Activo = true; }),
+                new CampoEf<MotivoPerm>("tipoPermiso", "Tipo de permiso", 10, e => e.IdTipoPermiso?.ToString(),
+                    (e, v) => e.IdTipoPermiso = int.TryParse(v, out var n) ? n : null, esOpcion: true),
+                new CampoEf<MotivoPerm>("modalidad", "Modalidad", 1, e => e.TipoModalidad, (e, v) => e.TipoModalidad = v,
+                    requerido: false, esOpcion: true),
+                new CampoEf<MotivoPerm>("abrev", "Abreviatura", 3, e => e.Abrev, (e, v) => e.Abrev = v, requerido: false),
+                new CampoEf<MotivoPerm>("salario", "Asalariado", 1, e => e.Salario is null ? null : (e.Salario.Value ? "1" : "0"),
+                    (e, v) => e.Salario = v is null ? null : v == "1", requerido: false, esOpcion: true),
+            },
+            async (c, ct) =>
+            {
+                var tipos = await c.TipoPermisos.AsNoTracking().OrderBy(t => t.IdTipoPermiso).ToListAsync(ct);
+                var sino = new[] { new OpcionCatalogo("1", "Sí"), new OpcionCatalogo("0", "No") };
+                return new Dictionary<string, IReadOnlyList<OpcionCatalogo>>
+                {
+                    ["tipoPermiso"] = tipos.Select(t => new OpcionCatalogo(t.IdTipoPermiso.ToString(), (t.DescripTipoPermiso ?? string.Empty).Trim())).ToList(),
+                    ["modalidad"] = new[] { new OpcionCatalogo("P", "P"), new OpcionCatalogo("C", "C") },
+                    ["salario"] = sino,
+                };
+            }));
 
         return services;
     }

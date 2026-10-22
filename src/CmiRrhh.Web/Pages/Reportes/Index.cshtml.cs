@@ -28,6 +28,10 @@ public class IndexModel : PageModel
     [BindProperty(SupportsGet = true)]
     public Dictionary<string, string?> P { get; set; } = new();
 
+    /// <summary>Lugares de marcado marcados (casillas «Locales»); se unen en el parámetro de tipo Locales.</summary>
+    [BindProperty(SupportsGet = true)]
+    public List<int> Locales { get; set; } = new();
+
     /// <summary>Solo se ejecuta el reporte cuando el usuario pulsa «Generar».</summary>
     [BindProperty(SupportsGet = true)]
     public bool Ejecutar { get; set; }
@@ -45,6 +49,12 @@ public class IndexModel : PageModel
     public IReadOnlyList<CatalogoItem> TiposTrabajador { get; private set; } = Array.Empty<CatalogoItem>();
 
     public IReadOnlyList<CatalogoItem> TiposPermiso { get; private set; } = Array.Empty<CatalogoItem>();
+
+    public IReadOnlyList<string> Profesiones { get; private set; } = Array.Empty<string>();
+
+    public IReadOnlyList<CatalogoItem> Areas { get; private set; } = Array.Empty<CatalogoItem>();
+
+    public IReadOnlyList<CatalogoItem> LocalesMarcado { get; private set; } = Array.Empty<CatalogoItem>();
 
     public static readonly string[] Meses =
     {
@@ -102,6 +112,20 @@ public class IndexModel : PageModel
             return;
         }
 
+        var parametroLocales = Actual.Parametros.FirstOrDefault(p => p.Tipo == TipoParametroReporte.Locales);
+        if (parametroLocales is not null)
+        {
+            LocalesMarcado = await _catalogo.ListarLocalesAsync(cancellationToken);
+            if (Locales.Count > 0)
+            {
+                P[parametroLocales.Clave] = string.Join(",", Locales.Distinct());
+            }
+            else if (P.TryGetValue(parametroLocales.Clave, out var guardados) && !string.IsNullOrEmpty(guardados))
+            {
+                Locales = guardados.Split(',').Select(x => int.TryParse(x, out var n) ? n : 0).Where(n => n > 0).ToList();
+            }
+        }
+
         if (Actual.Parametros.Any(p => p.Tipo == TipoParametroReporte.Cargo))
         {
             Cargos = (await _catalogos.ListarAsync("cargos", cancellationToken))
@@ -113,6 +137,16 @@ public class IndexModel : PageModel
         if (Actual.Parametros.Any(p => p.Tipo is TipoParametroReporte.TipoTrabajador or TipoParametroReporte.TipoTrabajadorObligatorio))
         {
             TiposTrabajador = await _catalogo.ListarTiposTrabajadorAsync(cancellationToken);
+        }
+
+        if (Actual.Parametros.Any(p => p.Tipo == TipoParametroReporte.Profesion))
+        {
+            Profesiones = await _reportes.ListarProfesionesAsync(cancellationToken);
+        }
+
+        if (Actual.Parametros.Any(p => p.Tipo is TipoParametroReporte.Area or TipoParametroReporte.AreaObligatoria))
+        {
+            Areas = await _reportes.ListarAreasAsync(cancellationToken);
         }
 
         if (Actual.Parametros.Any(p => p.Tipo == TipoParametroReporte.TipoPermiso))

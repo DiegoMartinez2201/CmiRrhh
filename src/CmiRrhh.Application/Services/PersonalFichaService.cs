@@ -19,6 +19,14 @@ public interface IPersonalFichaService
 
     /// <summary>Valida y guarda: alta si <c>IdEmpleado</c> es null, edición en caso contrario.</summary>
     Task<ResultadoGuardadoFicha> GuardarAsync(EmpleadoFicha ficha, CancellationToken cancellationToken = default);
+
+    /// <summary>Dependencias (área por año) del empleado.</summary>
+    Task<IReadOnlyList<EmpleadoAreaRow>> ListarDependenciasAsync(int idEmpleado, CancellationToken cancellationToken = default);
+
+    Task<IReadOnlyList<CatalogoItem>> ListarAreasAsync(int anio, CancellationToken cancellationToken = default);
+
+    /// <summary>Cambia el área del empleado en un año de la estructura organizacional.</summary>
+    Task<ResultadoGuardadoFicha> CambiarAreaAsync(int idEmpleado, int anio, int idArea, CancellationToken cancellationToken = default);
 }
 
 public sealed class PersonalFichaService : IPersonalFichaService
@@ -65,6 +73,36 @@ public sealed class PersonalFichaService : IPersonalFichaService
 
         await _empleados.ActualizarEmpleadoAsync(ficha, cancellationToken);
         return ResultadoGuardadoFicha.Exito(ficha.IdEmpleado.Value);
+    }
+
+    public Task<IReadOnlyList<EmpleadoAreaRow>> ListarDependenciasAsync(int idEmpleado, CancellationToken cancellationToken = default)
+        => _empleados.ListarEmpleadoAreasAsync(idEmpleado, cancellationToken);
+
+    public Task<IReadOnlyList<CatalogoItem>> ListarAreasAsync(int anio, CancellationToken cancellationToken = default)
+        => _fichas.ListarAreasAsync(anio, cancellationToken);
+
+    public async Task<ResultadoGuardadoFicha> CambiarAreaAsync(
+        int idEmpleado, int anio, int idArea, CancellationToken cancellationToken = default)
+    {
+        if (idArea <= 0)
+        {
+            return ResultadoGuardadoFicha.Fallo(new[] { "Seleccione el área nueva." });
+        }
+
+        var areas = await _fichas.ListarAreasAsync(anio, cancellationToken);
+        if (areas.All(a => a.Id != idArea))
+        {
+            return ResultadoGuardadoFicha.Fallo(new[] { $"El área seleccionada no existe en la estructura {anio}." });
+        }
+
+        var actuales = await _empleados.ListarEmpleadoAreasAsync(idEmpleado, cancellationToken);
+        if (actuales.All(a => a.Year != anio))
+        {
+            return ResultadoGuardadoFicha.Fallo(new[] { $"El empleado no tiene una dependencia registrada en el año {anio}." });
+        }
+
+        await _empleados.ActualizarAreaEmpleadoAsync(idEmpleado, anio, idArea, cancellationToken);
+        return ResultadoGuardadoFicha.Exito(idEmpleado);
     }
 
     private static void Normalizar(EmpleadoFicha f)

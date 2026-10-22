@@ -47,7 +47,21 @@ else
                     Model.Valores.TryGetValue(campo.Clave, out var valorActual);
                     <div class="col-md-4">
                         <label class="form-label">@campo.Etiqueta@(campo.Requerido ? " *" : "")</label>
-                        <input name="Valores[@campo.Clave]" value="@valorActual" maxlength="@campo.MaxLongitud" class="form-control" />
+                        @if (campo.EsOpcion)
+                        {
+                            Model.Opciones.TryGetValue(campo.Clave, out var opcionesCampo);
+                            <select name="Valores[@campo.Clave]" class="form-select">
+                                <option value="">@(campo.Requerido ? "Seleccione" : "(ninguna)")</option>
+                                @foreach (var o in opcionesCampo ?? Array.Empty<CmiRrhh.Domain.Models.OpcionCatalogo>())
+                                {
+                                    <option value="@o.Valor" selected="@(o.Valor == valorActual)">@o.Texto</option>
+                                }
+                            </select>
+                        }
+                        else
+                        {
+                            <input name="Valores[@campo.Clave]" value="@valorActual" maxlength="@campo.MaxLongitud" class="form-control" />
+                        }
                     </div>
                 }
                 <div class="col-md-4">
@@ -82,7 +96,7 @@ else
                             <td>@fila.Id</td>
                             @foreach (var campo in actual.Campos)
                             {
-                                <td>@fila.Valores[campo.Clave]</td>
+                                <td>@Model.TextoDe(campo, fila.Valores[campo.Clave])</td>
                             }
                             <td class="text-end">
                                 <a asp-page="/Mantenimientos/Index" asp-route-clave="@actual.Clave" asp-route-editarId="@fila.Id" class="btn btn-sm btn-outline-primary">Editar</a>

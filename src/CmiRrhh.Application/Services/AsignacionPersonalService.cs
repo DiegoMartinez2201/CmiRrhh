@@ -51,7 +51,7 @@ public sealed class AsignacionPersonalService : IAsignacionPersonalService
         }
 
         if (idLocal is not null
-            && !await _catalogo.ExistenTodosLosLocalesAsync(new[] { idLocal.Value }, cancellationToken))
+            && (await _catalogo.ListarLocalesAsync(cancellationToken)).All(l => l.Id != idLocal.Value))
         {
             return new AsignacionResultado(false, "El local seleccionado no existe.");
         }

@@ -15,7 +15,12 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<CmiDbContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("CMI")));
+            // La base CMI es antigua: con el nivel de compatibilidad por defecto EF Core 8 traduce
+            // Contains(lista) a OPENJSON, que SQL Server no entiende ("Incorrect syntax near '$'").
+            // Nivel 100 fuerza la traducción clásica: WHERE Id IN (@p0, @p1, ...).
+            options.UseSqlServer(
+                configuration.GetConnectionString("CMI"),
+                sql => sql.UseCompatibilityLevel(100)));
 
         services.AddScoped<IStoredProcedureExecutor, EfStoredProcedureExecutor>();
         services.AddScoped<IUsuarioAccesoRepository, UsuarioAccesoRepository>();
@@ -31,9 +36,20 @@ public static class DependencyInjection
         services.AddScoped<IAsistenciaRepository>(sp => sp.GetRequiredService<AsistenciaRepository>());
         services.AddScoped<IAsistenciaReporteRepository>(sp => sp.GetRequiredService<AsistenciaRepository>());
         services.AddScoped<ICatalogoRepository, CatalogoRepository>();
+        // El orden de registro es el de las pestañas: «Aspecto laboral» va primero, como en el sistema legado.
+        services.AddSeccionLaboral();
+        services.AddSeccionesEscalafon();
+        services.AddSeccionFamiliares();
+        services.AddSeccionDisciplina();
+        services.AddSeccionResoluciones();
+        services.AddSeccionRotaciones();
+        services.AddSeccionesAspectos();
+        services.AddSeccionAsegurados();
+        services.AddScoped<IFichaImpresaRepository, FichaImpresaRepository>();
 
         services.AddSingleton<IPasswordHasher, AspNetPasswordHasher>();
         services.AddSingleton<IClock, SystemClock>();
+        services.AddSingleton<IProcesadorImagen, Imaging.ImageSharpProcesadorImagen>();
         return services;
     }
 }

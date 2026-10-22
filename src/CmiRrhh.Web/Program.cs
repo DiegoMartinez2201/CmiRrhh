@@ -21,6 +21,7 @@ builder.Services.AddScoped<IFeriadoRepository, FeriadoRepository>();
 builder.Services.AddScoped<IPersonalRepository, PersonalRepository>();
 builder.Services.AddScoped<IFichaPersonalRepository, FichaPersonalRepository>();
 builder.Services.AddScoped<IAsignacionPersonalRepository, AsignacionPersonalRepository>();
+builder.Services.AddScoped<IEstructuraOrganizacionalRepository, EstructuraOrganizacionalRepository>();
 builder.Services.AddMantenimientosCatalogo();
 builder.Services.AddScoped<IReporteRepository, ReporteRepository>();
 
@@ -72,8 +73,11 @@ builder.Services.AddRazorPages(options =>
     // Asistencias (ASISTENCIAS y ASISTENCIAS - CAS) hasta definir un rol propio de Personal.
     options.Conventions.AuthorizePage("/Personal/Ficha", AuthConstants.AsistenciasEscrituraPolicy);
     options.Conventions.AuthorizePage("/Personal/Asignar", AuthConstants.AsistenciasEscrituraPolicy);
+    options.Conventions.AuthorizePage("/Personal/Escalafonaria", AuthConstants.AsistenciasEscrituraPolicy);
     // Mantenimientos (catálogos): escriben datos maestros, por eso exigen la política de escritura.
     options.Conventions.AuthorizeFolder("/Mantenimientos", AuthConstants.AsistenciasEscrituraPolicy);
+    // Estructura orgánica (árbol de unidades): solo lectura, como Relación/Búsqueda de personal.
+    options.Conventions.AuthorizeFolder("/Estructura", AuthConstants.AsistenciasPolicy);
     // Reportes de personal: solo lectura, por eso los ven también los perfiles REPORTES ASISTENCIAS.
     options.Conventions.AuthorizeFolder("/Reportes", AuthConstants.AsistenciasPolicy);
     options.Conventions.AllowAnonymousToPage("/Account/Login");

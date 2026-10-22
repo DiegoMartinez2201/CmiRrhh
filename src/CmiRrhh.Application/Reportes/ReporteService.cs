@@ -1,4 +1,5 @@
 using System.Globalization;
+using CmiRrhh.Domain.Interfaces.Repositories;
 using CmiRrhh.Domain.Models;
 
 namespace CmiRrhh.Application.Reportes;
@@ -12,6 +13,12 @@ public interface IReporteService
     DefinicionReporte? Definicion(string clave);
 
     Task<ResultadoReporte> EjecutarAsync(string clave, IReadOnlyDictionary<string, string?> parametros, CancellationToken cancellationToken = default);
+
+    /// <summary>Opciones del parámetro «Profesión».</summary>
+    Task<IReadOnlyList<string>> ListarProfesionesAsync(CancellationToken cancellationToken = default);
+
+    /// <summary>Opciones del parámetro «Área»: unidades orgánicas del año vigente.</summary>
+    Task<IReadOnlyList<CatalogoItem>> ListarAreasAsync(CancellationToken cancellationToken = default);
 }
 
 /// <summary>Resuelve el reporte por clave, valida sus parámetros según su tipo y lo ejecuta.</summary>
@@ -19,10 +26,24 @@ public sealed class ReporteService : IReporteService
 {
     private readonly IReadOnlyDictionary<string, IReporteTabular> _reportes;
 
-    public ReporteService(IEnumerable<IReporteTabular> reportes)
+    private readonly IReporteRepository _repositorio;
+    private readonly IFichaPersonalRepository _fichas;
+
+    public ReporteService(
+        IEnumerable<IReporteTabular> reportes,
+        IReporteRepository repositorio,
+        IFichaPersonalRepository fichas)
     {
         _reportes = reportes.ToDictionary(r => r.Definicion.Clave, StringComparer.OrdinalIgnoreCase);
+        _repositorio = repositorio;
+        _fichas = fichas;
     }
+
+    public Task<IReadOnlyList<string>> ListarProfesionesAsync(CancellationToken cancellationToken = default)
+        => _repositorio.ListarProfesionesAsync(cancellationToken);
+
+    public Task<IReadOnlyList<CatalogoItem>> ListarAreasAsync(CancellationToken cancellationToken = default)
+        => _fichas.ListarAreasAsync(DateTime.Today.Year, cancellationToken);
 
     public IReadOnlyList<DefinicionReporte> Reportes()
         => _reportes.Values.Select(r => r.Definicion).OrderBy(d => d.Titulo).ToList();
@@ -48,7 +69,7 @@ public sealed class ReporteService : IReporteService
                 return new ResultadoReporte(false, error, null);
             }
 
-            validos[p.Clave] = crudo!.Trim();
+            validos[p.Clave] = crudo?.Trim() ?? string.Empty;
         }
 
         var rango = ValidarRango(validos);
@@ -57,15 +78,28 @@ public sealed class ReporteService : IReporteService
             return new ResultadoReporte(false, rango, null);
         }
 
-        var tabla = await reporte.EjecutarAsync(validos, cancellationToken);
-        return new ResultadoReporte(true, null, tabla);
+        try
+        {
+            var tabla = await reporte.EjecutarAsync(validos, cancellationToken);
+            return new ResultadoReporte(true, null, tabla);
+        }
+        catch (Exception ex) when (ex is not OperationCanceledException)
+        {
+            // Un error de base de datos o de reglas del reporte se muestra en la pantalla, no como página de error.
+            return new ResultadoReporte(false, "No se pudo generar el reporte: " + ex.Message, null);
+        }
     }
 
     private static string? Validar(ParametroReporte p, string? valor)
     {
         if (string.IsNullOrEmpty(valor))
         {
-            return $"Indique «{p.Etiqueta}».";
+            return p.Tipo switch
+            {
+                TipoParametroReporte.Dni => null,
+                TipoParametroReporte.Locales => "Debe seleccionar un lugar de marcado.",
+                _ => $"Indique «{p.Etiqueta}»."
+            };
         }
 
         switch (p.Tipo)
@@ -88,6 +122,21 @@ public sealed class ReporteService : IReporteService
             case TipoParametroReporte.TipoPermiso:
                 return int.TryParse(valor, NumberStyles.Integer, CultureInfo.InvariantCulture, out var tp) && tp >= 0
                     ? null : "El tipo de permiso no es válido.";
+            case TipoParametroReporte.Profesion:
+                return valor.Length <= 200 ? null : "La profesión no es válida.";
+            case TipoParametroReporte.Area:
+                return int.TryParse(valor, NumberStyles.Integer, CultureInfo.InvariantCulture, out var a) && a >= 0
+                    ? null : "La unidad orgánica no es válida.";
+            case TipoParametroReporte.AreaObligatoria:
+                return int.TryParse(valor, NumberStyles.Integer, CultureInfo.InvariantCulture, out var ao) && ao > 0
+                    ? null : "Debe seleccionar una Oficina por lo menos.";
+            case TipoParametroReporte.SiNo:
+                return valor is "0" or "1" ? null : $"«{p.Etiqueta}» no es válido.";
+            case TipoParametroReporte.Dni:
+                return valor.Length <= 8 && valor.All(char.IsDigit) ? null : "El DNI debe tener hasta 8 dígitos.";
+            case TipoParametroReporte.Locales:
+                return valor.Split(',').All(x => int.TryParse(x, NumberStyles.Integer, CultureInfo.InvariantCulture, out var l) && l > 0)
+                    ? null : "Los lugares de marcado no son válidos.";
             default:
                 return null;
         }

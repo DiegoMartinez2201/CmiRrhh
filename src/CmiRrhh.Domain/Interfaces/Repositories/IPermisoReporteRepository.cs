@@ -1,4 +1,5 @@
 using System.Data;
+using CmiRrhh.Domain.Models;
 
 namespace CmiRrhh.Domain.Interfaces.Repositories;
 
@@ -30,5 +31,13 @@ public interface IPermisoReporteRepository
         string fechaFin,
         int idMotivo,
         int idArea,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Motivos activos de la modalidad ('P' planilla, 'C' CAS) con su abreviatura: son las columnas
+    /// del estadístico (los mismos filtros que aplica spRRHH_EstadisticaPermiso).
+    /// </summary>
+    Task<IReadOnlyList<MotivoEstadistica>> ListarMotivosEstadisticaAsync(
+        string tipoModalidad,
         CancellationToken cancellationToken = default);
 }

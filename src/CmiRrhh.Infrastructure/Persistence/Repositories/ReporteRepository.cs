@@ -100,4 +100,38 @@ public sealed class ReporteRepository : IReporteRepository
             _executor.In("@FechaF", fechaFin, SqlDbType.VarChar, 8),
             _executor.In("@tipo", tipo, SqlDbType.Int));
     }
+
+    public Task<DataTable> GenerarFaltasAsync(string fecha, int? idTipoTrabajador, int? idAreaOrganiz, int? anio, CancellationToken cancellationToken = default)
+    {
+        // spRRHH_Faltas compara convert(char(10), Fecha, 103) = @fecha, por eso la fecha va como dd/MM/yyyy.
+        // @Anio filtra Empleado.Year (año de la ficha del empleado, no el de la fecha): NULL = sin filtro,
+        // que es lo que envía el legado por defecto. Las vistas no repiten empleados por año.
+        return _executor.QueryAsync(
+            "spRRHH_Faltas",
+            cancellationToken,
+            _executor.In("@fecha", fecha, SqlDbType.Char, 10),
+            _executor.In("@idTipoTrabajador", idTipoTrabajador, SqlDbType.Int),
+            _executor.In("@idAreaOrganiz", idAreaOrganiz, SqlDbType.Int),
+            _executor.In("@Anio", anio, SqlDbType.Int));
+    }
+
+    public async Task<IReadOnlyList<string>> ListarProfesionesAsync(CancellationToken cancellationToken = default)
+    {
+        var tabla = await _executor.QueryAsync("sp_RRHH_ListarProfesiones", cancellationToken);
+        return tabla.Rows.Cast<DataRow>()
+            .Select(f => f[0]?.ToString()?.Trim() ?? string.Empty)
+            .Where(p => p.Length > 0)
+            .Distinct(StringComparer.CurrentCultureIgnoreCase)
+            .OrderBy(p => p, StringComparer.CurrentCultureIgnoreCase)
+            .ToList();
+    }
+
+    public Task<DataTable> GenerarReporteProfesionAsync(string profesion, CancellationToken cancellationToken = default)
+    {
+        // spRRHH_Rep_profesion compara e.Profesion = @profesion con el texto exacto de la lista.
+        return _executor.QueryAsync(
+            "spRRHH_Rep_profesion",
+            cancellationToken,
+            _executor.In("@profesion", profesion, SqlDbType.NVarChar, 200));
+    }
 }

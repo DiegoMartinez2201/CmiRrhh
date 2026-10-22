@@ -20,4 +20,9 @@ public interface IMantenimientoCatalogo
 
     /// <summary>Elimina el registro; devuelve el motivo si no se pudo (no existe o está en uso).</summary>
     Task<string?> EliminarAsync(int id, CancellationToken cancellationToken = default);
+
+    /// <summary>Opciones de los campos desplegables (por clave de campo). Por defecto, el catálogo no tiene ninguno.</summary>
+    Task<IReadOnlyDictionary<string, IReadOnlyList<OpcionCatalogo>>> OpcionesAsync(CancellationToken cancellationToken = default)
+        => Task.FromResult<IReadOnlyDictionary<string, IReadOnlyList<OpcionCatalogo>>>(
+            new Dictionary<string, IReadOnlyList<OpcionCatalogo>>());
 }

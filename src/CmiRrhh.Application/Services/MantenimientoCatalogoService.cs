@@ -13,6 +13,8 @@ public interface IMantenimientoCatalogoService
 
     Task<IReadOnlyList<FilaCatalogo>> ListarAsync(string clave, CancellationToken cancellationToken = default);
 
+    Task<IReadOnlyDictionary<string, IReadOnlyList<OpcionCatalogo>>> OpcionesAsync(string clave, CancellationToken cancellationToken = default);
+
     Task<ResultadoMantenimiento> GuardarAsync(
         string clave, int? id, IReadOnlyDictionary<string, string?> valores, CancellationToken cancellationToken = default);
 
@@ -41,11 +43,17 @@ public sealed class MantenimientoCatalogoService : IMantenimientoCatalogoService
     public Task<IReadOnlyList<FilaCatalogo>> ListarAsync(string clave, CancellationToken cancellationToken = default)
         => Obtener(clave).ListarAsync(cancellationToken);
 
+    public Task<IReadOnlyDictionary<string, IReadOnlyList<OpcionCatalogo>>> OpcionesAsync(string clave, CancellationToken cancellationToken = default)
+        => Obtener(clave).OpcionesAsync(cancellationToken);
+
     public async Task<ResultadoMantenimiento> GuardarAsync(
         string clave, int? id, IReadOnlyDictionary<string, string?> valores, CancellationToken cancellationToken = default)
     {
         var catalogo = Obtener(clave);
         var limpios = new Dictionary<string, string>();
+        var opciones = catalogo.Definicion.Campos.Any(c => c.EsOpcion)
+            ? await catalogo.OpcionesAsync(cancellationToken)
+            : null;
 
         foreach (var campo in catalogo.Definicion.Campos)
         {
@@ -55,6 +63,12 @@ public sealed class MantenimientoCatalogoService : IMantenimientoCatalogoService
             if (campo.Requerido && valor.Length == 0)
             {
                 return new ResultadoMantenimiento(false, $"Ingrese el campo «{campo.Etiqueta}».");
+            }
+
+            if (campo.EsOpcion && valor.Length > 0
+                && !(opciones is not null && opciones.TryGetValue(campo.Clave, out var validas) && validas.Any(o => o.Valor == valor)))
+            {
+                return new ResultadoMantenimiento(false, $"Seleccione una opción válida en «{campo.Etiqueta}».");
             }
 
             if (valor.Length > campo.MaxLongitud)

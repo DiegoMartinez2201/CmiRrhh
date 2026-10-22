@@ -1,0 +1,169 @@
+@page "{id:int}"
+@model CmiRrhh.Web.Pages.Personal.EscalafonariaModel
+@using CmiRrhh.Domain.Models
+@{
+    ViewData["Title"] = "Ficha escalafonaria";
+}
+
+<div class="page-header">
+    <h1>Ficha escalafonaria</h1>
+    <p class="page-subtitle">
+        @Model.NombreEmpleado (código @Model.Id).
+        Registre la trayectoria del trabajador: cada pestaña tiene Agregar, Modificar y Eliminar.
+    </p>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.Mensaje))
+{
+    <div class="alert alert-success" role="alert">@Model.Mensaje</div>
+}
+
+@if (Model.Errores.Count > 0)
+{
+    <div class="alert alert-danger" role="alert">
+        <ul class="mb-0">
+            @foreach (var e in Model.Errores)
+            {
+                <li>@e</li>
+            }
+        </ul>
+    </div>
+}
+
+<div class="mb-3">
+    <a asp-page="/Personal/Ficha" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-secondary">Datos del personal</a>
+    <a asp-page="/Personal/EscalafonariaImprimir" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-primary">Imprimir ficha</a>
+    <a asp-page="/Personal/Index" class="btn btn-sm btn-outline-secondary">Volver a la relación</a>
+</div>
+
+@if (Model.Actual is null)
+{
+    <div class="alert alert-warning">No hay secciones de ficha escalafonaria disponibles.</div>
+}
+else
+{
+    <ul class="nav nav-tabs mb-3">
+        @foreach (var s in Model.Secciones)
+        {
+            <li class="nav-item">
+                <a class="nav-link @(s.Clave == Model.Actual.Clave ? "active" : "")"
+                   asp-page="/Personal/Escalafonaria" asp-route-id="@Model.Id" asp-route-seccion="@s.Clave">@s.Titulo</a>
+            </li>
+        }
+    </ul>
+
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <span>@Model.Actual.Titulo (@Model.Filas.Count)</span>
+            @if (!Model.Actual.RegistroUnico || Model.Filas.Count == 0)
+            {
+                <a asp-page="/Personal/Escalafonaria" asp-route-id="@Model.Id" asp-route-seccion="@Model.Actual.Clave"
+                   asp-route-editar="@CmiRrhh.Web.Pages.Personal.EscalafonariaModel.ClaveNuevo" class="btn btn-sm btn-success">@(Model.Actual.RegistroUnico ? "Registrar" : "Agregar")</a>
+            }
+        </div>
+        <div class="table-responsive">
+            <table class="table table-sm table-striped table-hover align-middle mb-0">
+                <thead>
+                    <tr>
+                        @foreach (var c in Model.Actual.Campos.Where(c => c.EnLista))
+                        {
+                            <th>@c.Etiqueta</th>
+                        }
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var f in Model.Filas)
+                    {
+                        <tr>
+                            @foreach (var c in Model.Actual.Campos.Where(c => c.EnLista))
+                            {
+                                <td>@(f.Visibles.TryGetValue(c.Clave, out var t) ? t : string.Empty)</td>
+                            }
+                            <td class="text-end text-nowrap">
+                                <a asp-page="/Personal/Escalafonaria" asp-route-id="@Model.Id" asp-route-seccion="@Model.Actual.Clave"
+                                   asp-route-editar="@f.Clave" class="btn btn-sm btn-outline-primary">Modificar</a>
+                                @if (!Model.Actual.RegistroUnico && Model.Actual.PermiteEliminar)
+                                {
+                                    <form method="post" asp-page-handler="Eliminar" asp-route-id="@Model.Id" asp-route-seccion="@Model.Actual.Clave"
+                                          asp-route-clave="@f.Clave" class="d-inline"
+                                          onsubmit="return confirm('¿Desea eliminar este registro?');">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
+                                    </form>
+                                }
+                            </td>
+                        </tr>
+                    }
+                    @if (Model.Filas.Count == 0)
+                    {
+                        <tr><td colspan="@(Model.Actual.Campos.Count(c => c.EnLista) + 1)" class="text-center text-muted py-3">Sin registros en esta sección.</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @if (Model.FormularioAbierto)
+    {
+        <div class="card mb-4">
+            <div class="card-header">@(Model.EsAlta ? "Agregar" : "Modificar") — @Model.Actual.Titulo</div>
+            <div class="card-body">
+                <form method="post" asp-page-handler="Guardar" asp-route-id="@Model.Id" asp-route-seccion="@Model.Actual.Clave"
+                      asp-route-editar="@Model.Editar" class="row g-3">
+                    @foreach (var c in Model.Actual.Campos)
+                    {
+                        var valor = Model.ValorDe(c.Clave);
+                        var soloLectura = !Model.EsAlta && c.SoloAlta;
+                        <div class="@(c.Tipo == TipoCampoEscalafon.Texto && c.MaxLongitud > 150 ? "col-12" : "col-md-4")">
+                            @if (c.Tipo == TipoCampoEscalafon.SiNo)
+                            {
+                                <div class="form-check mt-4">
+                                    <input type="checkbox" class="form-check-input" id="v_@c.Clave" name="V[@c.Clave]" value="1" checked="@(valor == "1")" />
+                                    <label class="form-check-label" for="v_@c.Clave">@c.Etiqueta</label>
+                                </div>
+                            }
+                            else
+                            {
+                                <label class="form-label" for="v_@c.Clave">@c.Etiqueta@(c.Requerido ? " *" : "")</label>
+                                @switch (c.Tipo)
+                                {
+                                    case TipoCampoEscalafon.Fecha:
+                                        <input type="date" class="form-control" id="v_@c.Clave" name="V[@c.Clave]" value="@valor" readonly="@soloLectura" />
+                                        break;
+                                    case TipoCampoEscalafon.Opcion:
+                                        <select class="form-select" id="v_@c.Clave" name="V[@c.Clave]" disabled="@soloLectura">
+                                            <option value="">-- Seleccione --</option>
+                                            @if (Model.Opciones.TryGetValue(c.Clave, out var lista))
+                                            {
+                                                foreach (var o in lista)
+                                                {
+                                                    <option value="@o.Id" selected="@(valor == o.Id.ToString())">@o.Nombre</option>
+                                                }
+                                            }
+                                        </select>
+                                        break;
+                                    default:
+                                        if (c.MaxLongitud > 150)
+                                        {
+                                            <textarea class="form-control" id="v_@c.Clave" name="V[@c.Clave]" rows="2" maxlength="@c.MaxLongitud">@valor</textarea>
+                                        }
+                                        else
+                                        {
+                                            <input type="text" class="form-control" id="v_@c.Clave" name="V[@c.Clave]" value="@valor"
+                                                   maxlength="@(c.MaxLongitud > 0 ? c.MaxLongitud : 200)" readonly="@soloLectura" />
+                                        }
+                                        break;
+                                }
+                            }
+                        </div>
+                    }
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">@(Model.EsAlta ? "Agregar" : "Guardar cambios")</button>
+                        <a asp-page="/Personal/Escalafonaria" asp-route-id="@Model.Id" asp-route-seccion="@Model.Actual.Clave"
+                           class="btn btn-outline-secondary">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+}

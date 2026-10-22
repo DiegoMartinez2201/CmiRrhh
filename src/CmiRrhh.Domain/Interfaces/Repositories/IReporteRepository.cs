@@ -23,4 +23,13 @@ public interface IReporteRepository
     Task<DataTable> ListarTrabajadoresAsync(int idTipoTrabajador, CancellationToken cancellationToken = default);
 
     Task<DataTable> ObtenerHorasExtrasAsync(string fechaInicio, string fechaFin, int? tipo, CancellationToken cancellationToken = default);
+
+    /// <summary>spRRHH_Faltas: personal activo sin registro de asistencia en la fecha (dd/MM/yyyy).</summary>
+    Task<DataTable> GenerarFaltasAsync(string fecha, int? idTipoTrabajador, int? idAreaOrganiz, int? anio, CancellationToken cancellationToken = default);
+
+    /// <summary>sp_RRHH_ListarProfesiones: profesiones distintas registradas.</summary>
+    Task<IReadOnlyList<string>> ListarProfesionesAsync(CancellationToken cancellationToken = default);
+
+    /// <summary>spRRHH_Rep_profesion: personal activo (planilla) con la profesión indicada.</summary>
+    Task<DataTable> GenerarReporteProfesionAsync(string profesion, CancellationToken cancellationToken = default);
 }

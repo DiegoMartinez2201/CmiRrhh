@@ -1,0 +1,148 @@
+@page
+@model CmiRrhh.Web.Pages.Estructura.IndexModel
+@using CmiRrhh.Web.Pages.Estructura
+@{
+    ViewData["Title"] = "Estructura orgánica";
+    var puedeEditar = User.IsInRole(CmiRrhh.Domain.Auth.AuthConstants.RolAsistencias)
+                      || User.IsInRole(CmiRrhh.Domain.Auth.AuthConstants.RolAsistenciasCas);
+    var tipo = Model.IdTipoTrabajador ?? 0;
+}
+
+<style>
+    ul.arbol { list-style: none; margin: 0; padding-left: 1.1rem; border-left: 1px dashed #c9d3df; }
+    ul.arbol.raiz { padding-left: 0; border-left: 0; }
+    ul.arbol li { margin: .1rem 0; }
+    .arbol-item { padding: .15rem .35rem; border-radius: .3rem; cursor: default; }
+    .arbol-item a { text-decoration: none; color: inherit; }
+    .arbol-item a:hover { text-decoration: underline; }
+    .arbol-item.activa { background: #dbeafe; font-weight: 600; }
+    .arbol-hoja { margin-left: 1rem; }
+    .arbol-panel { max-height: 70vh; overflow: auto; }
+</style>
+
+<div class="page-header">
+    <h1>Estructura orgánica</h1>
+    <p class="page-subtitle">Equivalente al árbol de unidades orgánicas: elija una unidad para ver su personal activo en el año.</p>
+</div>
+
+@if (Model.MensajeError is not null)
+{
+    <div class="alert alert-danger" role="alert">@Model.MensajeError</div>
+}
+
+@if (Model.Anios.Count == 0 && Model.MensajeError is null)
+{
+    <div class="alert alert-warning">No hay estructura orgánica registrada.</div>
+}
+else if (Model.Anios.Count > 0)
+{
+    <div class="card mb-4">
+        <div class="card-body">
+            <form method="get" class="row g-3 align-items-end">
+                <div class="col-md-3">
+                    <label asp-for="Anio" class="form-label">Año</label>
+                    <select asp-for="Anio" class="form-select">
+                        @foreach (var a in Model.Anios)
+                        {
+                            <option value="@a" selected="@(Model.Anio == a)">@a</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="IdTipoTrabajador" class="form-label">Tipo de trabajador</label>
+                    <select asp-for="IdTipoTrabajador" class="form-select">
+                        <option value="0">-- Todos --</option>
+                        @foreach (var t in Model.TiposTrabajador)
+                        {
+                            <option value="@t.Id" selected="@(tipo == t.Id)">@t.Nombre</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-primary">Ver</button>
+                    <a asp-page="/Estructura/Index" class="btn btn-outline-secondary">Limpiar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-5">
+            <div class="card">
+                <div class="card-header">Unidades orgánicas @Model.Anio (@Model.Arbol.TotalUnidades)</div>
+                <div class="card-body arbol-panel">
+                    @if (Model.Arbol.Raices.Count == 0)
+                    {
+                        <span class="text-muted">Sin unidades para este año.</span>
+                    }
+                    else
+                    {
+                        <ul class="arbol raiz">
+                            @foreach (var raiz in Model.Arbol.Raices)
+                            {
+                                <partial name="_NodoUnidad"
+                                         model="@(new NodoVista(raiz, Model.Anio!.Value, Model.IdArea, tipo, Model.Arbol.RutaSeleccion, 0))" />
+                            }
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-7">
+            <div class="card">
+                <div class="card-header">
+                    @if (Model.UnidadSeleccionada is null)
+                    {
+                        <span>Personal de la unidad</span>
+                    }
+                    else
+                    {
+                        <span>@Model.UnidadSeleccionada.Nombre — personal activo (@Model.Personal.Count)</span>
+                    }
+                </div>
+                @if (Model.UnidadSeleccionada is null)
+                {
+                    <div class="card-body text-muted">Seleccione una unidad del árbol.</div>
+                }
+                else
+                {
+                    <div class="table-responsive">
+                        <table class="table table-sm table-striped table-hover align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>DNI</th>
+                                    <th>Nombres completos</th>
+                                    <th>Cargo</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var p in Model.Personal)
+                                {
+                                    <tr>
+                                        <td>@p.Codigo</td>
+                                        <td>@p.Dni</td>
+                                        <td>@p.NombresCompletos</td>
+                                        <td>@p.Cargo</td>
+                                        <td class="text-end">
+                                            @if (puedeEditar)
+                                            {
+                                                <a asp-page="/Personal/Ficha" asp-route-id="@p.Codigo" class="btn btn-sm btn-outline-primary">Editar</a>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                                @if (Model.Personal.Count == 0)
+                                {
+                                    <tr><td colspan="5" class="text-center text-muted py-3">Esta unidad no tiene personal activo asignado en @Model.Anio.</td></tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}

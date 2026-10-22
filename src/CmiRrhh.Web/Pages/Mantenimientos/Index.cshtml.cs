@@ -31,6 +31,10 @@ public class IndexModel : PageModel
 
     public IReadOnlyList<FilaCatalogo> Filas { get; private set; } = Array.Empty<FilaCatalogo>();
 
+    /// <summary>Opciones de los campos desplegables del catálogo actual (por clave de campo).</summary>
+    public IReadOnlyDictionary<string, IReadOnlyList<OpcionCatalogo>> Opciones { get; private set; }
+        = new Dictionary<string, IReadOnlyList<OpcionCatalogo>>();
+
     /// <summary>Error de validación mostrado en la misma petición (no sobrevive a una redirección).</summary>
     public string? MensajeAhora { get; private set; }
 
@@ -94,10 +98,20 @@ public class IndexModel : PageModel
         return RedirectToPage(new { clave = Clave });
     }
 
+    /// <summary>Texto a mostrar en la lista: para campos desplegables, la descripción de la opción.</summary>
+    public string TextoDe(CampoCatalogo campo, string valor)
+        => campo.EsOpcion && Opciones.TryGetValue(campo.Clave, out var lista)
+            ? lista.FirstOrDefault(o => o.Valor == valor)?.Texto ?? valor
+            : valor;
+
     private async Task CargarAsync(CancellationToken cancellationToken)
     {
         Catalogos = _catalogos.Catalogos();
         Actual = !string.IsNullOrEmpty(Clave) ? _catalogos.Definicion(Clave) : null;
         Filas = Actual is null ? Array.Empty<FilaCatalogo>() : await _catalogos.ListarAsync(Actual.Clave, cancellationToken);
+        if (Actual is not null && Actual.Campos.Any(c => c.EsOpcion))
+        {
+            Opciones = await _catalogos.OpcionesAsync(Actual.Clave, cancellationToken);
+        }
     }
 }

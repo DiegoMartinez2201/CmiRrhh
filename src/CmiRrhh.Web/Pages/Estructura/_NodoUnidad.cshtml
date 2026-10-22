@@ -1,0 +1,33 @@
+@model CmiRrhh.Web.Pages.Estructura.NodoVista
+@{
+    var u = Model.Nodo.Unidad;
+    var esSeleccionada = Model.Seleccionada == u.Id;
+    var abierto = Model.Nivel == 0 || esSeleccionada || Model.Ruta.Contains(u.Id);
+}
+@if (Model.Nodo.Hijos.Count > 0)
+{
+    <li>
+        <details open="@abierto">
+            <summary class="arbol-item @(esSeleccionada ? "activa" : "")">
+                <a asp-page="/Estructura/Index" asp-route-anio="@Model.Anio" asp-route-idArea="@u.Id"
+                   asp-route-idTipoTrabajador="@(Model.IdTipoTrabajador > 0 ? (int?)Model.IdTipoTrabajador : null)">@u.Nombre</a>
+                <span class="text-muted small">(@Model.Nodo.TotalDescendientes)</span>
+            </summary>
+            <ul class="arbol">
+                @foreach (var hijo in Model.Nodo.Hijos)
+                {
+                    <partial name="_NodoUnidad" model="@(Model with { Nodo = hijo, Nivel = Model.Nivel + 1 })" />
+                }
+            </ul>
+        </details>
+    </li>
+}
+else
+{
+    <li>
+        <div class="arbol-item arbol-hoja @(esSeleccionada ? "activa" : "")">
+            <a asp-page="/Estructura/Index" asp-route-anio="@Model.Anio" asp-route-idArea="@u.Id"
+               asp-route-idTipoTrabajador="@(Model.IdTipoTrabajador > 0 ? (int?)Model.IdTipoTrabajador : null)">@u.Nombre</a>
+        </div>
+    </li>
+}

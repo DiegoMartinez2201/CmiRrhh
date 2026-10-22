@@ -13,7 +13,25 @@ public enum TipoParametroReporte
     TipoTrabajadorObligatorio,
 
     /// <summary>Tipo de permiso opcional: 0 = todos.</summary>
-    TipoPermiso
+    TipoPermiso,
+
+    /// <summary>Profesión (lista de las registradas).</summary>
+    Profesion,
+
+    /// <summary>Unidad orgánica opcional del año vigente: 0 = todas.</summary>
+    Area,
+
+    /// <summary>Unidad orgánica obligatoria del año vigente (no admite «todas»).</summary>
+    AreaObligatoria,
+
+    /// <summary>Sí/No: llega como «1» o «0».</summary>
+    SiNo,
+
+    /// <summary>DNI opcional (hasta 8 dígitos); puede quedar vacío.</summary>
+    Dni,
+
+    /// <summary>Uno o más lugares de marcado (locales): llega como identificadores separados por coma, p. ej. «1,3».</summary>
+    Locales
 }
 
 /// <summary>Parámetro que el usuario debe indicar antes de ejecutar un reporte.</summary>

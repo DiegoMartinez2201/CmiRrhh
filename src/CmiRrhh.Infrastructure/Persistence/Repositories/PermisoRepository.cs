@@ -198,6 +198,22 @@ public sealed class PermisoRepository : IPermisoRepository, IPermisoReporteRepos
             _executor.In("@IdTipoTrabajador", DBNull.Value, SqlDbType.Int));
     }
 
+    public async Task<IReadOnlyList<MotivoEstadistica>> ListarMotivosEstadisticaAsync(
+        string tipoModalidad,
+        CancellationToken cancellationToken = default)
+    {
+        var filas = await _context.MotivoPerms.AsNoTracking()
+            .Where(m => m.Activo == true && m.TipoModalidad == tipoModalidad && m.Abrev != null)
+            .OrderBy(m => m.IdMotivo)
+            .Select(m => new { m.IdMotivo, m.Abrev, m.DescripMotivo })
+            .ToListAsync(cancellationToken);
+
+        return filas
+            .Select(m => new MotivoEstadistica(m.IdMotivo, (m.Abrev ?? string.Empty).Trim(), (m.DescripMotivo ?? string.Empty).Trim()))
+            .Where(m => m.Abrev.Length > 0)
+            .ToList();
+    }
+
     private static DateTime ParseFecha(string fecha)
     {
         if (DateTime.TryParse(fecha, CultureInfo.CurrentCulture, DateTimeStyles.None, out var parsed))

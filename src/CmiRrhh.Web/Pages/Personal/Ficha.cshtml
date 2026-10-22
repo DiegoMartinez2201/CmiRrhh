@@ -28,8 +28,29 @@
     </div>
 }
 
-<form method="post" novalidate>
+<form method="post" enctype="multipart/form-data" novalidate>
     <input type="hidden" asp-for="Input.Year" />
+
+    <div class="card mb-4">
+        <div class="card-header">Foto</div>
+        <div class="card-body d-flex align-items-center gap-3">
+            @if (Model.EsEdicion && Model.TieneFoto)
+            {
+                <img src="@Url.Page("/Personal/Ficha", "Foto", new { id = Model.Id })" alt="Foto del personal"
+                     style="width:96px;height:120px;object-fit:cover;border-radius:6px;border:1px solid #ccd;" />
+            }
+            else
+            {
+                <div class="text-muted small border rounded d-flex align-items-center justify-content-center"
+                     style="width:96px;height:120px;">Sin foto</div>
+            }
+            <div>
+                <label asp-for="FotoArchivo" class="form-label">@(Model.TieneFoto ? "Reemplazar foto" : "Subir foto")</label>
+                <input asp-for="FotoArchivo" type="file" accept="image/jpeg,image/png,image/gif,image/bmp,image/webp" class="form-control" />
+                <div class="form-text">JPG, PNG, GIF, BMP o WebP de hasta 5 MB. Se reduce a un máximo de 600 px y se comprime a WebP para ahorrar espacio. Si no elige un archivo, se conserva la foto actual.</div>
+            </div>
+        </div>
+    </div>
 
     <div class="card mb-4">
         <div class="card-header">1. Datos básicos</div>
@@ -216,6 +237,56 @@
 
     <div class="d-flex gap-2 mb-4">
         <button type="submit" class="btn btn-primary">@(Model.EsEdicion ? "Actualizar" : "Registrar")</button>
+        @if (Model.EsEdicion)
+        {
+            <a asp-page="/Personal/Escalafonaria" asp-route-id="@Model.Id" class="btn btn-outline-primary">Ficha escalafonaria</a>
+        }
         <a asp-page="/Personal/Index" class="btn btn-outline-secondary">Volver a la relación</a>
     </div>
 </form>
+
+@if (Model.EsEdicion && Model.Dependencias.Count > 0)
+{
+    <div class="card mb-4">
+        <div class="card-header">Dependencias (área por año)</div>
+        <div class="table-responsive">
+            <table class="table table-sm table-striped align-middle mb-0">
+                <thead><tr><th>Año</th><th>Área organizacional</th><th></th></tr></thead>
+                <tbody>
+                    @foreach (var d in Model.Dependencias)
+                    {
+                        <tr>
+                            <td>@d.Year</td>
+                            <td>@d.AreaOrganizacional</td>
+                            <td class="text-end">
+                                <a asp-page="/Personal/Ficha" asp-route-id="@Model.Id" asp-route-anioDependencia="@d.Year"
+                                   class="btn btn-sm btn-outline-primary">Cambiar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        @if (Model.AnioDependencia is not null && Model.AreasDelAnio.Count > 0)
+        {
+            <div class="card-body border-top">
+                <form method="post" asp-page-handler="CambiarArea" asp-route-id="@Model.Id" class="row g-3 align-items-end">
+                    <input type="hidden" name="anioArea" value="@Model.AnioDependencia" />
+                    <div class="col-md-7">
+                        <label class="form-label">Nueva área para el año @Model.AnioDependencia</label>
+                        <select name="idAreaNueva" class="form-select">
+                            <option value="0">-- Seleccione --</option>
+                            @foreach (var a in Model.AreasDelAnio)
+                            {
+                                <option value="@a.Id" selected="@(Model.Dependencias.Any(d => d.Year == Model.AnioDependencia && d.IdAreaOrganiz == a.Id))">@a.Nombre</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-outline-primary">Actualizar dependencia</button>
+                    </div>
+                </form>
+            </div>
+        }
+    </div>
+}

@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using CmiRrhh.Application.Abstractions;
 using CmiRrhh.Application.Services;
 using CmiRrhh.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -13,10 +14,12 @@ namespace CmiRrhh.Web.Pages.Personal;
 public class FichaModel : PageModel
 {
     private readonly IPersonalFichaService _fichas;
+    private readonly IProcesadorImagen _imagenes;
 
-    public FichaModel(IPersonalFichaService fichas)
+    public FichaModel(IPersonalFichaService fichas, IProcesadorImagen imagenes)
     {
         _fichas = fichas;
+        _imagenes = imagenes;
     }
 
     [BindProperty(SupportsGet = true)]
@@ -29,10 +32,76 @@ public class FichaModel : PageModel
 
     public IReadOnlyList<string> Errores { get; private set; } = Array.Empty<string>();
 
+    /// <summary>Foto nueva (opcional). Si no se envía, se conserva la existente.</summary>
+    [BindProperty]
+    public IFormFile? FotoArchivo { get; set; }
+
+    public IReadOnlyList<EmpleadoAreaRow> Dependencias { get; private set; } = Array.Empty<EmpleadoAreaRow>();
+
+    public IReadOnlyList<CatalogoItem> AreasDelAnio { get; private set; } = Array.Empty<CatalogoItem>();
+
+    /// <summary>Año de estructura sobre el que se cambia la dependencia.</summary>
+    [BindProperty(SupportsGet = true)]
+    public int? AnioDependencia { get; set; }
+
+    public bool TieneFoto { get; private set; }
+
     [TempData]
     public string? MensajeExito { get; set; }
 
     public bool EsEdicion => Id is not null;
+
+    // Límite de lo que se sube; la foto guardada queda mucho más pequeña tras comprimirla.
+    private const int MaxBytesFoto = 5 * 1_048_576;
+
+    /// <summary>Tipo MIME según los primeros bytes (no se confía en la extensión ni en el Content-Type).</summary>
+    private static string? TipoImagen(byte[] b)
+    {
+        if (b.Length > 3 && b[0] == 0xFF && b[1] == 0xD8) return "image/jpeg";
+        if (b.Length > 8 && b[0] == 0x89 && b[1] == 0x50 && b[2] == 0x4E && b[3] == 0x47) return "image/png";
+        if (b.Length > 3 && b[0] == 0x47 && b[1] == 0x49 && b[2] == 0x46) return "image/gif";
+        if (b.Length > 2 && b[0] == 0x42 && b[1] == 0x4D) return "image/bmp";
+        // WebP: contenedor RIFF con la marca "WEBP" en el byte 8.
+        if (b.Length > 12 && b[0] == 0x52 && b[1] == 0x49 && b[2] == 0x46 && b[3] == 0x46
+            && b[8] == 0x57 && b[9] == 0x45 && b[10] == 0x42 && b[11] == 0x50) return "image/webp";
+        return null;
+    }
+
+    public async Task<IActionResult> OnGetFotoAsync(int id, CancellationToken cancellationToken)
+    {
+        var ficha = await _fichas.ObtenerAsync(id, cancellationToken);
+        var tipo = ficha?.Foto is { Length: > 0 } ? TipoImagen(ficha.Foto) : null;
+        return tipo is null ? NotFound() : File(ficha!.Foto!, tipo);
+    }
+
+    public async Task<IActionResult> OnPostCambiarAreaAsync(int anioArea, int idAreaNueva, CancellationToken cancellationToken)
+    {
+        if (Id is null)
+        {
+            return NotFound();
+        }
+
+        var r = await _fichas.CambiarAreaAsync(Id.Value, anioArea, idAreaNueva, cancellationToken);
+        MensajeExito = r.Ok ? $"Se actualizó la dependencia del año {anioArea}." : string.Join(" ", r.Errores);
+        return RedirectToPage(new { id = Id, anioDependencia = anioArea });
+    }
+
+    private async Task CargarDependenciasAsync(CancellationToken cancellationToken)
+    {
+        if (Id is null)
+        {
+            return;
+        }
+
+        Dependencias = (await _fichas.ListarDependenciasAsync(Id.Value, cancellationToken))
+            .OrderByDescending(d => d.Year).ToList();
+        var anio = AnioDependencia ?? Dependencias.FirstOrDefault()?.Year;
+        if (anio is not null)
+        {
+            AnioDependencia = anio;
+            AreasDelAnio = await _fichas.ListarAreasAsync(anio.Value, cancellationToken);
+        }
+    }
 
     public async Task<IActionResult> OnGetAsync(CancellationToken cancellationToken)
     {
@@ -51,7 +120,9 @@ public class FichaModel : PageModel
         }
 
         Input = FichaInput.Desde(ficha);
+        TieneFoto = ficha.Foto is { Length: > 0 };
         Catalogos = await _fichas.CatalogosAsync(ficha.Year, cancellationToken);
+        await CargarDependenciasAsync(cancellationToken);
         return Page();
     }
 
@@ -68,6 +139,29 @@ public class FichaModel : PageModel
 
         var ficha = Input.ParaGuardar(Id);
 
+        if (FotoArchivo is { Length: > 0 })
+        {
+            if (FotoArchivo.Length > MaxBytesFoto)
+            {
+                Errores = new[] { "La foto no debe superar 5 MB." };
+                await CargarDependenciasAsync(cancellationToken);
+                return Page();
+            }
+
+            using var ms = new MemoryStream();
+            await FotoArchivo.CopyToAsync(ms, cancellationToken);
+            // El procesador decodifica la imagen (valida que lo sea), la reduce y la comprime a WebP.
+            var procesada = _imagenes.Comprimir(ms.ToArray());
+            if (procesada is null)
+            {
+                Errores = new[] { "El archivo de la foto no es una imagen válida (use JPG, PNG, GIF, BMP o WebP)." };
+                await CargarDependenciasAsync(cancellationToken);
+                return Page();
+            }
+
+            ficha.Foto = procesada.Bytes;
+        }
+
         if (Id is not null)
         {
             // La foto no se edita en este formulario: se conserva la existente para que
@@ -79,7 +173,7 @@ public class FichaModel : PageModel
             }
 
             ficha.IdPersona = actual.IdPersona;
-            ficha.Foto = actual.Foto;
+            ficha.Foto ??= actual.Foto;
         }
 
         try

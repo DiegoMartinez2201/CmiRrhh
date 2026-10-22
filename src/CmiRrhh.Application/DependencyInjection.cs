@@ -22,6 +22,9 @@ public static class DependencyInjection
         services.AddScoped<IPersonalFichaService, PersonalFichaService>();
         services.AddScoped<IAsignacionPersonalService, AsignacionPersonalService>();
         services.AddScoped<IMantenimientoCatalogoService, MantenimientoCatalogoService>();
+        services.AddScoped<IEstructuraOrganizacionalService, EstructuraOrganizacionalService>();
+        services.AddScoped<IEscalafonService, EscalafonService>();
+        services.AddScoped<IFichaImpresaService, FichaImpresaService>();
 
         // Reportes tabulares: cada uno es una estrategia; agregar otro = una línea más aquí.
         services.AddScoped<IReporteTabular, ReporteCumpleanos>();
@@ -29,6 +32,12 @@ public static class DependencyInjection
         services.AddScoped<IReporteTabular, ReportePersonalPorCargo>();
         services.AddScoped<IReporteTabular, ReporteRelacionPermisos>();
         services.AddScoped<IReporteTabular, ReporteHorasExtras>();
+        services.AddScoped<IReporteTabular, ReporteFaltas>();
+        services.AddScoped<IReporteTabular, ReportePersonalPorProfesion>();
+        services.AddScoped<IReporteTabular, ReporteEstadisticaPermisos>();
+        services.AddScoped<IReporteTabular, ReporteListaPersonal>();
+        services.AddScoped<IReporteTabular, ReportePersonalPorOficina>();
+        services.AddScoped<IReporteTabular, ReporteAsistenciaDiaria>();
         services.AddScoped<IReporteService, ReporteService>();
         services.AddScoped<IMarcacionAutorizadaService, MarcacionAutorizadaService>();
         services.AddScoped<ISuspensionAsistenciaService, SuspensionAsistenciaService>();

@@ -71,7 +71,9 @@ public sealed class FichaPersonalRepository : IFichaPersonalRepository
             IdEstadoCivil = e.IdEstadoCivil ?? 0,
             IdDiscapacidad = e.IdDiscapacidad ?? 0,
             ExpSocial = e.ExpSocial,
-            FechaIngreso = e.FechaIngreso ?? default,
+            // El procedimiento legado spRRHH_ActualizaEmpleado guarda la "fecha de ingreso" en
+            // Persona.FechaRegistro y no toca Empleado.FechaIngreso; se lee del mismo lugar.
+            FechaIngreso = e.P?.FechaRegistro ?? e.FechaIngreso ?? default,
             IdTipoSangre = e.IdTipoSangre ?? 0,
             Brevete = e.Brevete,
             LibretaMilitar = e.NumLibretaMilitar,
@@ -93,6 +95,15 @@ public sealed class FichaPersonalRepository : IFichaPersonalRepository
                            && p.NumDocId.Trim() == numero
                            && (excluirIdPersona == null || p.IdPersona != excluirIdPersona),
                 cancellationToken);
+    }
+
+    public async Task<IReadOnlyList<CatalogoItem>> ListarAreasAsync(int anio, CancellationToken cancellationToken = default)
+    {
+        return await _context.EstructOrganizs.AsNoTracking()
+            .Where(a => a.Year == anio)
+            .OrderBy(a => a.AreaOrganizacional)
+            .Select(a => new CatalogoItem { Id = a.IdAreaOrganiz, Nombre = a.AreaOrganizacional })
+            .ToListAsync(cancellationToken);
     }
 
     public async Task<FichaCatalogos> CargarCatalogosAsync(int? anioEstructura, CancellationToken cancellationToken = default)
