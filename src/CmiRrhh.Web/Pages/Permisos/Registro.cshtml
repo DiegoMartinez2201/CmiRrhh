@@ -1,0 +1,93 @@
+@page
+@model CmiRrhh.Web.Pages.Permisos.RegistroModel
+@{
+    ViewData["Title"] = "Registrar permiso";
+}
+
+<h1 class="h3 mb-3">Registrar permiso</h1>
+<p class="text-muted">Equivalente a FrmPermiso (alta): tipo de permiso, motivo, fecha o rango, hora de salida/retorno, autorización, documento de referencia, lugar y observaciones.</p>
+
+@if (Model.MensajeOk is not null)
+{
+    <div class="alert alert-success">@Model.MensajeOk</div>
+}
+@if (Model.AvisoNoAsistioHoy == true)
+{
+    <div class="alert alert-warning">El empleado no asistió hoy.</div>
+}
+@if (Model.AvisoYaSeRetiro == true)
+{
+    <div class="alert alert-warning">El empleado ya se retiró del centro laboral.</div>
+}
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<form method="post" class="row g-3">
+    <div class="col-md-3">
+        <label asp-for="IdEmpleado" class="form-label"></label>
+        <input asp-for="IdEmpleado" class="form-control" />
+        <span asp-validation-for="IdEmpleado" class="text-danger"></span>
+    </div>
+    <div class="col-md-5">
+        <label asp-for="IdMotivo" class="form-label"></label>
+        <select asp-for="IdMotivo" asp-items="Model.MotivosSelect" class="form-select">
+            <option value="">-- Seleccione --</option>
+        </select>
+        <span asp-validation-for="IdMotivo" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-3">
+        <label asp-for="FechaInicio" class="form-label"></label>
+        <input asp-for="FechaInicio" class="form-control" />
+        <span asp-validation-for="FechaInicio" class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <label asp-for="FechaFin" class="form-label"></label>
+        <input asp-for="FechaFin" class="form-control" />
+        <span asp-validation-for="FechaFin" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-2">
+        <label asp-for="HoraSalida" class="form-label"></label>
+        <input asp-for="HoraSalida" class="form-control" placeholder="HH:mm" />
+    </div>
+    <div class="col-md-2">
+        <label asp-for="HoraRetorno" class="form-label"></label>
+        <input asp-for="HoraRetorno" class="form-control" placeholder="HH:mm" />
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+        <div class="form-check">
+            <input asp-for="TodoElDia" class="form-check-input" />
+            <label asp-for="TodoElDia" class="form-check-label"></label>
+        </div>
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+        <div class="form-check">
+            <input asp-for="Retorno" class="form-check-input" />
+            <label asp-for="Retorno" class="form-check-label"></label>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="Lugar" class="form-label"></label>
+        <input asp-for="Lugar" class="form-control" />
+    </div>
+    <div class="col-md-4">
+        <label asp-for="Referencia" class="form-label"></label>
+        <input asp-for="Referencia" class="form-control" />
+    </div>
+    <div class="col-md-4">
+        <label asp-for="Autorizacion" class="form-label"></label>
+        <input asp-for="Autorizacion" class="form-control" />
+    </div>
+
+    <div class="col-12">
+        <label asp-for="Observaciones" class="form-label"></label>
+        <textarea asp-for="Observaciones" class="form-control" rows="2"></textarea>
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Grabar</button>
+        <a asp-page="/Permisos/Consulta" asp-route-IdEmpleado="@Model.IdEmpleado" class="btn btn-link">Ver permisos del empleado</a>
+    </div>
+</form>

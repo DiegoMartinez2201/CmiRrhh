@@ -1,5 +1,37 @@
+/* =========================================================================
+   CMI RRHH — tema visual
+   Tokens de diseño + layout de shell (sidebar + topbar) + componentes.
+   No agrega dependencias nuevas: solo CSS sobre Bootstrap ya incluido.
+   ========================================================================= */
+
+:root {
+  --brand-900: #0f2a43;
+  --brand-800: #123655;
+  --brand-700: #15466e;
+  --brand-600: #1a5a8a;
+  --brand-500: #1f6fa8;
+  --accent: #14b8a6;
+  --accent-600: #0d9488;
+
+  --bg: #f3f5f8;
+  --surface: #ffffff;
+  --border: #e3e8ef;
+  --text: #1f2937;
+  --text-muted: #667085;
+
+  --radius-sm: 0.5rem;
+  --radius: 0.85rem;
+  --radius-lg: 1.1rem;
+
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
+  --shadow-md: 0 4px 14px rgba(16, 24, 40, 0.08);
+
+  --sidebar-w: 268px;
+  --topbar-h: 64px;
+}
+
 html {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 @media (min-width: 768px) {
@@ -8,15 +40,355 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--brand-600);
+}
+
+a:hover {
+  color: var(--brand-700);
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(20, 184, 166, 0.25);
+  border-color: var(--accent);
+}
+
+/* ---------------------------------------------------------------------
+   Shell: topbar + sidebar (solo cuando hay sesión iniciada)
+   --------------------------------------------------------------------- */
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  background: linear-gradient(180deg, var(--brand-900), var(--brand-800));
+  color: #eaf1f8;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1030;
+  transform: translateX(-100%);
+  transition: transform 0.2s ease-in-out;
+}
+
+.app-sidebar.show {
+  transform: translateX(0);
+}
+
+@media (min-width: 992px) {
+  .app-sidebar {
+    position: fixed;
+    transform: none;
+  }
+
+  .app-main {
+    margin-left: var(--sidebar-w);
+  }
+}
+
+.app-sidebar .brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.1rem 1.25rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.app-sidebar .brand .logo-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.25);
+  flex-shrink: 0;
+}
+
+.app-sidebar nav {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 0.75rem 0.75rem 1rem;
+}
+
+.sidebar-section-title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(234, 241, 248, 0.5);
+  padding: 1rem 0.75rem 0.35rem;
+  font-weight: 600;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius-sm);
+  color: rgba(234, 241, 248, 0.85);
+  text-decoration: none;
+  font-size: 0.925rem;
+  font-weight: 500;
+  margin-bottom: 0.15rem;
+  transition: background-color 0.12s ease-in-out, color 0.12s ease-in-out;
+}
+
+.sidebar-link svg {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  text-decoration: none;
+}
+
+.sidebar-link.active {
+  background: var(--accent);
+  color: #06302b;
+  font-weight: 600;
+}
+
+.sidebar-link.active svg {
+  opacity: 1;
+}
+
+.app-sidebar .sidebar-footer {
+  padding: 0.9rem 1.1rem 1.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.8rem;
+  color: rgba(234, 241, 248, 0.55);
+}
+
+.app-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  height: var(--topbar-h);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebar-toggle {
+  border: none;
+  background: transparent;
+  color: var(--text);
+  padding: 0.4rem;
+  border-radius: var(--radius-sm);
+  line-height: 0;
+}
+
+.sidebar-toggle:hover {
+  background: var(--bg);
+}
+
+@media (min-width: 992px) {
+  .sidebar-toggle {
+    display: none;
+  }
+}
+
+.app-topbar .page-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 0;
+  color: var(--text);
+}
+
+.app-topbar .spacer {
+  flex: 1 1 auto;
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.user-chip .avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--brand-600);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  z-index: 1025;
+  display: none;
+}
+
+.sidebar-backdrop.show {
+  display: block;
+}
+
+.app-content {
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .app-content {
+    padding: 1.75rem 2rem;
+  }
+}
+
+/* Páginas sin sesión (login, acceso denegado, error): shell simple centrado */
+.guest-topbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0.9rem 0;
+}
+
+.guest-topbar .brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: var(--brand-800);
+  text-decoration: none;
+}
+
+.guest-main {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+}
+
+/* ---------------------------------------------------------------------
+   Componentes de contenido
+   --------------------------------------------------------------------- */
+
+.page-header {
+  margin-bottom: 1.25rem;
+}
+
+.page-header h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.page-header .page-subtitle {
+  color: var(--text-muted);
+  font-size: 0.925rem;
+  margin: 0;
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+  border-top-left-radius: var(--radius) !important;
+  border-top-right-radius: var(--radius) !important;
+}
+
+.table {
+  --bs-table-bg: transparent;
+}
+
+.table thead th {
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  font-weight: 700;
+  border-bottom-width: 1px;
+  background: #f8fafc;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(20, 184, 166, 0.06);
+}
+
+.btn-primary {
+  background-color: var(--brand-600);
+  border-color: var(--brand-600);
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+  background-color: var(--brand-700) !important;
+  border-color: var(--brand-700) !important;
+}
+
+.btn-outline-primary {
+  color: var(--brand-600);
+  border-color: var(--brand-600);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--brand-600);
+  border-color: var(--brand-600);
+}
+
+.alert {
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+}
+
+.badge-soft {
+  background: rgba(20, 184, 166, 0.12);
+  color: var(--accent-600);
+  font-weight: 600;
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+}
+
+footer.app-footer {
+  padding: 1rem 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-align: center;
 }

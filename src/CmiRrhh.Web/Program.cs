@@ -17,6 +17,7 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddScoped<IStoredProcedureExecutor, EfStoredProcedureExecutor>();
 builder.Services.AddScoped<IEmpleadoRepository, EmpleadoRepository>();
 builder.Services.AddScoped<IHorarioRepository, HorarioRepository>();
+builder.Services.AddScoped<IFeriadoRepository, FeriadoRepository>();
 builder.Services.AddScoped<IReporteRepository, ReporteRepository>();
 
 builder.Services.AddScoped<PermisoRepository>();
@@ -27,6 +28,7 @@ builder.Services.AddScoped<AsistenciaRepository>();
 builder.Services.AddScoped<IAsistenciaRepository>(sp => sp.GetRequiredService<AsistenciaRepository>());
 builder.Services.AddScoped<IAsistenciaReporteRepository>(sp => sp.GetRequiredService<AsistenciaRepository>());
 builder.Services.AddScoped<ICatalogoRepository, CatalogoRepository>();
+builder.Services.AddScoped<IMarcacionAutorizadaRepository, MarcacionAutorizadaRepository>();
 
 builder.Services.AddScoped<IVerificadorEventoLaboral, VerificadorMarcacion>();
 builder.Services.AddScoped<IVerificadorEventoLaboral, VerificadorAsistencia>();
@@ -39,6 +41,24 @@ builder.Services.AddRazorPages(options =>
     options.Conventions.AuthorizeFolder("/Asistencias", AuthConstants.AsistenciasPolicy);
     options.Conventions.AuthorizePage("/Asistencias/Correccion", AuthConstants.AsistenciasEscrituraPolicy);
     options.Conventions.AuthorizePage("/Asistencias/ImportarBiometrico", AuthConstants.AsistenciasEscrituraPolicy);
+    // Permisos reutiliza las políticas de Asistencias: el documento de exploración funcional
+    // (sección 4.3) confirma que ambos módulos comparten el mismo bloque de roles en el
+    // sistema legado (no hay un rol propio de "Permisos").
+    options.Conventions.AuthorizeFolder("/Permisos", AuthConstants.AsistenciasPolicy);
+    options.Conventions.AuthorizePage("/Permisos/Registro", AuthConstants.AsistenciasEscrituraPolicy);
+    // Horarios/Feriados (sección 4.5, "Asistencia") reutiliza las mismas políticas que
+    // Asistencias y Permisos por la misma razón documentada arriba: el documento de
+    // exploración funcional no describe un rol propio para este submódulo, y en la barra
+    // de herramientas principal "Horarios"/"Agregar Feriados" están junto a las acciones
+    // de asistencia, no en el menú Mantenimientos restringido.
+    options.Conventions.AuthorizeFolder("/Horarios", AuthConstants.AsistenciasPolicy);
+    options.Conventions.AuthorizePage("/Horarios/Index", AuthConstants.AsistenciasEscrituraPolicy);
+    options.Conventions.AuthorizePage("/Horarios/Especial", AuthConstants.AsistenciasEscrituraPolicy);
+    options.Conventions.AuthorizePage("/Horarios/Feriados", AuthConstants.AsistenciasEscrituraPolicy);
+    // Marcaciones autorizadas / Suspender asistencia (sección 4.5, cierre del submódulo de
+    // Asistencia): escriben directo sobre Asistencia, igual que Corrección e Importar bio.
+    options.Conventions.AuthorizePage("/Asistencias/MarcacionesAutorizadas", AuthConstants.AsistenciasEscrituraPolicy);
+    options.Conventions.AuthorizePage("/Asistencias/SuspenderAsistencia", AuthConstants.AsistenciasEscrituraPolicy);
     options.Conventions.AllowAnonymousToPage("/Account/Login");
     options.Conventions.AllowAnonymousToPage("/Error");
 });

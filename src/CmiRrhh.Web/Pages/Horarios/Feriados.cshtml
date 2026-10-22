@@ -1,0 +1,79 @@
+@page
+@model CmiRrhh.Web.Pages.Horarios.FeriadosModel
+@{
+    ViewData["Title"] = "Feriados";
+}
+
+<div class="page-header">
+    <h1>Feriados</h1>
+    <p class="page-subtitle">Agrega y elimina feriados no laborables.</p>
+</div>
+
+@if (Model.MensajeOk is not null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @Model.MensajeOk
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+    </div>
+}
+@if (Model.MensajeError is not null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @Model.MensajeError
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+    </div>
+}
+
+<div class="card mb-4">
+    <div class="card-header">Agregar feriado</div>
+    <div class="card-body">
+        <form method="post" asp-page-handler="Agregar" class="row g-3">
+            <div class="col-md-3">
+                <label asp-for="Nuevo.Fecha" class="form-label"></label>
+                <input asp-for="Nuevo.Fecha" class="form-control" />
+                <span asp-validation-for="Nuevo.Fecha" class="text-danger"></span>
+            </div>
+            <div class="col-md-5">
+                <label asp-for="Nuevo.Motivo" class="form-label"></label>
+                <input asp-for="Nuevo.Motivo" class="form-control" />
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary">Agregar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">Feriados registrados (@Model.Feriados.Count)</div>
+    <div class="table-responsive">
+        <table class="table table-sm table-striped table-hover align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Motivo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var feriado in Model.Feriados)
+                {
+                    <tr>
+                        <td>@(feriado.Fecha?.ToString("dd/MM/yyyy"))</td>
+                        <td>@feriado.Motivo</td>
+                        <td class="text-end">
+                            <form method="post" asp-page-handler="Eliminar" asp-route-idFeriado="@feriado.IdFeriado" class="d-inline"
+                                  onsubmit="return confirm('¿Eliminar el feriado del @(feriado.Fecha?.ToString("dd/MM/yyyy"))?');">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+                @if (Model.Feriados.Count == 0)
+                {
+                    <tr><td colspan="3" class="text-center text-muted py-3">No hay feriados registrados.</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

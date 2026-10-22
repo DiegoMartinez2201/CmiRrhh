@@ -1,0 +1,95 @@
+@page
+@model CmiRrhh.Web.Pages.Permisos.ConsultaModel
+@{
+    ViewData["Title"] = "Consulta de permisos";
+}
+
+<h1 class="h3 mb-3">Consulta de permisos</h1>
+<p class="text-muted">Equivalente a FrmConsultaPermisos: lista por empleado, tipo y motivo; permite eliminar y exportar.</p>
+
+@if (Model.MensajeOk is not null)
+{
+    <div class="alert alert-success">@Model.MensajeOk</div>
+}
+
+<form method="get" class="row g-3 align-items-end mb-4">
+    <div class="col-md-3">
+        <label asp-for="IdEmpleado" class="form-label"></label>
+        <input asp-for="IdEmpleado" class="form-control" />
+        <span asp-validation-for="IdEmpleado" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="IdMotivo" class="form-label"></label>
+        <select asp-for="IdMotivo" asp-items="Model.MotivosSelect" class="form-select">
+            <option value="">-- Todos --</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary">Consultar</button>
+    </div>
+    <div class="col-md-3">
+        <a asp-page-handler="Exportar"
+           asp-route-IdEmpleado="@Model.IdEmpleado"
+           asp-route-IdTipoPermiso="@Model.IdTipoPermiso"
+           asp-route-IdMotivo="@Model.IdMotivo"
+           class="btn btn-outline-secondary">Exportar (CSV)</a>
+    </div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+</form>
+
+@if (Model.ConsultaEjecutada)
+{
+    <p class="small text-muted mb-2">@Model.Resultados.Count registro(s).</p>
+    @if (Model.Resultados.Count == 0)
+    {
+        <div class="alert alert-info">No hay permisos registrados con los filtros indicados.</div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-sm table-striped table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Motivo</th>
+                        <th>N° permiso</th>
+                        <th>Inicio</th>
+                        <th>Fin</th>
+                        <th>Salida</th>
+                        <th>Retorno</th>
+                        <th>Día</th>
+                        <th>Lugar</th>
+                        <th>Referencia</th>
+                        <th>Autorización</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var fila in Model.Resultados)
+                    {
+                        <tr>
+                            <td>@fila.DescripTipoPermiso</td>
+                            <td>@fila.DescripMotivo</td>
+                            <td>@fila.NPermiso</td>
+                            <td>@(fila.FechaInicio?.ToString("dd/MM/yyyy"))</td>
+                            <td>@(fila.FechaFin?.ToString("dd/MM/yyyy"))</td>
+                            <td>@fila.HoraSal</td>
+                            <td>@fila.HoraRet</td>
+                            <td>@(fila.Dia == true ? "Todo el día" : (fila.Retorno == true ? "Con retorno" : "—"))</td>
+                            <td>@fila.Lugar</td>
+                            <td>@fila.Referencia</td>
+                            <td>@fila.Autorizacion</td>
+                            <td>
+                                <form method="post" asp-page-handler="Eliminar" asp-route-nPermiso="@fila.NPermiso"
+                                      onsubmit="return confirm('Desea eliminar el permiso de la fecha: @(fila.FechaInicio?.ToString("dd/MM/yyyy"))?');">
+                                    <input type="hidden" asp-for="IdEmpleado" />
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+}

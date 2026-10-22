@@ -1,0 +1,112 @@
+@page
+@model CmiRrhh.Web.Pages.Asistencias.MarcacionesAutorizadasModel
+@{
+    ViewData["Title"] = "Marcaciones autorizadas";
+}
+
+<div class="page-header">
+    <h1>Marcaciones autorizadas</h1>
+    <p class="page-subtitle">Autoriza una entrada o una salida con hora, motivo y documento de referencia. Para justificar ingreso y salida a la vez, use Permisos.</p>
+</div>
+
+@if (Model.MensajeOk is not null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @Model.MensajeOk
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+    </div>
+}
+@if (Model.MensajeError is not null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @Model.MensajeError
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+    </div>
+}
+
+<form method="get" class="row g-3 align-items-end mb-4">
+    <div class="col-md-3">
+        <label asp-for="IdEmpleado" class="form-label"></label>
+        <input asp-for="IdEmpleado" class="form-control" />
+        <span asp-validation-for="IdEmpleado" class="text-danger"></span>
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </div>
+</form>
+
+@if (Model.ConsultaEjecutada)
+{
+    <div class="card mb-4">
+        <div class="card-header">Autorizar marcación</div>
+        <div class="card-body">
+            <form method="post" asp-page-handler="Autorizar" class="row g-3">
+                <input type="hidden" asp-for="IdEmpleado" />
+                <div class="col-md-2">
+                    <label asp-for="Nueva.Fecha" class="form-label"></label>
+                    <input asp-for="Nueva.Fecha" class="form-control" />
+                </div>
+                <div class="col-md-2">
+                    <label asp-for="Nueva.Tipo" class="form-label"></label>
+                    <select asp-for="Nueva.Tipo" class="form-select">
+                        <option value="Entrada">Entrada</option>
+                        <option value="Salida">Salida</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label asp-for="Nueva.Hora" class="form-label"></label>
+                    <input asp-for="Nueva.Hora" class="form-control" placeholder="hh:mm" />
+                    <span asp-validation-for="Nueva.Hora" class="text-danger"></span>
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="Nueva.Motivo" class="form-label"></label>
+                    <input asp-for="Nueva.Motivo" class="form-control" />
+                    <span asp-validation-for="Nueva.Motivo" class="text-danger"></span>
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="Nueva.Documento" class="form-label"></label>
+                    <input asp-for="Nueva.Documento" class="form-control" />
+                    <span asp-validation-for="Nueva.Documento" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Autorizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">Marcaciones autorizadas del empleado (@Model.Resultados.Count)</div>
+        <div class="table-responsive">
+            <table class="table table-sm table-striped table-hover align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Tipo</th>
+                        <th>Hora</th>
+                        <th>Motivo</th>
+                        <th>Documento</th>
+                        <th>Registrado por</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var fila in Model.Resultados)
+                    {
+                        <tr>
+                            <td>@fila.Fecha.ToString("dd/MM/yyyy")</td>
+                            <td>@fila.Tipo</td>
+                            <td>@fila.Hora</td>
+                            <td>@fila.Motivo</td>
+                            <td>@fila.Documento</td>
+                            <td class="small text-muted">@fila.Usuario · @fila.FechaRegistro.ToString("dd/MM/yyyy HH:mm")</td>
+                        </tr>
+                    }
+                    @if (Model.Resultados.Count == 0)
+                    {
+                        <tr><td colspan="6" class="text-center text-muted py-3">Este empleado no tiene marcaciones autorizadas registradas.</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

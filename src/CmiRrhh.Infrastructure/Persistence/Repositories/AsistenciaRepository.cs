@@ -57,6 +57,49 @@ public sealed class AsistenciaRepository : IAsistenciaRepository, IAsistenciaRep
         await _context.SaveChangesAsync(cancellationToken);
     }
 
+    public Task<bool> TieneHorarioAsignadoAsync(int idEmpleado, CancellationToken cancellationToken = default)
+        => _context.Empleados.AsNoTracking()
+            .AnyAsync(e => e.IdEmpleado == idEmpleado && e.IdHorario != null, cancellationToken);
+
+    public async Task AutorizarMarcacionAsync(int idEmpleado, DateTime fecha, bool esEntrada, string hora, CancellationToken cancellationToken = default)
+    {
+        // Regla 1 (sin SP identificado para "Marcaciones autorizadas" en RRHHClass):
+        // upsert directo de Hor_Ent/Flag_Ent o Hor_Sal/Flag_Sal, igual criterio de igualdad
+        // de Fecha que VerificadorAsistencia (medianoche).
+        var asistencia = await _context.Asistencia
+            .FirstOrDefaultAsync(a => a.IdEmpleado == idEmpleado && a.Fecha == fecha, cancellationToken);
+
+        if (asistencia is null)
+        {
+            asistencia = new Asistencium { IdEmpleado = idEmpleado, Fecha = fecha };
+            _context.Asistencia.Add(asistencia);
+        }
+
+        if (esEntrada)
+        {
+            asistencia.HorEnt = hora;
+            asistencia.FlagEnt = true;
+        }
+        else
+        {
+            asistencia.HorSal = hora;
+            asistencia.FlagSal = true;
+        }
+
+        await _context.SaveChangesAsync(cancellationToken);
+    }
+
+    public async Task SuspenderAsistenciaAsync(int idEmpleado, DateTime fecha, CancellationToken cancellationToken = default)
+    {
+        // Regla 1: "Suspender asistencia" anula el control de asistencia del día (Estado = false).
+        var asistencia = await _context.Asistencia
+            .FirstOrDefaultAsync(a => a.IdEmpleado == idEmpleado && a.Fecha == fecha, cancellationToken)
+            ?? throw new InvalidOperationException("No existe la asistencia indicada.");
+
+        asistencia.Estado = false;
+        await _context.SaveChangesAsync(cancellationToken);
+    }
+
     public Task<DataTable> ObtenerAsistenciasPorDiaAsync(string fecha, CancellationToken cancellationToken = default)
     {
         // Regla 2: spRRHH_GetAsistencias arma el listado diario con joins de horario/empleado.

@@ -14,6 +14,11 @@ public static class DependencyInjection
         services.AddScoped<IAsistenciaImportacionService, AsistenciaImportacionService>();
         services.AddScoped<IAsistenciaPlanillaService, AsistenciaPlanillaService>();
         services.AddScoped<ICatalogoService, CatalogoService>();
+        services.AddScoped<IPermisoService, PermisoService>();
+        services.AddScoped<IHorarioService, HorarioService>();
+        services.AddScoped<IFeriadoService, FeriadoService>();
+        services.AddScoped<IMarcacionAutorizadaService, MarcacionAutorizadaService>();
+        services.AddScoped<ISuspensionAsistenciaService, SuspensionAsistenciaService>();
         return services;
     }
 }

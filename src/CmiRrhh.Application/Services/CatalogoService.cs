@@ -8,6 +8,8 @@ public interface ICatalogoService
     Task<IReadOnlyList<CatalogoItem>> ListarLocalesAsync(CancellationToken cancellationToken = default);
 
     Task<IReadOnlyList<CatalogoItem>> ListarTiposTrabajadorAsync(CancellationToken cancellationToken = default);
+
+    Task<IReadOnlyList<MotivoPermisoItem>> ListarMotivosPermisoAsync(CancellationToken cancellationToken = default);
 }
 
 public sealed class CatalogoService : ICatalogoService
@@ -24,4 +26,7 @@ public sealed class CatalogoService : ICatalogoService
 
     public Task<IReadOnlyList<CatalogoItem>> ListarTiposTrabajadorAsync(CancellationToken cancellationToken = default)
         => _catalogo.ListarTiposTrabajadorAsync(cancellationToken);
+
+    public Task<IReadOnlyList<MotivoPermisoItem>> ListarMotivosPermisoAsync(CancellationToken cancellationToken = default)
+        => _catalogo.ListarMotivosPermisoAsync(cancellationToken);
 }

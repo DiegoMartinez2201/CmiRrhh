@@ -1,0 +1,129 @@
+@page
+@model CmiRrhh.Web.Pages.Horarios.IndexModel
+@{
+    ViewData["Title"] = "Horarios";
+}
+
+<div class="page-header">
+    <h1>Horarios</h1>
+    <p class="page-subtitle">Equivalente a "Información de Horarios": agregar, modificar y eliminar horarios del personal.</p>
+</div>
+
+@if (Model.MensajeOk is not null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @Model.MensajeOk
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+    </div>
+}
+@if (Model.MensajeError is not null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @Model.MensajeError
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+    </div>
+}
+
+<div class="card mb-4">
+    <div class="card-header">@(Model.EditandoExistente ? "Modificar horario" : "Agregar horario")</div>
+    <div class="card-body">
+        <form method="post" asp-page-handler="Guardar" class="row g-3">
+            <input type="hidden" asp-for="Form.IdHorario" />
+            <div class="col-md-4">
+                <label asp-for="Form.DescripHorario" class="form-label"></label>
+                <input asp-for="Form.DescripHorario" class="form-control" />
+                <span asp-validation-for="Form.DescripHorario" class="text-danger"></span>
+            </div>
+            <div class="col-md-2">
+                <label asp-for="Form.Ingreso1" class="form-label"></label>
+                <input asp-for="Form.Ingreso1" class="form-control" placeholder="hh:mm" />
+            </div>
+            <div class="col-md-2">
+                <label asp-for="Form.Salida1" class="form-label"></label>
+                <input asp-for="Form.Salida1" class="form-control" placeholder="hh:mm" />
+            </div>
+            <div class="col-md-2">
+                <label asp-for="Form.Ingreso2" class="form-label"></label>
+                <input asp-for="Form.Ingreso2" class="form-control" placeholder="hh:mm" />
+            </div>
+            <div class="col-md-2">
+                <label asp-for="Form.Salida2" class="form-label"></label>
+                <input asp-for="Form.Salida2" class="form-control" placeholder="hh:mm" />
+            </div>
+            <div class="col-md-3">
+                <div class="form-check mt-4">
+                    <input asp-for="Form.Estado" class="form-check-input" />
+                    <label asp-for="Form.Estado" class="form-check-label"></label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-check mt-4">
+                    <input asp-for="Form.SgtDia" class="form-check-input" />
+                    <label asp-for="Form.SgtDia" class="form-check-label"></label>
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">@(Model.EditandoExistente ? "Guardar cambios" : "Agregar")</button>
+                @if (Model.EditandoExistente)
+                {
+                    <a asp-page="/Horarios/Index" class="btn btn-outline-secondary ms-2">Cancelar</a>
+                }
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">Horarios registrados (@Model.Horarios.Count)</div>
+    <div class="table-responsive">
+        <table class="table table-sm table-striped table-hover align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>Descripción</th>
+                    <th>Ingreso</th>
+                    <th>Salida alm.</th>
+                    <th>Entrada alm.</th>
+                    <th>Salida</th>
+                    <th>Estado</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var horario in Model.Horarios)
+                {
+                    <tr>
+                        <td>@horario.DescripHorario</td>
+                        <td>@horario.Ingreso1</td>
+                        <td>@horario.Salida1</td>
+                        <td>@horario.Ingreso2</td>
+                        <td>@horario.Salida2</td>
+                        <td>
+                            @if (horario.Estado == true)
+                            {
+                                <span class="badge-soft">Activo</span>
+                            }
+                            else
+                            {
+                                <span class="text-muted small">Inactivo</span>
+                            }
+                        </td>
+                        <td class="text-end">
+                            <a asp-page="/Horarios/Index" asp-route-editar="@horario.IdHorario" class="btn btn-sm btn-outline-primary">Editar</a>
+                            <form method="post" asp-page-handler="Eliminar" asp-route-idHorario="@horario.IdHorario" class="d-inline"
+                                  onsubmit="return confirm('¿Eliminar el horario @horario.DescripHorario?');">
+                                <button type="submit" class="btn btn-sm btn-outline-danger"
+                                        @(horario.TieneEmpleadosAsignados ? "title=Tiene empleados asignados" : "")>
+                                    Eliminar
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+                @if (Model.Horarios.Count == 0)
+                {
+                    <tr><td colspan="7" class="text-center text-muted py-3">No hay horarios registrados.</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -3,6 +3,7 @@ using System.Globalization;
 using CmiRrhh.Domain.Interfaces;
 using CmiRrhh.Domain.Interfaces.Repositories;
 using CmiRrhh.Domain.Models;
+using CmiRrhh.Infrastructure.Persistence.Entities;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
@@ -95,6 +96,46 @@ public sealed class PermisoRepository : IPermisoRepository, IPermisoReporteRepos
             Autorizacion = DataTableMapper.StringOrNull(row, "Autorizacion"),
             IdEmpleado = DataTableMapper.Int(row, "IdEmpleado")
         });
+    }
+
+    public async Task RegistrarPermisoAsync(
+        int idEmpleado,
+        int nPermiso,
+        int idMotivo,
+        DateTime fechaInicio,
+        DateTime fechaFin,
+        string? horaSalida,
+        string? horaRetorno,
+        bool todoElDia,
+        bool retorno,
+        string? lugar,
+        string? referencia,
+        string? autorizacion,
+        string? observaciones,
+        CancellationToken cancellationToken = default)
+    {
+        // No hay un SP de inserción documentado en RRHHClass para Permiso (el formulario legado
+        // insertaba directamente contra la tabla); se usa EF Core, igual que el resto de las
+        // altas ya migradas (Empleado, Área).
+        var permiso = new Permiso
+        {
+            IdEmpleado = idEmpleado,
+            Npermiso = nPermiso,
+            IdMotivo = idMotivo,
+            FechaInicio = fechaInicio.Date,
+            FechaFin = fechaFin.Date,
+            HoraSal = horaSalida,
+            HoraRet = horaRetorno,
+            Dia = todoElDia,
+            Retorno = retorno,
+            Lugar = lugar,
+            Referencia = referencia,
+            Autorizacion = autorizacion,
+            Obs = observaciones
+        };
+
+        _context.Permisos.Add(permiso);
+        await _context.SaveChangesAsync(cancellationToken);
     }
 
     public Task<DataTable> ReportePermisosAsync(

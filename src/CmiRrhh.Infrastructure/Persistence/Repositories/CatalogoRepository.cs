@@ -51,4 +51,22 @@ public sealed class CatalogoRepository : ICatalogoRepository
             .CountAsync(l => distintos.Contains(l.IdLocal), cancellationToken);
         return existentes == distintos.Count;
     }
+
+    public async Task<IReadOnlyList<MotivoPermisoItem>> ListarMotivosPermisoAsync(CancellationToken cancellationToken = default)
+    {
+        return await _context.MotivoPerms.AsNoTracking()
+            .Where(m => m.Activo == true)
+            .OrderBy(m => m.IdTipoPermisoNavigation!.DescripTipoPermiso)
+            .ThenBy(m => m.DescripMotivo)
+            .Select(m => new MotivoPermisoItem
+            {
+                IdMotivo = m.IdMotivo,
+                DescripMotivo = m.DescripMotivo ?? m.IdMotivo.ToString(),
+                IdTipoPermiso = m.IdTipoPermiso,
+                DescripTipoPermiso = m.IdTipoPermisoNavigation != null ? m.IdTipoPermisoNavigation.DescripTipoPermiso : null,
+                Salario = m.Salario == true,
+                TipoModalidad = m.TipoModalidad
+            })
+            .ToListAsync(cancellationToken);
+    }
 }

@@ -68,6 +68,12 @@ public partial class CmiDbContext : DbContext
 
     public virtual DbSet<Marcacione> Marcaciones { get; set; }
 
+    /// <summary>
+    /// Tabla nueva propia de la app (no existe en el legado) — ver comentario en la entidad
+    /// <see cref="Entities.MarcacionAutorizada"/>.
+    /// </summary>
+    public virtual DbSet<Entities.MarcacionAutorizada> MarcacionesAutorizadas { get; set; }
+
     public virtual DbSet<MaterialViv> MaterialVivs { get; set; }
 
     public virtual DbSet<MotivoBaja> MotivoBajas { get; set; }
@@ -977,6 +983,29 @@ public partial class CmiDbContext : DbContext
                 .HasForeignKey(d => d.IdEmpleado)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Marcacion__IdEmp__70354F10");
+        });
+
+        // Tabla nueva propia de la app — ver comentario en la entidad MarcacionAutorizada.
+        // No se creó por migración EF (no hay SDK de .NET disponible para generarla y
+        // validarla); se entrega como script SQL idempotente para correr una sola vez
+        // (igual que el resto de tablas del legado, que tampoco están migradas por EF).
+        modelBuilder.Entity<Entities.MarcacionAutorizada>(entity =>
+        {
+            entity.ToTable("MarcacionAutorizada");
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Tipo).HasMaxLength(10).IsUnicode(false).IsRequired();
+            entity.Property(e => e.Hora).HasMaxLength(8).IsUnicode(false).IsRequired();
+            entity.Property(e => e.Motivo).HasMaxLength(200).IsUnicode(false).IsRequired();
+            entity.Property(e => e.Documento).HasMaxLength(100).IsUnicode(false).IsRequired();
+            entity.Property(e => e.Usuario).HasMaxLength(50).IsUnicode(false);
+            entity.Property(e => e.Fecha).HasColumnType("date");
+            entity.Property(e => e.FechaRegistro).HasColumnType("datetime");
+
+            entity.HasOne(d => d.IdEmpleadoNavigation)
+                .WithMany()
+                .HasForeignKey(d => d.IdEmpleado)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_MarcacionAutorizada_Empleado");
         });
 
         modelBuilder.Entity<Marcacione>(entity =>

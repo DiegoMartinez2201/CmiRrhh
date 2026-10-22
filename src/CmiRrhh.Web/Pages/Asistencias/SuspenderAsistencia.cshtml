@@ -1,0 +1,45 @@
+@page
+@model CmiRrhh.Web.Pages.Asistencias.SuspenderAsistenciaModel
+@{
+    ViewData["Title"] = "Suspender asistencia";
+}
+
+<div class="page-header">
+    <h1>Suspender asistencia</h1>
+    <p class="page-subtitle">Anula el control de asistencia de un empleado en una fecha. Requiere que el empleado tenga horario asignado.</p>
+</div>
+
+@if (Model.MensajeOk is not null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @Model.MensajeOk
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+    </div>
+}
+@if (Model.MensajeError is not null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @Model.MensajeError
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+    </div>
+}
+
+<div class="card">
+    <div class="card-body">
+        <form method="post" class="row g-3" onsubmit="return confirm('¿Esta seguro de aplicar la Suspención?');">
+            <div class="col-md-3">
+                <label asp-for="Form.IdEmpleado" class="form-label"></label>
+                <input asp-for="Form.IdEmpleado" class="form-control" />
+                <span asp-validation-for="Form.IdEmpleado" class="text-danger"></span>
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Form.Fecha" class="form-label"></label>
+                <input asp-for="Form.Fecha" class="form-control" />
+                <span asp-validation-for="Form.Fecha" class="text-danger"></span>
+            </div>
+            <div class="col-md-3 d-flex align-items-end">
+                <button type="submit" class="btn btn-danger">Suspender asistencia</button>
+            </div>
+        </form>
+    </div>
+</div>
